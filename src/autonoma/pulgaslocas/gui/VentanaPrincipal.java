@@ -4,6 +4,10 @@
  */
 package autonoma.pulgaslocas.gui;
 
+import autonoma.pulgaslocas.elements.GraphicContainer;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+
 /**
  * 
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -11,13 +15,15 @@ package autonoma.pulgaslocas.gui;
  * @version 1.0.0
  * 
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame implements GraphicContainer{
 
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        this.setSize(900,700);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,6 +36,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,6 +55,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+     if(evt.getKeyCode() == KeyEvent.VK_Q)
+        {
+            System.exit(0);
+        }
+        
+        if(evt.getKeyCode() == KeyEvent.VK_UP |
+           evt.getKeyCode() == KeyEvent.VK_DOWN |
+           evt.getKeyCode() == KeyEvent.VK_LEFT |
+           evt.getKeyCode() == KeyEvent.VK_RIGHT)
+        {
+            
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    @Override
+    public void refresh() {
+       this.repaint();
+    }
+
+    @Override
+    public Rectangle getBoundaries() {
+        return this.getBounds();
+    }
 
  
 

@@ -4,6 +4,8 @@
  */
 package autonoma.pulgaslocas.main;
 
+import autonoma.pulgaslocas.gui.VentanaPrincipal;
+
 /**
  *
  * @author Heily Yohana Rios Ayala<heilyy.riosa@autonoma.edu.co>
@@ -14,7 +16,10 @@ public class PulgasLocas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
+        
+        VentanaPrincipal ventana = new VentanaPrincipal();
+        ventana.setVisible(true);
     }
     
 }
