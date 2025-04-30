@@ -6,7 +6,7 @@ package autonoma.pulgaslocas.gui;
 
 /**
  *
- * @author USUARIO
+ * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 

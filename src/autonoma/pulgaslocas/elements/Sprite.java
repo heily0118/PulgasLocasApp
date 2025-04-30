@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package autonoma.pulgaslocas.elements;
 
 import java.awt.Color;
@@ -10,59 +6,89 @@ import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * 
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
+ * @since 20250430
+ * @version 1.0.0
  */
 public abstract class Sprite {
-      protected int x;
+
+    protected int x;
     protected int y;
     protected int height;
     protected int width;
     protected Color color;
     protected ImageIcon image;
+    protected boolean visible = true;
     protected GraphicContainer gameContainer;
 
+    /**
+     * Constructor base de Sprite.
+     * @param x posición en X
+     * @param y posición en Y
+     * @param height altura del sprite
+     * @param width ancho del sprite
+     */
     public Sprite(int x, int y, int height, int width) {
         this.x = x;
         this.y = y;
         this.height = height;
         this.width = width;
     }
-    
-    public boolean isOutOfGraphicContainer()
-    {
+
+    /**
+     * Verifica si el sprite está fuera de los límites del contenedor gráfico.
+     * @return true si está fuera, false si está dentro
+     */
+    public boolean isOutOfGraphicContainer() {
         return isOutOfGraphicContainer(x, y, width, height);
     }
 
-    public boolean isOutOfGraphicContainer(int x, int y, int width, int height)
-    {
-        if(gameContainer == null)
+    /**
+     * Verifica si las coordenadas y dimensiones dadas están fuera del contenedor gráfico.
+     * @param x posición X
+     * @param y posición Y
+     * @param width ancho
+     * @param height alto
+     * @return true si está fuera de los límites, false si está dentro
+     */
+    public boolean isOutOfGraphicContainer(int x, int y, int width, int height) {
+        if (gameContainer == null)
             return false;
-        
+
         Rectangle bounds = gameContainer.getBoundaries();
-        
-        return !(x >= bounds.getX() &
-                 y >= bounds.getY() &
-                 x + width  <= bounds.getX() + bounds.getWidth() &
+
+        return !(x >= bounds.getX() &&
+                 y >= bounds.getY() &&
+                 x + width  <= bounds.getX() + bounds.getWidth() &&
                  y + height <= bounds.getY() + bounds.getHeight());
     }
-    
-    public boolean checkCollision(Sprite other)
-    {
-       
+
+    /**
+     * Verifica si este sprite colisiona con otro sprite.
+     * @param other el otro sprite
+     * @return true si hay colisión, false en caso contrario
+     */
+    public boolean checkCollision(Sprite other) {
         boolean collisionX = this.getX() + this.getWidth() >= other.getX() &&
-            this.getX() < other.getX() + other.getWidth();
+                             this.getX() < other.getX() + other.getWidth();
 
-    
         boolean collisionY = this.getY() + this.getHeight() >= other.getY() &&
-            this.getY() < other.getY() + other.getHeight();
+                             this.getY() < other.getY() + other.getHeight();
 
-       
-        return collisionX && collisionY;        
+        return collisionX && collisionY;
     }
 
+    /**
+     * Método abstracto para pintar el sprite en pantalla.
+     * Debe ser implementado por las subclases.
+     * 
+     * @param g objeto Graphics donde se dibuja el sprite
+     */
     public abstract void paint(Graphics g);
-    
+
+    // Métodos getters y setters documentados abajo
+
     public int getX() {
         return x;
     }
@@ -110,9 +136,16 @@ public abstract class Sprite {
     public void setImage(ImageIcon image) {
         this.image = image;
     }
-    
+
     public void setGraphicContainer(GraphicContainer gContainer) {
         this.gameContainer = gContainer;
     }
     
+    public boolean isVisible() {
+    return visible;
+}
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 }
