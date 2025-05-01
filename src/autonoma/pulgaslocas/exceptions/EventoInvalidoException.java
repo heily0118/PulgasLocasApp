@@ -8,6 +8,10 @@ package autonoma.pulgaslocas.exceptions;
  *
  * @author mateo
  */
-public class EventoInvalidoException {
+public class EventoInvalidoException extends RuntimeException{
+    
+    public EventoInvalidoException() {
+        super("Error! la entrada de teclado o clic del mouse que no es válida o no está implementada. ");
+    }
     
 }
