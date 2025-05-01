@@ -12,5 +12,30 @@ package autonoma.pulgaslocas.elements;
  * @version 1.0.0
  */
 public class Misil {
+    private int danio = 1;
+    private int tiempoRecarga;
+
+    public Misil(int tiempoRecarga) {
+        this.tiempoRecarga = tiempoRecarga;
+    }
+
+    public int getDanio() {
+        return danio;
+    }
+
+    public void setDanio(int danio) {
+        this.danio = danio;
+    }
+
+    public int getTiempoRecarga() {
+        return tiempoRecarga;
+    }
+
+    public void setTiempoRecarga(int tiempoRecarga) {
+        this.tiempoRecarga = tiempoRecarga;
+    }
     
+    public void utilizarMisil(){
+        
+    }
 }

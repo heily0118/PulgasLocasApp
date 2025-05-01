@@ -94,28 +94,5 @@ public class Pistola {
         this.y = y;
     }
 
-    /**
-     * Simula el disparo de la pistola a un enemigo que se encuentra en una posición específica.
-     * Si el enemigo está a una distancia menor o igual a 1 unidad, se le aplica daño.
-     * Se muestra en consola si el enemigo fue eliminado o herido.
-     *
-     * @param enemigoX     Coordenada X del enemigo.
-     * @param enemigoY     Coordenada Y del enemigo.
-     * @param vidaEnemigo  Vida actual del enemigo antes del disparo.
-     */
-    public void eliminoEnemigo(int enemigoX, int enemigoY, int vidaEnemigo) {
-        double distancia = Math.sqrt(Math.pow(enemigoX - this.x, 2) + Math.pow(enemigoY - this.y, 2));
-
-        if (distancia <= 1) {
-            vidaEnemigo -= danio;
-            if (vidaEnemigo <= 0) {
-                vidaEnemigo = 0;
-                System.out.println("Enemigo eliminado!");
-            } else {
-                System.out.println("Enemigo herido, vida restante: " + vidaEnemigo);
-            }
-        } else {
-            System.out.println("El enemigo está fuera de alcance.");
-        }
-    }
+    
 }
