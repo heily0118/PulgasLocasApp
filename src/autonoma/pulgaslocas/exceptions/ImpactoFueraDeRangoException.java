@@ -8,6 +8,10 @@ package autonoma.pulgaslocas.exceptions;
  *
  * @author mateo
  */
-public class ImpactoFueraDeRangoException {
+public class ImpactoFueraDeRangoException extends RuntimeException{
+    
+    public ImpactoFueraDeRangoException() {
+        super("Error! el impacta fuera de los límites del área válida. ");
+    }
     
 }
