@@ -8,9 +8,9 @@ package autonoma.pulgaslocas.elements;
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
  * @since 20250501
- * @see autonoma.pulgaslocas.elements.Puntaje
+ * @see autonoma.pulgaslocas.elements.Misil
  * @version 1.0.0
  */
-public class Puntaje {
+public class Misil {
     
 }
