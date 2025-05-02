@@ -11,25 +11,44 @@ import java.awt.Graphics;
  *
  * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
  * @since 20250501
- * @see autonoma.pulgaslocas.exceptions
+ * @see autonoma.pulgaslocas.elements
  * @version 1.0.0
  */
 public class Pulga extends SpriteMobile{
 
+     /**
+     * 
+     * 
+     * @param x posición horizontal
+     * @param y posición vertical
+     * @param height alto del sprite
+     * @param width ancho del sprite
+     */
     public Pulga(int x, int y, int height, int width) {
         super(x, y, height, width);
         this.vida = 1; 
         this.color = Color.GREEN; 
     }
-
+    /**
+     * Reduce la vida del sprite en uno. Si llega a 0, dejará de estar visible.
+     */
     @Override
     public void recibirImpacto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        vida--;
+        if (vida <= 0) {
+          
+        }
     }
 
+    /**
+     * 
+     * 
+     * @param g el contexto gráfico donde se va a pintar
+     */
     @Override
     public void paint(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        g.setColor(color != null ? color : Color.GREEN);
+        g.fillOval(x, y, width, height);
     }
     
 }
