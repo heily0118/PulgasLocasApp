@@ -40,6 +40,27 @@ public class GestorJuegos {
     }
     
     public void manejareventoTeclado( KeyEvent e){
+        
+        
+        switch(e.getKeyCode())
+        {
+            
+            //"p" - se crea pulga Nomal
+            case KeyEvent.VK_P:
+                campo.agregarPulga(false);
+            break;
+            
+            //"m" - se crea pulga multante
+            case KeyEvent.VK_M:
+                campo.agregarPulga(true);
+            break;
+            
+            //"s" - para poner pulgas salten
+            case KeyEvent.VK_S:
+                campo.agregarPulga(true);
+            break;
+
+        }    
     
     }
     
