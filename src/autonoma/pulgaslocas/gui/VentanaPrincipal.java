@@ -70,18 +70,15 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-     if(evt.getKeyCode() == KeyEvent.VK_Q)
-        {
-            System.exit(0);
-        }
+     if (evt.getKeyCode() == KeyEvent.VK_Q) {
+        System.exit(0);
+    }
+
         
-        if(evt.getKeyCode() == KeyEvent.VK_UP |
-           evt.getKeyCode() == KeyEvent.VK_DOWN |
-           evt.getKeyCode() == KeyEvent.VK_LEFT |
-           evt.getKeyCode() == KeyEvent.VK_RIGHT)
-        {
-            
-        }
+        gestor.manejareventoTeclado(evt);
+
+       
+        repaint();
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -104,6 +101,14 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
     }
 
  
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); 
+
+        if (gestor != null) {
+            gestor.dibujarElementos(g);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

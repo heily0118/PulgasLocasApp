@@ -4,6 +4,7 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -51,7 +52,8 @@ public class GestorJuego {
 
             // "s" - para poner pulgas salten
             case KeyEvent.VK_S:
-                campo.getGenerador().run();
+                campo.getGenerador().start();
+
                 break;
         }
     }
@@ -94,6 +96,8 @@ public class GestorJuego {
 
    
     public void agregarPulga(boolean esMutante) {
+        int x = (int)(Math.random() * campo.getAncho());  
+        int y = (int)(Math.random() * campo.getAlto());
         campo.agregarPulga(esMutante,0,0); 
     }
 
@@ -115,5 +119,8 @@ public class GestorJuego {
     public void reiniciarJuego() {
         campo.reiniciarCampo();
         puntaje.reiniciarPuntaje();
+    }
+    public void dibujarElementos(Graphics g){
+        campo.dibujar(g);
     }
 }

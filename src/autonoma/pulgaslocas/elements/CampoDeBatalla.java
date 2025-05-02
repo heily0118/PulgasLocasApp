@@ -41,6 +41,23 @@ public class CampoDeBatalla {
         return alto;
     }
 
+    public void setAncho(int ancho) {
+        this.ancho = ancho;
+    }
+
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
+
+    public void setPulgas(ArrayList<Pulga> pulgas) {
+        this.pulgas = pulgas;
+    }
+
+    public void setGenerador(GeneradorPulgas generador) {
+        this.generador = generador;
+    }
+    
+
     public ArrayList<Pulga> getPulgas() {
         return pulgas;
     }
