@@ -4,6 +4,8 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
@@ -26,6 +28,16 @@ public class Pistola {
      * Posición Y de la pistola en el plano. 
      */
     private int y;
+    
+    /**
+     * Lista de pulgas
+     */
+    private ArrayList<Pulga> pulgas; 
+    
+    /**
+     * Objeto de puntaje.
+     */
+    private Puntaje puntaje;
 
     /**
      * Constructor para crear una pistola con un daño y posición específica.
@@ -94,5 +106,40 @@ public class Pistola {
         this.y = y;
     }
 
+    /**
+     * Este método simula el disparo de una pistola en un campo de batalla.
+     * 
+     * Verifica si existe una pulga en la posición especificada por las coordenadas 
+     * (x, y) y, en caso afirmativo, la elimina de la lista de pulgas y aumenta el puntaje.
+     * El disparo puede afectar tanto a pulgas normales como mutantes.
+     * 
+     * @param x Es la coordenada X donde se realiza el disparo.
+     * @param y Es la coordenada Y donde se realiza el disparo. 
+     */
+    public void dispararPistola(int x, int y) {
+        boolean disparoExitoso = false; // Bandera para saber si el disparo fue exitoso
+
+        for (int i = 0; i < pulgas.size(); i++) {
+            Pulga pulga = pulgas.get(i);
+
+            // Verificar si la pulga está en la posición (x, y)
+            if (pulga.getX() == x && pulga.getY() == y) {
+                // Si la pulga es normal, eliminarla y aumentar el puntaje
+                if (pulga instanceof PulgaNormal) {
+                    pulgas.remove(i); // Eliminar la pulga normal
+                    puntaje.incrementarPuntaje(); // Incrementar el puntaje
+                    System.out.println("¡Pulga normal destruida!");
+                }
+                // Si la pulga es mutante, eliminarla
+                else if (pulga instanceof PulgaMutante) {
+                    pulgas.remove(i); 
+                    puntaje.incrementarPuntaje(); 
+                    System.out.println("¡Pulga mutante destruida!");
+                }
+                disparoExitoso = true;
+                break; 
+            }
+        }
+    }
     
 }
