@@ -1,7 +1,10 @@
 package autonoma.pulgaslocas.elements;
 
+import autonoma.pulgaslocas.elements.Pulga;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * 
@@ -19,10 +22,11 @@ public class PulgaNormal extends Pulga {
      * @param height alto del sprite
      * @param width ancho del sprite
      */
-    public PulgaNormal(int x, int y, int height, int width) {
-        super(x, y, height, width);
-        this.vida = 1; 
-        this.color = Color.GREEN; 
+    public PulgaNormal(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {    
+        super(vida, estaviva, pulgaImage, x, y, height, width);
+        this.vida = 2;
+        this.pulgaImage = new ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/pulgaNormal.png")).getImage();
+    
     }
 
     /**
