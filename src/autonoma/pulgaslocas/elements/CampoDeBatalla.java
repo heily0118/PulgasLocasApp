@@ -21,13 +21,21 @@ public class CampoDeBatalla {
     private int alto;
 
     private ArrayList<Pulga>pulgas;
+    
+    private GeneradorPulgas generador;
 
     public CampoDeBatalla(int ancho, int alto) {
         this.ancho = ancho;
         this.alto = alto;
     }
 
-    ///Metodos accesos (get)
+    
+    
+    //////Metodos accesos (get) 
+    public GeneradorPulgas getGenerador() {
+        return generador;
+    }
+
     public int getAncho() {
         return ancho;
     }

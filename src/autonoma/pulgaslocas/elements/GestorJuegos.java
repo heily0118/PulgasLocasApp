@@ -57,7 +57,7 @@ public class GestorJuegos {
             
             //"s" - para poner pulgas salten
             case KeyEvent.VK_S:
-                campo.agregarPulga(true);
+                campo.getGenerador().run();
             break;
 
         }    
