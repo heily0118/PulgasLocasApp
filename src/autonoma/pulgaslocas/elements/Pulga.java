@@ -20,7 +20,7 @@ import java.awt.Graphics;
     public abstract class Pulga extends SpriteMobile{
 
         protected int vida;
-        private boolean estaviva;
+        protected boolean estaviva;
         protected Image pulgaImage; 
 
     public Pulga(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {

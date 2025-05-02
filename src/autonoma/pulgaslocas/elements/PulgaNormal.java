@@ -17,6 +17,9 @@ public class PulgaNormal extends Pulga {
     /**
      * 
      * 
+     * @param vida
+     * @param estaviva
+     * @param pulgaImage
      * @param x posición horizontal
      * @param y posición vertical
      * @param height alto del sprite
@@ -36,6 +39,7 @@ public class PulgaNormal extends Pulga {
     public void recibirImpacto() {
         vida--;
         if (vida <= 0) {
+            this.estaviva = false;
           
         }
     }
@@ -47,7 +51,13 @@ public class PulgaNormal extends Pulga {
      */
     @Override
     public void paint(Graphics g) {
-        g.setColor(color != null ? color : Color.GREEN);
-        g.fillOval(x, y, width, height);
+       if (estaviva) {
+            
+            g.drawImage(pulgaImage, x, y, width, height, null);
+        } else {
+          
+             g.setColor(Color.GRAY);
+             g.fillOval(x, y, width, height);  
+        }
     }
 }
