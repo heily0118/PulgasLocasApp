@@ -26,10 +26,8 @@ public class PulgasLocas {
       CampoDeBatalla campo = new CampoDeBatalla(900, 700, null);  
 
         
-
-        VentanaPrincipal ventana = new VentanaPrincipal();
         
-      Puntaje puntaje = new Puntaje("puntajes.txt");
+        Puntaje puntaje = new Puntaje("puntajes.txt");
 
        
         Jugador jugador = new Jugador(campo,null);

@@ -22,7 +22,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     /**
      * Creates new form VentanaJuego
      */
-    public VentanaJuego(java.awt.Frame parent, boolean modal) {
+    public VentanaJuego(java.awt.Frame parent, boolean modal, GestorJuego gestor) {
         super(parent, modal);
         initComponents();
         this.setSize(900,700);

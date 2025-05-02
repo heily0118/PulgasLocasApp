@@ -6,6 +6,7 @@ package autonoma.pulgaslocas.gui;
 
 import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.GraphicContainer;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -43,6 +44,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BtnAbrirjuego = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -55,15 +58,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        BtnAbrirjuego.setText("Abrir juego");
+        BtnAbrirjuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAbrirjuegoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(259, Short.MAX_VALUE)
+                .addComponent(BtnAbrirjuego)
+                .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(210, Short.MAX_VALUE)
+                .addComponent(BtnAbrirjuego, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -77,7 +93,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     }//GEN-LAST:event_formMouseClicked
 
+    private void BtnAbrirjuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAbrirjuegoActionPerformed
+        // Suponiendo que ya tienes un Frame y un GestorJuego creados
+        Frame miFrame = new Frame();
+        VentanaJuego ventana = new VentanaJuego(miFrame, true, gestor );
+        ventana.setVisible(true);
+    }//GEN-LAST:event_BtnAbrirjuegoActionPerformed
+
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAbrirjuego;
     // End of variables declaration//GEN-END:variables
 }
