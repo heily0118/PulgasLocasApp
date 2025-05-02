@@ -4,6 +4,10 @@
  */
 package autonoma.pulgaslocas.main;
 
+import autonoma.pulgaslocas.elements.CampoDeBatalla;
+import autonoma.pulgaslocas.elements.GestorJuego;
+import autonoma.pulgaslocas.elements.Jugador;
+import autonoma.pulgaslocas.elements.Puntaje;
 import autonoma.pulgaslocas.gui.VentanaPrincipal;
 
 /**
@@ -17,9 +21,27 @@ public class PulgasLocas {
      */
     public static void main(String[] args) {
        
+   
+
+      CampoDeBatalla campo = new CampoDeBatalla(900, 700, null);  
+
         
+
         VentanaPrincipal ventana = new VentanaPrincipal();
         
+      Puntaje puntaje = new Puntaje("puntajes.txt");
+
+       
+        Jugador jugador = new Jugador(campo,null);
+       
+       
+        campo.setJugador(jugador);  
+
+      
+        GestorJuego gestor = new GestorJuego(true, campo, "puntajes.txt");
+       
+       
+        VentanaPrincipal ventana = new VentanaPrincipal(gestor);
         ventana.setVisible(true);
     }
     

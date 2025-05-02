@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package autonoma.pulgaslocas.gui;
 
@@ -17,21 +17,18 @@ import java.awt.event.KeyEvent;
  * @version 1.0.0
  * 
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
-    
-    
-    private GestorJuego gestor;
+public class VentanaJuego extends javax.swing.JDialog implements GraphicContainer {
+  private GestorJuego gestor;
     /**
-     * Creates new form VentanaPrincipal
+     * Creates new form VentanaJuego
      */
-    public VentanaPrincipal(GestorJuego gestor) {
+    public VentanaJuego(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.setSize(900,700);
         this.setLocationRelativeTo(null);
         
         this.gestor = gestor;
-        
-
     }
 
     /**
@@ -43,7 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -70,14 +67,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-   
+      if (evt.getKeyCode() == KeyEvent.VK_Q) {
+        System.exit(0);
+    }
+
+        
+        gestor.manejareventoTeclado(evt);
+
+       
+        repaint();
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-    
+         int x = evt.getX();
+        int y = evt.getY();
+
+      
+        gestor.manejarClick(evt);
+
     }//GEN-LAST:event_formMouseClicked
+ @Override
+    public void refresh(Graphics g) {
+     this.repaint();
+    }
+
+    @Override
+    public Rectangle getBoundaries() {
+        return this.getBounds();
+    }
 
  
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); 
+
+        if (gestor != null) {
+            gestor.dibujarElementos(g);
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

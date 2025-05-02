@@ -4,6 +4,8 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author María Paz Puerta Acevedo <mariap.puertaa@autonoma.edu.co>
@@ -26,7 +28,13 @@ public class Pistola {
      * Posición Y de la pistola en el plano. 
      */
     private int y;
-
+    
+    /**
+     * Lista de pulgas
+     */
+    private ArrayList<Pulga> pulgas; 
+    
+  
     /**
      * Constructor para crear una pistola con un daño y posición específica.
      *
@@ -34,10 +42,12 @@ public class Pistola {
      * @param x     Coordenada X de la pistola.
      * @param y     Coordenada Y de la pistola.
      */
-    public Pistola(int danio, int x, int y) {
+    public Pistola(int danio, int x, int y,ArrayList<Pulga> pulgas) {
         this.danio = danio;
         this.x = x;
         this.y = y;
+        this.pulgas = pulgas;
+        
     }
 
     /**
@@ -94,5 +104,42 @@ public class Pistola {
         this.y = y;
     }
 
+    public ArrayList<Pulga> getPulgas() {
+        return pulgas;
+    }
+
+    public void setPulgas(ArrayList<Pulga> pulgas) {
+        this.pulgas = pulgas;
+    }
+
+ 
     
+
+    /**
+     * Este método simula el disparo de una pistola en un campo de batalla.
+     * 
+     * Verifica si existe una pulga en la posición especificada por las coordenadas 
+     * (x, y) y, en caso afirmativo, la elimina de la lista de pulgas y aumenta el puntaje.
+     * El disparo puede afectar tanto a pulgas normales como mutantes.
+     * 
+     * @param x Es la coordenada X donde se realiza el disparo.
+     * @param y Es la coordenada Y donde se realiza el disparo. 
+     */
+    public void dispararPistola(int x, int y) {
+            for (int i = 0; i < pulgas.size(); i++) {
+                Pulga pulga = pulgas.get(i);
+                if (x >= pulga.getX() && x <= pulga.getX() + pulga.getWidth() &&
+                    y >= pulga.getY() && y <= pulga.getY() + pulga.getHeight()) {
+
+                    pulga.recibirImpacto();
+
+                    if (!pulga.estaViva()) {
+                        pulgas.remove(i);
+                        System.out.println("¡Pulga destruida!");
+                    }
+
+                    break;
+                }
+            }
+    }
 }
