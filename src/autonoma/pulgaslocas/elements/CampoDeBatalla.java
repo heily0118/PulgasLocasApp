@@ -49,7 +49,6 @@ public class CampoDeBatalla {
         Pulga p = new Pulga(1,2,3,4);
         pulgas.remove(p);
 
-
     }
     
     public void actualizarEstado(){
