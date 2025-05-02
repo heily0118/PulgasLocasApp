@@ -9,7 +9,7 @@ import java.awt.Graphics;
  * @since 20250430
  * @version 1.0.0
  */
-public class PulgaNormal extends SpriteMobile {
+public class PulgaNormal extends Pulga {
 
     /**
      * 

@@ -8,7 +8,7 @@ import java.awt.Graphics;
  * @since 20250430
  * @version 1.0.0
  */
-public class PulgaMutante extends SpriteMobile {
+public class PulgaMutante extends Pulga {
 
     /**
      * 
