@@ -5,6 +5,7 @@
 package autonoma.pulgaslocas.elements;
 
 
+import autonoma.pulgaslocas.elements.SpriteMobile;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -16,19 +17,20 @@ import java.awt.Graphics;
  * @since 20250430
  * @version 1.0.0
  */
-public abstract class Pulga extends SpriteMobile{
-    private int vida;
-    private boolean estaviva;
-    private Image pulgaImage; 
+    public abstract class Pulga extends SpriteMobile{
 
-    public Pulga(int vida, boolean estaviva, int x, int y, int height, int width) {
+        protected int vida;
+        private boolean estaviva;
+        protected Image pulgaImage; 
+
+    public Pulga(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {
         super(x, y, height, width);
         this.vida = vida;
         this.estaviva = estaviva;
-        
-       
+        this.pulgaImage = pulgaImage;
     }
 
+ 
     public int getVida() {
         return vida;
     }
@@ -44,7 +46,16 @@ public abstract class Pulga extends SpriteMobile{
     public void setEstaviva(boolean estaviva) {
         this.estaviva = estaviva;
     }
-    
+
+    public Image getPulgaImage() {
+        return pulgaImage;
+    }
+
+    public void setPulgaImage(Image pulgaImage) {
+        this.pulgaImage = pulgaImage;
+    }
+
+ 
     
     public void recibirImpacto(){
         this.vida--;

@@ -2,6 +2,8 @@ package autonoma.pulgaslocas.elements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -9,6 +11,7 @@ import java.awt.Graphics;
  * @version 1.0.0
  */
 public class PulgaMutante extends Pulga {
+    
 
     /**
      * 
@@ -18,12 +21,11 @@ public class PulgaMutante extends Pulga {
      * @param height alto del sprite
      * @param width ancho del sprite
      */
-    public PulgaMutante(int x, int y, int height, int width) {
-        super(x, y, height, width);
-        this.vida = 3; 
-        this.color = Color.MAGENTA; 
+    public PulgaMutante(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {  
+        super(vida, estaviva, pulgaImage, x, y, height, width);
+        this.vida = 2;
+        this.pulgaImage = new ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/pulgaMutante.png")).getImage();
     }
-
     /**
      * Reduce la vida del sprite en uno. Si llega a 0, dejará de estar visible.
      */
