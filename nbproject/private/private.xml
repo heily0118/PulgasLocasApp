@@ -3,25 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/EscritorArchivoTextoPlano.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Puntaje.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/SpriteContainer.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/PulgaMutanteImpactadaException.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/images/pulgaMutante.png</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/NumeroMaximoDePulgasException.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/ImpactoFueraDeRangoException.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/PulgaInactivaException.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/PulgaNormal.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/GraphicContainer.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/PosicionFueraDeLimitesException.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Pistola.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/PulgaMutante.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/ArmaNoDisponibleException.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/gui/VentanaPrincipal.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Escritor.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Lector.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Sprite.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/EventoInvalidoException.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Misil.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/PulgaYaExistenteException.java</file>
-            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/LectorArchivoTextoPlano.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/exceptions/ArmaNoDisponibleException.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/PulgaMutante.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/images/pulgaNormal.png</file>
         </group>
     </open-files>
 </project-private>
