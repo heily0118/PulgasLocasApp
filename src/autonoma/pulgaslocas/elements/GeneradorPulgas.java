@@ -11,7 +11,7 @@ package autonoma.pulgaslocas.elements;
  * @see autonoma.pulgaslocas.elements
  * @version 1.0.0
  */
-public class GeneradorPulgas{
+public class GeneradorPulgas extends Thread{
     
     
     //Atributos
@@ -25,8 +25,9 @@ public class GeneradorPulgas{
     
     }
     
-    ///Metdos 
-    public void run(){
+    //metodos
+    @Override
+    public void run (){
     
     }
 }
