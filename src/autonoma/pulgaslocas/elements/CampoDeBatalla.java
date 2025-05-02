@@ -38,29 +38,24 @@ public class CampoDeBatalla {
     
     //metodos de campo
     
-    public void agrgarPluga(){
-        
-        Pulga p = new Pulga(1, true, null, 0, 0, 10, 10) {
-            @Override
-            public void paint(Graphics g) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        };
-        
+   public void agregarPulga(boolean esMutante) {
+        Pulga p;
+
+        if (esMutante) {
+           
+            p = new PulgaMutante(2, true, null, 0, 0, 10, 10); 
+        } else {
+            
+            p = new PulgaNormal(1, true, null, 0, 0, 10, 10); 
+        }
+
         pulgas.add(p);
     }
     
-    public void removerPluga(){
-
-        Pulga p = new Pulga(11, true, null, 0, 0, 10, 10) {
-            @Override
-            public void paint(Graphics g) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        };
-        pulgas.remove(p);
-
-    }
+        public void removerPulga(Pulga p) {
+          pulgas.remove(p);
+      }
+    
     
     public void actualizarEstado(){
     }
