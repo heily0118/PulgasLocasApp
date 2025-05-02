@@ -18,7 +18,7 @@ public class CampoDeBatalla {
     //Atributos
     private int ancho;
     private int alto;
-    private ArrayList<Pulga>;
+    private ArrayList <Pulga> pulgas;
     public CampoDeBatalla(int ancho, int alto) {
         this.ancho = ancho;
         this.alto = alto;
@@ -33,13 +33,24 @@ public class CampoDeBatalla {
         return alto;
     }
     
-    //metodos
+    //metodos de campo
     
     public void agrgarPluga(){
+        
+        Pulga p = new Pulga(1,2,3,4);
+        
+        pulgas.add(p);
     }
     
-    public void removerPluga{
+    public void removerPluga(){
+        Pulga p = new Pulga(1,2,3,4);
+        pulgas.remove(p);
+
     }
+    
+    public void actualizarEstado(){
+    }
+    
     
     
     
