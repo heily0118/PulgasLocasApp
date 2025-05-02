@@ -46,10 +46,12 @@ public class Pistola {
      * @param x     Coordenada X de la pistola.
      * @param y     Coordenada Y de la pistola.
      */
-    public Pistola(int danio, int x, int y) {
+    public Pistola(int danio, int x, int y,ArrayList<Pulga> pulgas, Puntaje puntaje) {
         this.danio = danio;
         this.x = x;
         this.y = y;
+        this.pulgas = pulgas;
+        this.puntaje = puntaje;
     }
 
     /**
@@ -106,6 +108,23 @@ public class Pistola {
         this.y = y;
     }
 
+    public ArrayList<Pulga> getPulgas() {
+        return pulgas;
+    }
+
+    public void setPulgas(ArrayList<Pulga> pulgas) {
+        this.pulgas = pulgas;
+    }
+
+    public Puntaje getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(Puntaje puntaje) {
+        this.puntaje = puntaje;
+    }
+    
+
     /**
      * Este método simula el disparo de una pistola en un campo de batalla.
      * 
@@ -117,29 +136,21 @@ public class Pistola {
      * @param y Es la coordenada Y donde se realiza el disparo. 
      */
     public void dispararPistola(int x, int y) {
-        boolean disparoExitoso = false; // Bandera para saber si el disparo fue exitoso
+            for (int i = 0; i < pulgas.size(); i++) {
+                Pulga pulga = pulgas.get(i);
+                if (x >= pulga.getX() && x <= pulga.getX() + pulga.getWidth() &&
+                    y >= pulga.getY() && y <= pulga.getY() + pulga.getHeight()) {
 
-        for (int i = 0; i < pulgas.size(); i++) {
-            Pulga pulga = pulgas.get(i);
+                    pulga.recibirImpacto();
 
-            // Verificar si la pulga está en la posición (x, y)
-            if (pulga.getX() == x && pulga.getY() == y) {
-                // Si la pulga es normal, eliminarla y aumentar el puntaje
-                if (pulga instanceof PulgaNormal) {
-                    pulgas.remove(i); // Eliminar la pulga normal
-                    puntaje.incrementarPuntaje(); // Incrementar el puntaje
-                    System.out.println("¡Pulga normal destruida!");
+                    if (!pulga.estaViva()) {
+                        pulgas.remove(i);
+                        puntaje.incrementarPuntaje();
+                        System.out.println("¡Pulga destruida!");
+                    }
+
+                    break;
                 }
-                // Si la pulga es mutante, eliminarla
-                else if (pulga instanceof PulgaMutante) {
-                    pulgas.remove(i); 
-                    puntaje.incrementarPuntaje(); 
-                    System.out.println("¡Pulga mutante destruida!");
-                }
-                disparoExitoso = true;
-                break; 
             }
-        }
     }
-    
 }
