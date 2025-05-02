@@ -4,6 +4,7 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -128,6 +129,9 @@ public class CampoDeBatalla {
      * @param g el objeto Graphics utilizado para dibujar
      */
     public void dibujar(Graphics g) {
+        
+        g.setColor(new Color(34, 139, 34));  
+        g.fillRect(0, 0, ancho, alto); 
         for (Pulga p : pulgas) {
             p.dibujar(g); 
         }
