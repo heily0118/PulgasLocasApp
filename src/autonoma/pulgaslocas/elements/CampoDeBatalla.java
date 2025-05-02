@@ -15,25 +15,15 @@ import java.util.ArrayList;
  * @version 1.0.0
  */
 public class CampoDeBatalla {
-    
-    //Atributos
     private int ancho;
     private int alto;
-
-    private ArrayList<Pulga>pulgas;
-    
+    private ArrayList<Pulga> pulgas;
     private GeneradorPulgas generador;
 
     public CampoDeBatalla(int ancho, int alto) {
         this.ancho = ancho;
         this.alto = alto;
-    }
-
-    
-    
-    //////Metodos accesos (get) 
-    public GeneradorPulgas getGenerador() {
-        return generador;
+        this.pulgas = new ArrayList<>(); 
     }
 
     public int getAncho() {
@@ -43,33 +33,36 @@ public class CampoDeBatalla {
     public int getAlto() {
         return alto;
     }
-    
-    //metodos de campo
-    
-   public void agregarPulga(boolean esMutante) {
+
+    public ArrayList<Pulga> getPulgas() {
+        return pulgas;
+    }
+
+    public GeneradorPulgas getGenerador() {
+        return generador;
+    }
+
+    public void agregarPulga(boolean esMutante) {
         Pulga p;
-
         if (esMutante) {
-           
-            p = new PulgaMutante(2, true, null, 0, 0, 10, 10); 
+            p = new PulgaMutante(2, true, null, 0, 0, 10, 10);
         } else {
-            
-            p = new PulgaNormal(1, true, null, 0, 0, 10, 10); 
+            p = new PulgaNormal(1, true, null, 0, 0, 10, 10);
         }
-
         pulgas.add(p);
     }
-    
-        public void removerPulga(Pulga p) {
-          pulgas.remove(p);
-      }
-    
 
-    
-    public void actualizarEstado(){
+    public void removerPulga(Pulga p) {
+        pulgas.remove(p);
     }
-    
-    
-    
-    
+
+    public void actualizarEstado() {
+        
+    }
+
+    public void dibujar(Graphics g) {
+        for (Pulga p : pulgas) {
+            p.dibujar(g);
+        }
+    }
 }
