@@ -19,12 +19,16 @@ public class CampoDeBatalla {
     private int alto;
     private ArrayList<Pulga> pulgas;
     private GeneradorPulgas generador;
+    private Jugador jugador;
 
-    public CampoDeBatalla(int ancho, int alto) {
+     public CampoDeBatalla(int ancho, int alto, Jugador jugador) {
         this.ancho = ancho;
         this.alto = alto;
         this.pulgas = new ArrayList<>(); 
+        this.jugador = jugador;  
+        this.generador = new GeneradorPulgas(this,200);  
     }
+
 
     public int getAncho() {
         return ancho;
@@ -41,6 +45,16 @@ public class CampoDeBatalla {
     public GeneradorPulgas getGenerador() {
         return generador;
     }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+    
+    
 
     public void agregarPulga(boolean esMutante) {
         Pulga p;

@@ -11,23 +11,43 @@ package autonoma.pulgaslocas.elements;
  * @see autonoma.pulgaslocas.elements
  * @version 1.0.0
  */
-public class GeneradorPulgas extends Thread{
+
+
+public class GeneradorPulgas extends Thread {
     
-    
-    //Atributos
-    private int intervaloGeneracion;
-    
-    
-    
-    ///Metdo Contructor
-    public GeneradorPulgas(){
-    
-    
+    // Atributos
+    private int intervaloGeneracion;  
+    private CampoDeBatalla campo;
+    private boolean activo;  
+
+    // Constructor con el campo de batalla y el intervalo de generación
+    public GeneradorPulgas(CampoDeBatalla campo, int intervaloGeneracion) {
+        this.campo = campo;
+        this.intervaloGeneracion = intervaloGeneracion;
+        this.activo = true;
+    }
+
+    // Método para detener la generación
+    public void detenerGeneracion() {
+        activo = false;
     }
     
-    //metodos
+    // Método que inicia la generación de pulgas
     @Override
-    public void run (){
-    
+    public void run() {
+        while (activo) {
+            try {
+                
+                boolean esMutante = Math.random() > 0.5;  
+                campo.agregarPulga(esMutante);  
+                
+               
+                Thread.sleep(intervaloGeneracion);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
+
+

@@ -4,10 +4,8 @@
  */
 package autonoma.pulgaslocas.gui;
 
-import autonoma.pulgaslocas.elements.CampoDeBatalla;
+import autonoma.pulgaslocas.elements.GestorJuegos;
 import autonoma.pulgaslocas.elements.GraphicContainer;
-import autonoma.pulgaslocas.elements.Jugador;
-import autonoma.pulgaslocas.elements.Puntaje;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -21,20 +19,18 @@ import java.awt.event.KeyEvent;
  */
 public class VentanaPrincipal extends javax.swing.JFrame implements GraphicContainer{
     
-    private Jugador jugador; 
+    
+    private GestorJuegos gestor;
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal() {
+    public VentanaPrincipal(GestorJuegos gestor) {
         initComponents();
         this.setSize(900,700);
         this.setLocationRelativeTo(null);
         
-         Puntaje puntaje = new Puntaje(0,0);
-        CampoDeBatalla campo = new CampoDeBatalla(900, 700); 
+        this.gestor = gestor;
         
-       
-        jugador = new Jugador(campo, puntaje);
 
     }
 
@@ -93,7 +89,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
         int y = evt.getY();
 
       
-        jugador.disparar(x, y);  
+        gestor.manejarClick(evt);
 
     }//GEN-LAST:event_formMouseClicked
 

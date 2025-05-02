@@ -20,6 +20,14 @@ public class GestorJuegos {
     private  boolean juegoActivo ;
     
     private CampoDeBatalla campo;
+
+    public GestorJuegos(boolean juegoActivo, CampoDeBatalla campo) {
+        this.juegoActivo = false;
+        this.campo = campo;
+    }
+    
+    
+    
     
     //Metodos
     
