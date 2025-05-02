@@ -4,9 +4,12 @@
  */
 package autonoma.pulgaslocas.elements;
 
+
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+
+import java.awt.Graphics;
 
 /**
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -61,5 +64,6 @@ public abstract class Pulga extends SpriteMobile{
     public boolean estaViva() {
         return this.estaviva;
     }
+
 
 }
