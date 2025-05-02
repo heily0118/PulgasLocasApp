@@ -19,6 +19,7 @@ public class PulgasLocas {
        
         
         VentanaPrincipal ventana = new VentanaPrincipal();
+        
         ventana.setVisible(true);
     }
     
