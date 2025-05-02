@@ -38,6 +38,7 @@ public class CampoDeBatalla {
     
     //metodos de campo
     
+<<<<<<< HEAD
     public void agrgarPluga(){
         
         Pulga p = new Pulga(1,true,1,2,3,4);
@@ -49,6 +50,26 @@ public class CampoDeBatalla {
         Pulga p = new Pulga(1,true,1,2,3,4);
         pulgas.remove(p);
     }
+=======
+   public void agregarPulga(boolean esMutante) {
+        Pulga p;
+
+        if (esMutante) {
+           
+            p = new PulgaMutante(2, true, null, 0, 0, 10, 10); 
+        } else {
+            
+            p = new PulgaNormal(1, true, null, 0, 0, 10, 10); 
+        }
+
+        pulgas.add(p);
+    }
+    
+        public void removerPulga(Pulga p) {
+          pulgas.remove(p);
+      }
+    
+>>>>>>> a37e061e00df62807615fa0ac5517471f561d81f
     
     public void actualizarEstado(){
     }

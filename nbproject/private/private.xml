@@ -2,11 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/GeneradorPulgas.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/GestorJuegos.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/CampoDeBatalla.java</file>
             <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Pulga.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> a37e061e00df62807615fa0ac5517471f561d81f
     </open-files>
 </project-private>
