@@ -14,6 +14,9 @@ public class GeneradorPulgas {
     //Atributos
     private int intervaloGeneracion;
     
+    
+    
+    ///Metdo Contructor
     public GeneradorPulgas(){
     
     

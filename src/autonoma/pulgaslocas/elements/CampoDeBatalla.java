@@ -4,6 +4,7 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -39,13 +40,13 @@ public class CampoDeBatalla {
     
     public void agrgarPluga(){
         
-        Pulga p = new Pulga(1,2,3,4);
+        Pulga p = new Pulga(1,true,1,2,3,4);
         
         pulgas.add(p);
     }
     
     public void removerPluga(){
-        Pulga p = new Pulga(1,2,3,4);
+        Pulga p = new Pulga(1,true,1,2,3,4);
         pulgas.remove(p);
     }
     
