@@ -42,12 +42,12 @@ public class GestorJuego {
         switch (e.getKeyCode()) {
             // "p" - se crea pulga Normal
             case KeyEvent.VK_P:
-                campo.agregarPulga(false,0,0);  // Pulga normal
+                agregarPulga(false);  // Pulga normal
                 break;
 
             // "m" - se crea pulga mutante
             case KeyEvent.VK_M:
-                campo.agregarPulga(true,0,0);   // Pulga mutante
+                agregarPulga(true);   // Pulga mutante
                 break;
 
             // "s" - para poner pulgas salten
@@ -98,7 +98,7 @@ public class GestorJuego {
     public void agregarPulga(boolean esMutante) {
         int x = (int)(Math.random() * campo.getAncho());  
         int y = (int)(Math.random() * campo.getAlto());
-        campo.agregarPulga(esMutante,0,0); 
+        campo.agregarPulga(esMutante,x,y); 
     }
 
   
