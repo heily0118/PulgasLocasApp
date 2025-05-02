@@ -6,7 +6,10 @@ package autonoma.pulgaslocas.elements;
 
 /**
  *
- * @author mateo
+ * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
+ * @since 20250501
+ * @see autonoma.pulgaslocas.elements
+ * @version 1.0.0
  */
 public class GeneradorPulgas{
     
