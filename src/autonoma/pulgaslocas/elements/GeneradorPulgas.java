@@ -14,39 +14,49 @@ package autonoma.pulgaslocas.elements;
 
 
 public class GeneradorPulgas extends Thread {
-    
-    // Atributos
-    private int intervaloGeneracion;  
-    private CampoDeBatalla campo;
-    private boolean activo;  
 
-    // Constructor con el campo de batalla y el intervalo de generación
-    public GeneradorPulgas(CampoDeBatalla campo, int intervaloGeneracion) {
+    private int intervaloNormal;  // Intervalo para pulgas normales (5 segundos)
+    private int intervaloMutante;  // Intervalo para pulgas mutantes (10 segundos)
+    private CampoDeBatalla campo;
+    private boolean activo;
+
+    public GeneradorPulgas(CampoDeBatalla campo, int intervaloNormal, int intervaloMutante) {
         this.campo = campo;
-        this.intervaloGeneracion = intervaloGeneracion;
+        this.intervaloNormal = intervaloNormal;
+        this.intervaloMutante = intervaloMutante;
         this.activo = true;
     }
 
-    // Método para detener la generación
     public void detenerGeneracion() {
         activo = false;
     }
-    
-    // Método que inicia la generación de pulgas
+
     @Override
     public void run() {
         while (activo) {
             try {
-                
-                boolean esMutante = Math.random() > 0.5;  
-                campo.agregarPulga(esMutante);  
-                
+              
+                campo.agregarPulga(false, generarPosicionX(), generarPosicionY()); 
+                Thread.sleep(intervaloNormal);  
+
                
-                Thread.sleep(intervaloGeneracion);
+                campo.agregarPulga(true, generarPosicionX(), generarPosicionY());  
+                Thread.sleep(intervaloMutante);  
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+  
+    private int generarPosicionX() {
+        return (int) (Math.random() * campo.getAncho());
+    }
+
+  
+    private int generarPosicionY() {
+        return (int) (Math.random() * campo.getAlto());
     }
 }
 

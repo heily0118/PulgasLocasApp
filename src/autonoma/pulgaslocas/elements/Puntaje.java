@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,141 +19,58 @@ import java.io.IOException;
  * @version 1.0.0
  */
 public class Puntaje {
-    // Atributos
-    
-    /**
-     * Es el puntaje actual.
-     */
-    private int puntajeActual = 0;
-    
-    /**
-     * Es el puntaje máximo.
-     */
-    private int puntajeMaximo = 0;
+    private int puntajeActual;
+    private int puntajeMaximo;
+    private LectorArchivoTextoPlano lector;
+    private EscritorArchivoTextoPlano escritor;
+    private String archivoPuntajeMaximo;
 
-    /**
-     * Constructor de la clase Puntaje.
-     * @param puntajeActual Es el puntaje actual.
-     * @param puntajeMaximo Es el puntaje maximo.
-     */
-    public Puntaje(int puntajeActual, int puntajeMaximo) {    
-        this.puntajeActual = puntajeActual;
-        this.puntajeMaximo = puntajeMaximo;
+    public Puntaje(String archivoPuntajeMaximo) {
+        this.archivoPuntajeMaximo = archivoPuntajeMaximo;
+        lector = new LectorArchivoTextoPlano();
+        escritor = new EscritorArchivoTextoPlano("PuntajeMaximo.txt");
+        cargarPuntajeMaximo();
     }
 
-    /**
-     * Retorna el puntaje actual del jugador.
-     *
-     * @return Retorna el puntaje actual.
-     */
-    public int getPuntajeActual() {
-        return puntajeActual;
-    }
-
-    /**
-     * Establece el puntaje actual del jugador.
-     *
-     * @param puntajeActual Es el nuevo puntaje actual.
-     */
-    public void setPuntajeActual(int puntajeActual) {
-        this.puntajeActual = puntajeActual;
-    }
-
-    /**
-     * Retorna el puntaje máximo alcanzado por el jugador.
-     *
-     * @return Retorna el puntaje máximo.
-     */
-    public int getPuntajeMaximo() {
-        return puntajeMaximo;
-    }
-
-    /**
-     * Establece el puntaje máximo alcanzado por el jugador.
-     *
-     * @param puntajeMaximo Es el nuevo puntaje máximo.
-     */
-    public void setPuntajeMaximo(int puntajeMaximo) {
-        this.puntajeMaximo = puntajeMaximo;
-    } 
-
-    // Métodos
-
-    /**
-     * Es un método para ncrementa el puntaje actual en 1.
-     * Si el nuevo puntaje actual es mayor que el máximo, se actualiza también el máximo.
-     */
     public void incrementarPuntaje() {
         puntajeActual++;
+    }
+
+    public void guardarPuntajeMaximo() throws IOException {
         if (puntajeActual > puntajeMaximo) {
             puntajeMaximo = puntajeActual;
+            ArrayList<String> datos = new ArrayList<>();
+           datos.add("PUNTAJE_MAXIMO," + puntajeMaximo);
+            escritor.escribir(datos);
         }
     }
 
-    /**
-     * Es un método para reiniciar el puntaje actual a cero.
-     * El puntaje máximo no se modifica.
-     */
-    public void reiniciarPuntaje() {
-        puntajeActual = 0;
-    }
-
-    /**
-     * Obtiene el puntaje actual del jugador.
-     *
-     * @return Retotna el puntaje actual.
-     */
-    public int obtenerPuntajeActual() {
-        return puntajeActual;
-    }
-
-    /**
-     * Obtiene el puntaje máximo alcanzado por el jugador.
-     *
-     * @return Retorna el puntaje máximo.
-     */
-    public int obtenerPuntajeMaximo() {
-        return puntajeMaximo;
-    }
-
-    /**
-     * Es un método que muestra el puntaje actual y el máximo en consola.
-     */
-    public void mostrarPuntaje() {
-        System.out.println("Puntaje Actual: " + puntajeActual);
-        System.out.println("Puntaje Máximo: " + puntajeMaximo);
-    }
-    
-    /**
-     * Es un método para cargar el puntaje máximo desde un archivo de texto.
-     * Si el archivo no existe o contiene datos inválidos,
-     * se establece el puntaje máximo en 0.
-     *
-     * @param rutaArchivo Es la ruta del archivo donde se guarda el puntaje máximo.
-     */
-    public void cargarPuntajeMaximo(String rutaArchivo) throws IOException {
-        FileReader fileReader = new FileReader(rutaArchivo);
-        BufferedReader br = new BufferedReader(fileReader);
-        String linea = br.readLine();
-        
-        if (linea != null && !linea.isEmpty()) {
-            puntajeMaximo = Integer.parseInt(linea.trim());
-        } else {
-            puntajeMaximo = 0;
+    public void cargarPuntajeMaximo() {
+            try {
+            ArrayList<String> lineas = lector.leer(archivoPuntajeMaximo);
+            if (!lineas.isEmpty()) {
+                String[] partes = lineas.get(0).split(",");
+                if (partes.length == 2) {
+                    puntajeMaximo = Integer.parseInt(partes[1].trim());
+                }
+            }
+        } catch (Exception e) {
+            puntajeMaximo = 0; 
         }
-        
-        br.close();
     }
+    public String mostrarPuntaje() {
+            return "Puntaje actual: " + puntajeActual + ", Puntaje máximo: " + puntajeMaximo;
+        }
 
-    /**
-     * Es un método para guardar el puntaje máximo actual en un archivo de texto.
-     *
-     * @param rutaArchivo Es la ruta del archivo donde se guardará el puntaje máximo.
-     */
-    public void guardarPuntajeMaximo(String rutaArchivo) throws IOException {
-        FileWriter fileWriter = new FileWriter(rutaArchivo);
-        BufferedWriter bw = new BufferedWriter(fileWriter);
-        bw.write(String.valueOf(puntajeMaximo));
-        bw.close();  
-    }
+        public int getPuntajeActual() {
+            return puntajeActual;
+        }
+
+        public int getPuntajeMaximo() {
+            return puntajeMaximo;
+        }
+
+        public void reiniciarPuntaje() {
+            puntajeActual = 0;
+        }
 }

@@ -34,11 +34,7 @@ public class Pistola {
      */
     private ArrayList<Pulga> pulgas; 
     
-    /**
-     * Objeto de puntaje.
-     */
-    private Puntaje puntaje;
-
+  
     /**
      * Constructor para crear una pistola con un daño y posición específica.
      *
@@ -46,12 +42,12 @@ public class Pistola {
      * @param x     Coordenada X de la pistola.
      * @param y     Coordenada Y de la pistola.
      */
-    public Pistola(int danio, int x, int y,ArrayList<Pulga> pulgas, Puntaje puntaje) {
+    public Pistola(int danio, int x, int y,ArrayList<Pulga> pulgas) {
         this.danio = danio;
         this.x = x;
         this.y = y;
         this.pulgas = pulgas;
-        this.puntaje = puntaje;
+        
     }
 
     /**
@@ -116,13 +112,7 @@ public class Pistola {
         this.pulgas = pulgas;
     }
 
-    public Puntaje getPuntaje() {
-        return puntaje;
-    }
-
-    public void setPuntaje(Puntaje puntaje) {
-        this.puntaje = puntaje;
-    }
+ 
     
 
     /**
@@ -145,7 +135,6 @@ public class Pistola {
 
                     if (!pulga.estaViva()) {
                         pulgas.remove(i);
-                        puntaje.incrementarPuntaje();
                         System.out.println("¡Pulga destruida!");
                     }
 

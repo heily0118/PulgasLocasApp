@@ -15,14 +15,18 @@ import java.util.ArrayList;
 
 public class Jugador {
     private Pistola pistola;
+    private Misil misil;
+    private GestorJuego gestor; 
 
     /**
      * @param campo Campo de batalla desde donde se obtiene la lista de pulgas.
      * @param puntaje Objeto que lleva el conteo del puntaje del jugador.
+     * @param gestor El GestorJuego que controla la lógica del juego.
      */
-    public Jugador(CampoDeBatalla campo, Puntaje puntaje) {
-        
-        this.pistola = new Pistola(1, 0, 0, campo.getPulgas(), puntaje);
+    public Jugador(CampoDeBatalla campo, GestorJuego gestor) {
+        this.gestor = gestor; 
+        this.pistola = new Pistola(1, 0, 0, campo.getPulgas());
+        this.misil = new Misil(1, 0);
     }
 
     public Pistola getPistola() {
@@ -40,4 +44,6 @@ public class Jugador {
     public void disparar(int x, int y) {
         pistola.dispararPistola(x, y);
     }
+
+    
 }

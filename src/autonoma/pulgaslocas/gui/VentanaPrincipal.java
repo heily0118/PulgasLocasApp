@@ -4,7 +4,7 @@
  */
 package autonoma.pulgaslocas.gui;
 
-import autonoma.pulgaslocas.elements.GestorJuegos;
+import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.GraphicContainer;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -20,11 +20,11 @@ import java.awt.event.KeyEvent;
 public class VentanaPrincipal extends javax.swing.JFrame implements GraphicContainer{
     
     
-    private GestorJuegos gestor;
+    private GestorJuego gestor;
     /**
      * Creates new form VentanaPrincipal
      */
-    public VentanaPrincipal(GestorJuegos gestor) {
+    public VentanaPrincipal(GestorJuego gestor) {
         initComponents();
         this.setSize(900,700);
         this.setLocationRelativeTo(null);

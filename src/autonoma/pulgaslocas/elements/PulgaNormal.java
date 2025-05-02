@@ -60,4 +60,26 @@ public class PulgaNormal extends Pulga {
              g.fillOval(x, y, width, height);  
         }
     }
+
+    @Override
+    public void mover() {
+       if (estaviva) {
+        
+            double direction = Math.random();  
+
+            if (direction < 0.5) {
+                x += 5;  
+            } else {
+                x -= 5;  
+            }
+
+            
+            if (x < 0) {
+                x = 0;  
+            } else if (x > 600) {  
+                x = 600;  
+            }
+        }
+    
+    }
 }

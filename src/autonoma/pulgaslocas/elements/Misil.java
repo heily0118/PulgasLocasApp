@@ -30,10 +30,7 @@ public class Misil {
      */
     private ArrayList<Pulga> pulgas;
 
-    /**
-     * Objeto encargado de gestionar el puntaje.
-     */
-    private Puntaje puntaje;
+  
 
     /**
      * Constructor de la clase Misil.
@@ -91,14 +88,7 @@ public class Misil {
         this.pulgas = pulgas;
     }
 
-    /**
-     * Establece el objeto de puntaje asociado al misil.
-     *
-     * @param puntaje Es la instancia de Puntaje.
-     */
-    public void setPuntaje(Puntaje puntaje) {
-        this.puntaje = puntaje;
-    }
+   
 
     /**
      * Lanza el misil Pulgosón.
@@ -110,7 +100,7 @@ public class Misil {
             return;
         }
 
-        // Mezclar aleatoriamente la lista de pulgas
+       
         Collections.shuffle(pulgas);
 
         int cantidadAEliminar = pulgas.size() / 2;
@@ -120,13 +110,12 @@ public class Misil {
             Pulga p = pulgas.get(i);
 
             if (p instanceof PulgaMutante) {
-                // Convertir pulga mutante en normal
+               
                 PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
                 nuevasPulgas.add(nueva);
                 System.out.println("Pulga mutante convertida en normal en (" + p.getX() + ", " + p.getY() + ")");
             } else if (p instanceof PulgaNormal) {
-                // Eliminar y aumentar puntaje
-                puntaje.incrementarPuntaje();
+               
                 System.out.println("Pulga normal destruida en (" + p.getX() + ", " + p.getY() + ")");
             }
 
