@@ -5,6 +5,7 @@
 package autonoma.pulgaslocas.gui;
 
 import autonoma.pulgaslocas.elements.GraphicContainer;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
@@ -72,8 +73,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements GraphicConta
     }//GEN-LAST:event_formKeyPressed
 
     @Override
-    public void refresh() {
-       this.repaint();
+    public void refresh(Graphics g) {
+     this.repaint();
     }
 
     @Override

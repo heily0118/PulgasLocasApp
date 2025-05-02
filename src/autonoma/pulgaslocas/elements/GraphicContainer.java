@@ -1,5 +1,6 @@
 package autonoma.pulgaslocas.elements;
 
+import java.awt.Graphics;
 import java.awt.Rectangle;
 
 /**
@@ -13,7 +14,7 @@ public interface GraphicContainer {
     /**
      * Refresca/redibuja el contenedor gráfico.
      */
-    public void refresh();
+    public void refresh(Graphics g);
     
     /**
      * Devuelve los límites (dimensiones) del contenedor gráfico.
