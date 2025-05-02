@@ -8,7 +8,7 @@ package autonoma.pulgaslocas.elements;
  *
  * @author mateo
  */
-public class GeneradorPulgas {
+public class GeneradorPulgas{
     
     
     //Atributos

@@ -4,6 +4,7 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -39,14 +40,24 @@ public class CampoDeBatalla {
     
     public void agrgarPluga(){
         
-        Pulga p = new Pulga(1,2,3,4) {};
+        Pulga p = new Pulga(1, true, null, 0, 0, 10, 10) {
+            @Override
+            public void paint(Graphics g) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        };
         
         pulgas.add(p);
     }
     
     public void removerPluga(){
 
-        Pulga p = new Pulga(1,2,3,4);
+        Pulga p = new Pulga(11, true, null, 0, 0, 10, 10) {
+            @Override
+            public void paint(Graphics g) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        };
         pulgas.remove(p);
 
     }
