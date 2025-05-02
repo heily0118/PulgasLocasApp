@@ -36,6 +36,8 @@ public class GestorJuegos {
     }
     
     public void renicarJuego() {
+       campo.getPulgas().clear(); 
+       iniciarJuegos();
     
     }
     
@@ -65,25 +67,18 @@ public class GestorJuegos {
     }
     
     public void manejarClick(MouseEvent e){
+        int x = e.getX();
+        int y = e.getY();
+
+        campo.getJugador().disparar(x, y);
     
     }
     
     public void actualizarEstado(){
+         campo.actualizarEstado();
     
     }    
     
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-    
+
     
 }
