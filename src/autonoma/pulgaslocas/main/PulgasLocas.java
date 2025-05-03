@@ -23,7 +23,7 @@ public class PulgasLocas {
        
    
 
-      CampoDeBatalla campo = new CampoDeBatalla(900, 700, null);  
+      CampoDeBatalla campo = new CampoDeBatalla(900, 900, null);  
 
         
         

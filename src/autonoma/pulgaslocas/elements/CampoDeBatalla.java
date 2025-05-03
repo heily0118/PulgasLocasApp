@@ -88,21 +88,54 @@ public class CampoDeBatalla {
             p = new PulgaNormal(1, true, null, x, y, 80, 80); 
         }
 
-        
-        boolean colisiona = false;
-        for (Pulga pulga : pulgas) {
-            if (x < pulga.getX() + pulga.getWidth() && x + 10 > pulga.getX() && y < pulga.getY() + pulga.getHeight() && y + 10 > pulga.getY()) {
-                colisiona = true; 
-                break;
-            }
-        }
-
        
-        if (!colisiona) {
+       limiteDeMapa(p);
+        if (!colisionaConOtrasPulgas(p)) {
             pulgas.add(p);
         }
     }
+    
+    /**
+    * Método auxiliar para verificar colisiones con otras pulgas.
+    */
+   private boolean colisionaConOtrasPulgas(Pulga nuevaPulga) {
+       for (Pulga pulga : pulgas) {
+           if (nuevaPulga.getX() < pulga.getX() + pulga.getWidth() &&
+               nuevaPulga.getX() + 80 > pulga.getX() &&
+               nuevaPulga.getY() < pulga.getY() + pulga.getHeight() &&
+               nuevaPulga.getY() + 80 > pulga.getY()) {
+               return true; // Colisión detectada
+           }
+       }
+       return false; // No hay colisión
+   }
+   
+    /**
+     * Método para limitar la posición de una pulga dentro de los límites del mapa.
+     */
+    public void limiteDeMapa(Sprite pulga) {
+        // Obtener la posición actual de la pulga
+        int posicionX = pulga.getX();
+        int posicionY = pulga.getY();
 
+        // Limitar la posición en el eje X
+        if (posicionX < 0) {
+            pulga.setX(0); // Ajustar a la posición mínima
+        } else if (posicionX > 900 - pulga.getWidth()) {
+            pulga.setX(900 - pulga.getWidth()); // Ajustar a la posición máxima
+        }
+
+        // Limitar la posición en el eje Y
+        if (posicionY < 0) {
+            pulga.setY(0); // Ajustar a la posición mínima
+        } else if (posicionY > 900 - pulga.getHeight()) {
+            pulga.setY(900 - pulga.getHeight()); // Ajustar a la posición máxima
+        }
+    }
+
+    
+   
+   
     /**
      * Método para eliminar una pulga del campo de batalla.
      */
