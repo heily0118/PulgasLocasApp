@@ -80,6 +80,7 @@ public class CampoDeBatalla {
      */
     public void agregarPulga(boolean esMutante, int x, int y) {
         Pulga p;
+        
         if (esMutante) {
                                 ///se pone el atlo y el largo de las pulgas para que se puedan eleminar mas facil
             p = new PulgaMutante(2, true, null, x, y, 80, 80); 
