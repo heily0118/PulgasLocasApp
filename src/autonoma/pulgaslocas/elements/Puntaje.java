@@ -21,47 +21,51 @@ import java.util.ArrayList;
 public class Puntaje {
     
     /**
-     * Puntaje actual que tiene el jugador.
+     * Puntaje actual que tiene el jugador en la sesión actual del juego.
      */
     private int puntajeActual;
-    
+
     /**
-     * Puntaje máximo que tiene el jugador.
+     * Puntaje máximo alcanzado históricamente por el jugador, guardado en archivo.
      */
     private int puntajeMaximo;
 
     /**
-     * Objeto de la clase LectorArchivoTextoPlano.
+     * Ruta del archivo donde se guarda el puntaje máximo.
+     */
+    private String archivoPuntajeMaximo;
+
+    /**
+     * Nombre del jugador.
+     */
+    private String nombreJugador;
+
+    /**
+     * Objeto encargado de leer archivos de texto plano.
      */
     private LectorArchivoTextoPlano lector;
-    
+
     /**
-     * Objeto de la clase EscritorArchivoTextoPlano.
+     * Objeto encargado de escribir archivos de texto plano.
      */
     private EscritorArchivoTextoPlano escritor;
 
     /**
-     * Nombre del archivo donde se guarda el puntaje máximo.
-     */
-    private String archivoPuntajeMaximo;
-    private String nombreJugador;
-
-    /**
-     * Constructor que recibe el nombre del archivo donde se encuentra
-     * el puntaje máximo y carga su valor al iniciar.
+     * Constructor de la clase Puntaje.
      * 
-     * @param archivoPuntajeMaximo nombre del archivo que contiene el puntaje máximo
+     * @param archivoPuntajeMaximo Ruta del archivo de texto que contiene el puntaje máximo.
+     * @param nombreJugador Nombre del jugador actual.
      */
-    public Puntaje(String archivoPuntajeMaximo, String nombre) {
+    public Puntaje(String archivoPuntajeMaximo, String nombreJugador) {
         this.archivoPuntajeMaximo = archivoPuntajeMaximo;
+        this.nombreJugador = nombreJugador;
         lector = new LectorArchivoTextoPlano();
-        escritor = new EscritorArchivoTextoPlano("PuntajeMaximo.txt");
-        this.nombreJugador = nombre;
-        cargarPuntajeMaximo(); // Carga el puntaje máximo desde el archivo
+        escritor = new EscritorArchivoTextoPlano(archivoPuntajeMaximo);
+        cargarPuntajeMaximo(); // Carga el puntaje máximo guardado
     }
 
     /**
-     * Incrementa el puntaje actual en uno.
+     * Incrementa en uno el puntaje actual del jugador.
      */
     public void incrementarPuntaje() {
         puntajeActual++;
@@ -69,62 +73,67 @@ public class Puntaje {
 
     /**
      * Guarda el puntaje máximo en el archivo si el puntaje actual lo supera.
+     * El formato en el archivo es: nombreJugador,puntajeMaximo
      * 
-     * @throws IOException si ocurre un error al escribir en el archivo
+     * @throws IOException si ocurre un error al escribir en el archivo.
      */
     public void guardarPuntajeMaximo() throws IOException {
         if (puntajeActual > puntajeMaximo) {
             puntajeMaximo = puntajeActual;
             ArrayList<String> datos = new ArrayList<>();
-            datos.add("PUNTAJE_MAXIMO," + puntajeMaximo); // Formato: clave,valor
-            escritor.escribir(datos); // Escribe en el archivo
+            datos.add(nombreJugador + "," + puntajeMaximo);
+            escritor.escribir(datos); // Guarda en archivo
         }
     }
 
     /**
-     * Carga el puntaje máximo desde el archivo especificado.
-     * Si ocurre algún error, el puntaje máximo se establece en cero.
+     * Carga el puntaje máximo desde el archivo. Si no existe o hay un error, 
+     * se inicializa el puntaje máximo en 0.
      */
     public void cargarPuntajeMaximo() {
         try {
             ArrayList<String> lineas = lector.leer(archivoPuntajeMaximo);
             if (!lineas.isEmpty()) {
-                String[] partes = lineas.get(0).split(","); // Espera: nombre, puntaje
+                String[] partes = lineas.get(0).split(",");
                 if (partes.length == 2) {
                     nombreJugador = partes[0].trim();
                     puntajeMaximo = Integer.parseInt(partes[1].trim());
+                } else {
+                    puntajeMaximo = 0;
                 }
+            } else {
+                puntajeMaximo = 0;
             }
         } catch (Exception e) {
             puntajeMaximo = 0;
-            nombreJugador = "Jugador";
         }
     }
 
     /**
-     * Devuelve una cadena con el puntaje actual y el puntaje máximo.
+     * Devuelve una cadena con el nombre del jugador, su puntaje actual 
+     * y su puntaje máximo.
      * 
-     * @return Retorna la representación en texto del puntaje actual y el máximo
+     * @return Cadena con la información del puntaje.
      */
     public String mostrarPuntaje() {
-    return "Jugador: " + nombreJugador + 
-           "\nPuntaje actual: " + puntajeActual + 
-           "\nPuntaje máximo: " + puntajeMaximo;
-}
+        return "Jugador: " + nombreJugador +
+               "\nPuntaje actual: " + puntajeActual +
+               "\nPuntaje máximo: " + puntajeMaximo;
+    }
 
     /**
-     * Retorna el puntaje actual.
+     * Obtiene el puntaje actual del jugador.
      * 
-     * @return Retorna el puntaje actual
+     * @return Puntaje actual.
      */
     public int getPuntajeActual() {
         return puntajeActual;
     }
 
     /**
-     * Retorna el puntaje máximo.
+     * Obtiene el puntaje máximo del jugador.
      * 
-     * @return Retorna el puntaje máximo
+     * @return Puntaje máximo.
      */
     public int getPuntajeMaximo() {
         return puntajeMaximo;

@@ -36,8 +36,7 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             System.out.println("Imagen no encontrada");
 
         }
-        
-        gestor = new GestorJuego(false, campo, "PuntajeMaximo.txt", " "); 
+       
     }
 
     /**
@@ -52,7 +51,6 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnJugar = new javax.swing.JToggleButton();
         campoNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnReiniciar1 = new javax.swing.JToggleButton();
@@ -72,7 +70,7 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Instrucciones ");
+        jLabel1.setText("Información");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,16 +88,6 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(68, Short.MAX_VALUE))
         );
-
-        btnJugar.setBackground(new java.awt.Color(0, 153, 51));
-        btnJugar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnJugar.setForeground(new java.awt.Color(255, 255, 255));
-        btnJugar.setText("Jugar");
-        btnJugar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnJugarMouseClicked(evt);
-            }
-        });
 
         campoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,9 +133,6 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1119, 1119, 1119)
-                        .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -161,7 +146,7 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
                         .addComponent(btnReiniciar1)
                         .addGap(191, 191, 191)
                         .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(433, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +164,7 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReiniciar1)
                     .addComponent(btnJugar1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addComponent(btnJugar)
-                .addGap(111, 111, 111))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,24 +185,21 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNombreActionPerformed
 
-    private void btnJugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugarMouseClicked
-        VentanaJuego ventana = new VentanaJuego(this,true,gestor);
-        ventana.setVisible(true);
-    }//GEN-LAST:event_btnJugarMouseClicked
-
     private void btnJugar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugar1MouseClicked
-        String nombre = campoNombre.getText(); // ← AHORA sí tiene texto el campo
-        puntaje = new Puntaje("PuntajeMaximo.txt", nombre);
-
-        VentanaJuego ventana = new VentanaJuego(this, true, gestor);
-        ventana.setVisible(true);
-
-        try {
-            puntaje.guardarPuntajeMaximo();
-        } catch (IOException e) {
-            System.out.println("Error guardando puntaje máximo: " + e.getMessage());
+        String nombre = campoNombre.getText().trim();
+        if (nombre.isEmpty()) {
+            txtPuntaje.setText("Por favor ingresa un nombre.");
+            return;
         }
 
+        // Abre el juego
+        VentanaJuego ventana = new VentanaJuego(this, true, gestor);
+        ventana.setVisible(true); // Espera a que se cierre
+
+        // Crear una nueva instancia de Puntaje para leer el archivo actualizado
+        puntaje = new Puntaje("PuntajeMaximo.txt", nombre);
+
+        // Mostrar el puntaje actualizado
         txtPuntaje.setText(puntaje.mostrarPuntaje());
     }//GEN-LAST:event_btnJugar1MouseClicked
 
@@ -230,7 +210,6 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnJugar;
     private javax.swing.JToggleButton btnJugar1;
     private javax.swing.JToggleButton btnReiniciar1;
     private javax.swing.JTextField campoNombre;

@@ -74,6 +74,7 @@ public class CampoDeBatalla {
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
     }
+    
 
     /**
      * Método para agregar una pulga (normal o mutante) en el campo en una posición específica.
