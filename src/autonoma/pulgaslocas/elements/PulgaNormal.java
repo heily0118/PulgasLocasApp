@@ -56,7 +56,7 @@ public class PulgaNormal extends Pulga {
             g.drawImage(pulgaImage, x, y, width, height, null);
         } else {
           
-             g.setColor(Color.GRAY);
+             g.setColor(Color.YELLOW);
              g.fillOval(x, y, width, height);  
         }
     }
