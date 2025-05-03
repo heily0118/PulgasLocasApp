@@ -121,15 +121,15 @@ public class CampoDeBatalla {
         // Limitar la posición en el eje X
         if (posicionX < 0) {
             pulga.setX(0); // Ajustar a la posición mínima
-        } else if (posicionX > 900 - pulga.getWidth()) {
-            pulga.setX(900 - pulga.getWidth()); // Ajustar a la posición máxima
+        } else if (posicionX > 800 - pulga.getWidth()) {
+            pulga.setX(800 - pulga.getWidth()); // Ajustar a la posición máxima
         }
 
         // Limitar la posición en el eje Y
         if (posicionY < 0) {
             pulga.setY(0); // Ajustar a la posición mínima
-        } else if (posicionY > 900 - pulga.getHeight()) {
-            pulga.setY(900 - pulga.getHeight()); // Ajustar a la posición máxima
+        } else if (posicionY > 800 - pulga.getHeight()) {
+            pulga.setY(800 - pulga.getHeight()); // Ajustar a la posición máxima
         }
     }
 

@@ -102,6 +102,8 @@ public class Misil {
     * Destruye el 50% de las pulgas aleatoriamente seleccionadas.
     */
    public void lanzarMisil() {
+       
+       
        // Verificar si hay pulgas en el campo de batalla
        if (pulgas == null || pulgas.isEmpty()) {
            System.out.println("No hay pulgas para destruir.");
@@ -121,8 +123,10 @@ public class Misil {
 
            if (p instanceof PulgaMutante) {
                // Convertir la pulga mutante en normal
+               
                PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
                pulgas.add(nueva);
+               pulgas.remove(i);
                System.out.println("Pulga mutante convertida en normal en (" + p.getX() + ", " + p.getY() + ")");
            } else if (p instanceof PulgaNormal) {
                // Eliminar la pulga normal
