@@ -125,21 +125,42 @@ public class Pistola {
      * @param x Es la coordenada X donde se realiza el disparo.
      * @param y Es la coordenada Y donde se realiza el disparo. 
      */
-    public void dispararPistola(int x, int y) {
-            for (int i = 0; i < pulgas.size(); i++) {
-                Pulga pulga = pulgas.get(i);
-                if (x >= pulga.getX() && x <= pulga.getX() + pulga.getWidth() &&
-                    y >= pulga.getY() && y <= pulga.getY() + pulga.getHeight()) {
+        public void dispararPistola(int x, int y) {
+          System.out.println("metodo de disparar Pistola");
+          
+          for (int i = pulgas.size() - 1; i >= 0; i--) { // Iterar de atrás hacia adelante
+              
+              System.out.println("---------------------------------------------------");
+              System.out.println("Mouse ");
+              System.out.println("x" + x + "y" +  y);
 
-                    pulga.recibirImpacto();
+              
+              Pulga pulga = pulgas.get(i);
+             
+              System.out.println("posiciones de la pulga # "+ i);
+              System.out.println("inicio x " + pulga.getX() + "  inicio y  " + pulga.getY());
+              
+              System.out.println("Ancho  " + (pulga.getX() + pulga.getWidth()) + " Alto  " + (pulga.getY() + pulga.getHeight()));
+              
+              // Comprobación de si el mouse está encima de la pulga
+              if (x < pulga.getX() + pulga.getWidth() && x > pulga.getX() &&
+                  y < pulga.getY() + pulga.getHeight() && y > pulga.getY()) {
 
-                    if (!pulga.estaViva()) {
-                        pulgas.remove(i);
-                        System.out.println("¡Pulga destruida!");
-                    }
+                  System.out.println("El mouse esta encima de la pulga");
+                  System.out.println("Vida: " + pulga.getVida());
 
-                    break;
-                }
-            }
-    }
+//                  // Si el mouse está encima, se avisa que fue herida
+//                  pulga.recibirImpacto();
+                  System.out.println("Vida despues del impacto: " + pulga.getVida());
+
+                  if (!pulga.estaViva()) {
+                      pulgas.remove(i); // Eliminar la pulga
+                      System.out.println("¡Pulga destruida!");
+                  }
+
+                  break; // Salir del bucle después de procesar la pulga
+              }
+          }
+}
+
 }
