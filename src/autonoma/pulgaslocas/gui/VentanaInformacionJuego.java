@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Maria Paz Puerta
  */
 public class VentanaInformacionJuego extends javax.swing.JFrame {
-    private Puntaje puntaje;
+    
     private GestorJuego gestor;
     private CampoDeBatalla campo;
      private String nomJugador;
@@ -170,10 +170,9 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
          ventana.setVisible(true); 
 
          
-         puntaje = new Puntaje("PuntajeMaximo.txt", nomJugador);
-         System.out.println("puntaje en ventana");
-         System.out.println(puntaje.getPuntajeMaximo());
-         PuntajeJugador.setText(puntaje.getPuntajeMaximo()+ " ");
+         
+         System.out.println(gestor.getPuntaje().getPuntajeMaximo());
+         PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ " ");
     }//GEN-LAST:event_btnJugar1MouseClicked
 
     private void btnReiniciar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReiniciar1MouseClicked

@@ -22,19 +22,20 @@ public class PulgasLocas {
     public static void main(String[] args) {
        
    
-
-        CampoDeBatalla campo = new CampoDeBatalla(900, 900, null);  
-
-        
+        ////primero se crea el objeto de sistema de puntos 
         
         Puntaje puntaje = new Puntaje("puntajes.txt", "");
-
         
+        /// segundo un campo de battalla
+        CampoDeBatalla campo = new CampoDeBatalla(900, 900, null);  
+        
+        // todo eso se almacena en gestor de juego
         GestorJuego gestor = new GestorJuego(true, campo, puntaje);
        
+        //// se cre el jugador que interectua con jugador
         Jugador jugador = new Jugador(campo,gestor);
        
-        campo.setJugador(jugador);  
+        gestor.getCampo().setJugador(jugador);  
 
       
         
