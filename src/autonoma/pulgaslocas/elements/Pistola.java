@@ -149,13 +149,13 @@ public class Pistola {
                   System.out.println("El mouse esta encima de la pulga");
                   System.out.println("Vida: " + pulga.getVida());
 
-//                  // Si el mouse está encima, se avisa que fue herida
-//                  pulga.recibirImpacto();
+                  // Si el mouse está encima, se avisa que fue herida
+                  pulga.recibirImpacto();
                   System.out.println("Vida despues del impacto: " + pulga.getVida());
 
                   if (!pulga.estaViva()) {
                       pulgas.remove(i); // Eliminar la pulga
-                      System.out.println("¡Pulga destruida!");
+                      System.out.println("Pulga destruida!");
                   }
 
                   break; // Salir del bucle después de procesar la pulga

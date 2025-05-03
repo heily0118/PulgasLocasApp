@@ -82,7 +82,7 @@ public class CampoDeBatalla {
         Pulga p;
         
         if (esMutante) {
-                                ///se pone el atlo y el largo de las pulgas para que se puedan eleminar mas facil
+        ///se pone 80 el atlo y el largo de las pulgas para que se puedan eleminar mas facil
             p = new PulgaMutante(2, true, null, x, y, 80, 80); 
         } else {
             p = new PulgaNormal(1, true, null, x, y, 80, 80); 
