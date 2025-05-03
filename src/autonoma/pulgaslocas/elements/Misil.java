@@ -98,50 +98,40 @@ public class Misil {
    
 
     /**
-     * Lanza el misil Pulgosón.
-     * Destruye el 50% de las pulgas aleatoriamente seleccionadas.
-     */
-    public void lanzarMisil() {
-        
-        ///se ve si hay pulgas en el compo de battalla
-        if (pulgas == null || pulgas.isEmpty()) {
-            System.out.println("No hay pulgas para destruir.");
-            return;
-        }
-
+    * Lanza el misil Pulgosón.
+    * Destruye el 50% de las pulgas aleatoriamente seleccionadas.
+    */
+   public void lanzarMisil() {
+       // Verificar si hay pulgas en el campo de batalla
+       if (pulgas == null || pulgas.isEmpty()) {
+           System.out.println("No hay pulgas para destruir.");
+           return;
+       }
        
-        Collections.shuffle(pulgas);
-        
-        //se crea una valiabre para saber cuantas pulgas se va eleminar 
-        int cantidadAEliminar = pulgas.size() / 2;
-        
+       sonidoMisil();
+       // Mezclar aleatoriamente la lista de pulgas
+       Collections.shuffle(pulgas);
 
-        // se hace un cilo para recorrer lista de pulgas
-        for (int i = 0; i < cantidadAEliminar; i++) {
-            
-            /// la puga que se va anlizar va ser p 
-            Pulga p = pulgas.get(i);
-            
-            //se anliza si p es una mntante
-            if (p instanceof PulgaMutante) {
-               
-                //cuando es muntanse se va eleminar la munate y se va crear una normal
-                // para remplesentar que se la muntanse se convirtio en normal 
-                PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
-                
-                pulgas.add(p);
-                
-                System.out.println("Pulga mutante convertida en normal en (" + p.getX() + ", " + p.getY() + ")");
-            } else if (p instanceof PulgaNormal) {
-               
-                /// si nlo lo es solo se elimina
-                System.out.println("Pulga normal destruida en (" + p.getX() + ", " + p.getY() + ")");
-                pulgas.remove(i);
-            }
+       // Calcular la cantidad de pulgas a eliminar
+       int cantidadAEliminar = pulgas.size() / 2;
 
-        }
+       // Iterar sobre la lista de pulgas y eliminar/convertir
+       for (int i = 0; i < cantidadAEliminar; i++) {
+           Pulga p = pulgas.get(i);
 
-    }
+           if (p instanceof PulgaMutante) {
+               // Convertir la pulga mutante en normal
+               PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
+               pulgas.add(nueva);
+               System.out.println("Pulga mutante convertida en normal en (" + p.getX() + ", " + p.getY() + ")");
+           } else if (p instanceof PulgaNormal) {
+               // Eliminar la pulga normal
+               System.out.println("Pulga normal destruida en (" + p.getX() + ", " + p.getY() + ")");
+               pulgas.remove(i);
+               i--; // Decrementar el índice para compensar la eliminación
+           }
+       }
+   }
 
     public void sonidoMisil() {
         try {
