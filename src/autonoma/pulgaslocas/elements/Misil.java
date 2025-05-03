@@ -146,7 +146,7 @@ public class Misil {
     public void sonidoMisil() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
-                    getClass().getResource("/autonoma/PulgasLocas/sounds/misil.mp3"));
+                    getClass().getResource("/autonoma/PulgasLocas/sounds/misil.wav"));
             
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);

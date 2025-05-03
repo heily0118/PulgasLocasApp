@@ -162,8 +162,10 @@ public class Pistola {
                   System.out.println("Vida despues del impacto: " + pulga.getVida());
 
                   if (!pulga.estaViva()) {
+                      
                       pulgas.remove(i); // Eliminar la pulga
                       System.out.println("Pulga destruida!");
+                      pulga.sonidoPulga();
                   }
 
                   break; // Salir del bucle después de procesar la pulga
@@ -176,7 +178,7 @@ public class Pistola {
     public void sonidoPistola() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
-                    getClass().getResource("/autonoma/PulgasLocas/sounds/pistola.mp3"));
+                    getClass().getResource("/autonoma/pulgaslocas/sounds/pistola.wav"));
             
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);

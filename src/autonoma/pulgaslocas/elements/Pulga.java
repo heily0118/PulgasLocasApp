@@ -117,9 +117,11 @@ import javax.sound.sampled.UnsupportedAudioFileException;
     
     //metodo de sonido
     public void sonidoPulga() {
+        
+        
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
-                    getClass().getResource("/autonoma/PulgasLocas/sounds/dar a una pulga.mp3"));
+                    getClass().getResource("/autonoma/PulgasLocas/sounds/dar-a-una-pulga.wav"));
             
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
