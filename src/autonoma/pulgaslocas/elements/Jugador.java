@@ -26,17 +26,23 @@ public class Jugador {
     public Jugador(CampoDeBatalla campo, GestorJuego gestor) {
         this.gestor = gestor; 
         this.pistola = new Pistola(1, 0, 0, campo.getPulgas());
-        this.misil = new Misil(1, 0);
+        this.misil = new Misil(1, 0, campo.getPulgas());
     }
 
     public Pistola getPistola() {
         return pistola;
     }
 
+    public Misil getMisil() {
+        return misil;
+    }
+    
     public void setPistola(Pistola pistola) {
         this.pistola = pistola;
     }
 
+    
+    
     /**
      * @param x Coordenada X del disparo
      * @param y Coordenada Y del disparo
@@ -45,5 +51,9 @@ public class Jugador {
         pistola.dispararPistola(x, y);
     }
 
-    
+    public void LanzarMisil() {
+        
+        misil.lanzarMisil();
+        
+    }
 }

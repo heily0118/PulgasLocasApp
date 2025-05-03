@@ -54,14 +54,20 @@ public class GestorJuego {
             case KeyEvent.VK_S:
                 campo.getGenerador().start();
 
+            break;
+            
+            // " SPACE " - Para activar el misl 
+            case KeyEvent.VK_SPACE:
+                campo.getJugador().LanzarMisil();
+
                 break;
         }
     }
 
     public void manejarClick(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        campo.getJugador().disparar(x, y);
+ 
+        /// se lleva las posiciones del mouse metodo disparar
+        campo.getJugador().disparar(  e.getX(), e.getY());
     }
 
     public void actualizarEstado() {

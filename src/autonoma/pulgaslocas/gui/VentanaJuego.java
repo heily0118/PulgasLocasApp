@@ -80,11 +80,11 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-         int x = evt.getX();
-        int y = evt.getY();
-
-      
+        
+        System.out.println("x" + evt.getX() + "y" + evt.getY());
         gestor.manejarClick(evt);
+        repaint();
+        
 
     }//GEN-LAST:event_formMouseClicked
  @Override
