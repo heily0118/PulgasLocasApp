@@ -56,7 +56,7 @@ public class Jugador {
     public void LanzarMisil() {
         
         try{
-        misil.lanzarMisil();
+        misil.lanzarMisil(gestor);
         }catch(IndexOutOfBoundsException e){
         
             System.out.println(" el indice del array esta fuera de rango");

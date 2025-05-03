@@ -101,7 +101,7 @@ public class Misil {
     * Lanza el misil Pulgosón.
     * Destruye el 50% de las pulgas aleatoriamente seleccionadas.
     */
-   public void lanzarMisil() {
+   public void lanzarMisil(GestorJuego gestor) {
        
        
        // Verificar si hay pulgas en el campo de batalla
@@ -123,7 +123,8 @@ public class Misil {
 
            if (p instanceof PulgaMutante) {
                // Convertir la pulga mutante en normal
-               
+               /// se aumenta 100
+               gestor.getPuntaje().incrementarPuntajeMultante();
                PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
                pulgas.add(nueva);
                pulgas.remove(i);
@@ -131,10 +132,18 @@ public class Misil {
            } else if (p instanceof PulgaNormal) {
                // Eliminar la pulga normal
                System.out.println("Pulga normal destruida en (" + p.getX() + ", " + p.getY() + ")");
+               
+               
+               /// se aumenta 50
+               gestor.getPuntaje().incrementarPuntajeNormal();
+               
                pulgas.remove(i);
                i--; // Decrementar el índice para compensar la eliminación
            }
        }
+       
+       System.out.println("puntaje");
+       System.out.println(gestor.getPuntaje().getPuntajeActual());
    }
 
     public void sonidoMisil() {

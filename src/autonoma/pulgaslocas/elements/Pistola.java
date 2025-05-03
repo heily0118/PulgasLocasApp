@@ -165,10 +165,11 @@ public class Pistola {
                     pulgas.remove(i);
                     PulgaNormal nueva = new PulgaNormal(1, true, null, pulga.getX(), pulga.getY(), pulga.getHeight(), pulga.getWidth());
                     pulgas.add(nueva);
+                    /// se aumenta 100
                     gestor.getPuntaje().incrementarPuntajeMultante();
                     }
                   else{
-                  
+                      /// se aumenta 50
                     gestor.getPuntaje().incrementarPuntajeNormal();
                   }
 
@@ -183,7 +184,7 @@ public class Pistola {
                       pulga.sonidoPulga();
                   }
                   
-                  System.out.println("puntaje");
+                  System.out.println("puntaje actual");
                   System.out.println(gestor.getPuntaje().getPuntajeActual());
                   break; // Salir del bucle después de procesar la pulga
               }
