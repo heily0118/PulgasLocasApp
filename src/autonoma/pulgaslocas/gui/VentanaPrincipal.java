@@ -58,7 +58,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         btnJuego = new javax.swing.JToggleButton();
-        btnReiniciar = new javax.swing.JToggleButton();
         Portada = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,12 +72,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnJuegoActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(btnJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, -1, -1));
-
-        btnReiniciar.setBackground(new java.awt.Color(204, 0, 0));
-        btnReiniciar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnReiniciar.setText("Reiniciar Juego");
-        jLayeredPane1.add(btnReiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, -1, -1));
+        jLayeredPane1.add(btnJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, -1, -1));
 
         Portada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Portada.png"))); // NOI18N
         jLayeredPane1.add(Portada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 900));
@@ -103,7 +97,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuegoActionPerformed
-       VentanaJuego  ventana= new VentanaJuego(this,true,gestor);
+       VentanaInformacionJuego  ventana = new VentanaInformacionJuego(this,true,gestor);
        ventana.setVisible(true);
     }//GEN-LAST:event_btnJuegoActionPerformed
 
@@ -111,7 +105,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Portada;
     private javax.swing.JToggleButton btnJuego;
-    private javax.swing.JToggleButton btnReiniciar;
     private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }
