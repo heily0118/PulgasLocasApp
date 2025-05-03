@@ -48,7 +48,9 @@ public class Jugador {
      * @param y Coordenada Y del disparo
      */
     public void disparar(int x, int y) {
-        pistola.dispararPistola(x, y);
+        
+        //se va pedir un gestor para aumentar el puntaje
+        pistola.dispararPistola(x, y,gestor);
     }
 
     public void LanzarMisil() {

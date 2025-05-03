@@ -131,7 +131,7 @@ public class Pistola {
      * @param x Es la coordenada X donde se realiza el disparo.
      * @param y Es la coordenada Y donde se realiza el disparo. 
      */
-        public void dispararPistola(int x, int y) {
+        public void dispararPistola(int x, int y, GestorJuego gestor) {
            
           sonidoPistola();
           System.out.println("metodo de disparar Pistola");

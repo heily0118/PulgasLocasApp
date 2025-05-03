@@ -50,6 +50,7 @@ public class Puntaje {
      */
     private EscritorArchivoTextoPlano escritor;
 
+    
     /**
      * Constructor de la clase Puntaje.
      * 
