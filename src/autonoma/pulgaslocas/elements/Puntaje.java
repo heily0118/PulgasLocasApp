@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * @version 1.0.0
  */
 public class Puntaje {
+    
     /**
      * Puntaje actual que tiene el jugador.
      */
@@ -43,6 +44,7 @@ public class Puntaje {
      * Nombre del archivo donde se guarda el puntaje máximo.
      */
     private String archivoPuntajeMaximo;
+    private String nombreJugador;
 
     /**
      * Constructor que recibe el nombre del archivo donde se encuentra
@@ -50,10 +52,11 @@ public class Puntaje {
      * 
      * @param archivoPuntajeMaximo nombre del archivo que contiene el puntaje máximo
      */
-    public Puntaje(String archivoPuntajeMaximo) {
+    public Puntaje(String archivoPuntajeMaximo, String nombre) {
         this.archivoPuntajeMaximo = archivoPuntajeMaximo;
         lector = new LectorArchivoTextoPlano();
         escritor = new EscritorArchivoTextoPlano("PuntajeMaximo.txt");
+        this.nombreJugador = nombre;
         cargarPuntajeMaximo(); // Carga el puntaje máximo desde el archivo
     }
 
@@ -86,14 +89,15 @@ public class Puntaje {
         try {
             ArrayList<String> lineas = lector.leer(archivoPuntajeMaximo);
             if (!lineas.isEmpty()) {
-                String[] partes = lineas.get(0).split(","); // Espera formato: PUNTAJE_MAXIMO,valor
+                String[] partes = lineas.get(0).split(","); // Espera: nombre, puntaje
                 if (partes.length == 2) {
+                    nombreJugador = partes[0].trim();
                     puntajeMaximo = Integer.parseInt(partes[1].trim());
                 }
             }
         } catch (Exception e) {
-            // Si hay error al leer o parsear, se asume puntaje máximo cero
-            puntajeMaximo = 0; 
+            puntajeMaximo = 0;
+            nombreJugador = "Jugador";
         }
     }
 
@@ -103,8 +107,10 @@ public class Puntaje {
      * @return Retorna la representación en texto del puntaje actual y el máximo
      */
     public String mostrarPuntaje() {
-        return "Puntaje actual: " + puntajeActual + ", Puntaje máximo: " + puntajeMaximo;
-    }
+    return "Jugador: " + nombreJugador + 
+           "\nPuntaje actual: " + puntajeActual + 
+           "\nPuntaje máximo: " + puntajeMaximo;
+}
 
     /**
      * Retorna el puntaje actual.
@@ -130,4 +136,5 @@ public class Puntaje {
     public void reiniciarPuntaje() {
         puntajeActual = 0;
     }
+
 }

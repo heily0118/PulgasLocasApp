@@ -27,7 +27,7 @@ public class PulgasLocas {
 
         
         
-        Puntaje puntaje = new Puntaje("puntajes.txt");
+        Puntaje puntaje = new Puntaje("puntajes.txt", "");
 
        
         Jugador jugador = new Jugador(campo,null);
@@ -36,7 +36,7 @@ public class PulgasLocas {
         campo.setJugador(jugador);  
 
       
-        GestorJuego gestor = new GestorJuego(true, campo, "puntajes.txt");
+        GestorJuego gestor = new GestorJuego(true, campo, "puntajes.txt", "");
        
        
         VentanaPrincipal ventana = new VentanaPrincipal(gestor);

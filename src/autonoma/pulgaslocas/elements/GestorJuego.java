@@ -22,10 +22,10 @@ public class GestorJuego {
     private CampoDeBatalla campo;
     private Puntaje puntaje;
 
-    public GestorJuego(boolean juegoActivo, CampoDeBatalla campo, String archivoPuntajeMaximo) {
+    public GestorJuego(boolean juegoActivo, CampoDeBatalla campo, String archivoPuntajeMaximo, String nombre) {
         this.juegoActivo = false;
         this.campo = campo;
-        this.puntaje = new Puntaje(archivoPuntajeMaximo);
+        this.puntaje = new Puntaje(archivoPuntajeMaximo, nombre);
     }
 
     // Métodos

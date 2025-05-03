@@ -4,7 +4,10 @@
  */
 package autonoma.pulgaslocas.gui;
 
+import autonoma.pulgaslocas.elements.CampoDeBatalla;
 import autonoma.pulgaslocas.elements.GestorJuego;
+import autonoma.pulgaslocas.elements.Puntaje;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,7 +15,9 @@ import javax.swing.ImageIcon;
  * @author Maria Paz Puerta
  */
 public class VentanaInformacionJuego extends javax.swing.JFrame {
+    private Puntaje puntaje;
     private GestorJuego gestor;
+    private CampoDeBatalla campo;
     /**
      * Creates new form VentanaInformacionJuego
      */
@@ -31,6 +36,8 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             System.out.println("Imagen no encontrada");
 
         }
+        
+        gestor = new GestorJuego(false, campo, "PuntajeMaximo.txt", " "); 
     }
 
     /**
@@ -46,9 +53,13 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnJugar = new javax.swing.JToggleButton();
-        jTextField1 = new javax.swing.JTextField();
+        campoNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnReiniciar1 = new javax.swing.JToggleButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtPuntaje = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        btnJugar1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,9 +101,9 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        campoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                campoNombreActionPerformed(evt);
             }
         });
 
@@ -103,6 +114,28 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         btnReiniciar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnReiniciar1.setForeground(new java.awt.Color(255, 255, 255));
         btnReiniciar1.setText("Reiniciar Juego");
+        btnReiniciar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReiniciar1MouseClicked(evt);
+            }
+        });
+
+        txtPuntaje.setColumns(20);
+        txtPuntaje.setRows(5);
+        jScrollPane1.setViewportView(txtPuntaje);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel3.setText("Puntaje");
+
+        btnJugar1.setBackground(new java.awt.Color(0, 153, 51));
+        btnJugar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnJugar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnJugar1.setText("Jugar");
+        btnJugar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnJugar1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,16 +145,23 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1119, 1119, 1119)
+                        .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(btnReiniciar1)
-                        .addGap(233, 233, 233)
-                        .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                        .addGap(191, 191, 191)
+                        .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,11 +170,17 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 469, Short.MAX_VALUE)
+                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReiniciar1)
-                    .addComponent(btnJugar))
+                    .addComponent(btnJugar1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(btnJugar)
                 .addGap(111, 111, 111))
         );
 
@@ -152,24 +198,48 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_campoNombreActionPerformed
 
     private void btnJugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugarMouseClicked
         VentanaJuego ventana = new VentanaJuego(this,true,gestor);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnJugarMouseClicked
 
+    private void btnJugar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugar1MouseClicked
+        String nombre = campoNombre.getText(); // ← AHORA sí tiene texto el campo
+        puntaje = new Puntaje("PuntajeMaximo.txt", nombre);
+
+        VentanaJuego ventana = new VentanaJuego(this, true, gestor);
+        ventana.setVisible(true);
+
+        try {
+            puntaje.guardarPuntajeMaximo();
+        } catch (IOException e) {
+            System.out.println("Error guardando puntaje máximo: " + e.getMessage());
+        }
+
+        txtPuntaje.setText(puntaje.mostrarPuntaje());
+    }//GEN-LAST:event_btnJugar1MouseClicked
+
+    private void btnReiniciar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReiniciar1MouseClicked
+        gestor.reiniciarJuego();
+    }//GEN-LAST:event_btnReiniciar1MouseClicked
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnJugar;
+    private javax.swing.JToggleButton btnJugar1;
     private javax.swing.JToggleButton btnReiniciar1;
+    private javax.swing.JTextField campoNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtPuntaje;
     // End of variables declaration//GEN-END:variables
 }
