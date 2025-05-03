@@ -25,7 +25,8 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     public VentanaJuego(java.awt.Frame parent, boolean modal, GestorJuego gestor) {
         super(parent, modal);
         initComponents();
-        this.setSize(900,700);
+        this.setSize(900,900);
+         setResizable(false);
         this.setLocationRelativeTo(null);
         
         this.gestor = gestor;

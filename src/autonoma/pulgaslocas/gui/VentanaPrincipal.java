@@ -10,6 +10,8 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JLayeredPane;
 
 /**
  * 
@@ -27,11 +29,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal(GestorJuego gestor) {
         initComponents();
-        this.setSize(900,700);
+
+        this.setSize(900, 900);
+         setResizable(false);
         this.setLocationRelativeTo(null);
-        
         this.gestor = gestor;
-        
+
+       
 
     }
 
@@ -44,64 +48,62 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BtnAbrirjuego = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        btnJuego = new javax.swing.JToggleButton();
+        btnReiniciar = new javax.swing.JToggleButton();
+        Portada = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
 
-        BtnAbrirjuego.setText("Abrir juego");
-        BtnAbrirjuego.addActionListener(new java.awt.event.ActionListener() {
+        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnJuego.setBackground(new java.awt.Color(0, 204, 51));
+        btnJuego.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnJuego.setText("Iniciar Juego");
+        btnJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAbrirjuegoActionPerformed(evt);
+                btnJuegoActionPerformed(evt);
             }
         });
+        jLayeredPane1.add(btnJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, -1, -1));
+
+        btnReiniciar.setBackground(new java.awt.Color(204, 0, 0));
+        btnReiniciar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnReiniciar.setText("Reiniciar Juego");
+        jLayeredPane1.add(btnReiniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, -1, -1));
+
+        Portada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Portada.png"))); // NOI18N
+        jLayeredPane1.add(Portada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 900));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(259, Short.MAX_VALUE)
-                .addComponent(BtnAbrirjuego)
-                .addGap(51, 51, 51))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(BtnAbrirjuego, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-   
-    }//GEN-LAST:event_formKeyPressed
-
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-    
-    }//GEN-LAST:event_formMouseClicked
-
-    private void BtnAbrirjuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAbrirjuegoActionPerformed
-        // Suponiendo que ya tienes un Frame y un GestorJuego creados
-        Frame miFrame = new Frame();
-        VentanaJuego ventana = new VentanaJuego(miFrame, true, gestor );
-        ventana.setVisible(true);
-    }//GEN-LAST:event_BtnAbrirjuegoActionPerformed
+    private void btnJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuegoActionPerformed
+       VentanaJuego  ventana= new VentanaJuego(this,true,gestor);
+       ventana.setVisible(true);
+    }//GEN-LAST:event_btnJuegoActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAbrirjuego;
+    private javax.swing.JLabel Portada;
+    private javax.swing.JToggleButton btnJuego;
+    private javax.swing.JToggleButton btnReiniciar;
+    private javax.swing.JLayeredPane jLayeredPane1;
     // End of variables declaration//GEN-END:variables
 }
