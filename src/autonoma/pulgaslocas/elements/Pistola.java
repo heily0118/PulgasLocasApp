@@ -4,7 +4,13 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -126,6 +132,8 @@ public class Pistola {
      * @param y Es la coordenada Y donde se realiza el disparo. 
      */
         public void dispararPistola(int x, int y) {
+           
+          sonidoPistola();
           System.out.println("metodo de disparar Pistola");
           
           for (int i = pulgas.size() - 1; i >= 0; i--) { // Iterar de atrás hacia adelante
@@ -137,6 +145,7 @@ public class Pistola {
               
               Pulga pulga = pulgas.get(i);
              
+              
               System.out.println("posiciones de la pulga # "+ i);
               System.out.println("inicio x " + pulga.getX() + "  inicio y  " + pulga.getY());
               
@@ -148,14 +157,24 @@ public class Pistola {
 
                   System.out.println("El mouse esta encima de la pulga");
                   System.out.println("Vida: " + pulga.getVida());
+                  
+                  // Convertir la pulga mutante en normal
+                  if (pulga instanceof PulgaMutante) {
+                    
+                    pulgas.remove(i);
+                    PulgaNormal nueva = new PulgaNormal(1, true, null, pulga.getX(), pulga.getY(), pulga.getHeight(), pulga.getWidth());
+                    pulgas.add(nueva);
+                    }
 
                   // Si el mouse está encima, se avisa que fue herida
                   pulga.recibirImpacto();
                   System.out.println("Vida despues del impacto: " + pulga.getVida());
 
                   if (!pulga.estaViva()) {
+                      
                       pulgas.remove(i); // Eliminar la pulga
                       System.out.println("Pulga destruida!");
+                      pulga.sonidoPulga();
                   }
 
                   break; // Salir del bucle después de procesar la pulga
@@ -163,4 +182,18 @@ public class Pistola {
           }
 }
 
+        
+    //metodo de sonido
+    public void sonidoPistola() {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    getClass().getResource("/autonoma/pulgaslocas/sounds/pistola.wav"));
+            
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();                                                                                                                                                                                   
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
 }

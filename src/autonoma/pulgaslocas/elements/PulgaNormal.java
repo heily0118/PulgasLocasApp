@@ -27,7 +27,7 @@ public class PulgaNormal extends Pulga {
      */
     public PulgaNormal(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {    
         super(vida, estaviva, pulgaImage, x, y, height, width);
-        this.vida = 2;
+        this.vida = 1;
         this.pulgaImage = new ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/pulgaNormal.png")).getImage();
     
     }
@@ -56,7 +56,7 @@ public class PulgaNormal extends Pulga {
             g.drawImage(pulgaImage, x, y, width, height, null);
         } else {
           
-             g.setColor(Color.GRAY);
+             g.setColor(Color.YELLOW);
              g.fillOval(x, y, width, height);  
         }
     }

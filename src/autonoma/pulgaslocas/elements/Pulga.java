@@ -12,6 +12,12 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import java.awt.Graphics;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -62,6 +68,7 @@ import java.awt.Graphics;
      * Método para que la pulga reciba impacto. Disminuye su vida y verifica si está muerta.
      */
     public void recibirImpacto() {
+        sonidoPulga();
         this.vida--;
         if (this.vida <= 0) {
             this.estaviva = false;  
@@ -107,4 +114,21 @@ import java.awt.Graphics;
     public boolean estaViva() {
         return this.estaviva;
     }
+    
+    //metodo de sonido
+    public void sonidoPulga() {
+        
+        
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    getClass().getResource("/autonoma/PulgasLocas/sounds/dar-a-una-pulga.wav"));
+            
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();                                                                                                                                                                                   
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
