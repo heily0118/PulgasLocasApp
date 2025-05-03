@@ -41,6 +41,7 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
 
         }
        
+        
     }
 
     /**
@@ -170,6 +171,8 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
 
          
          puntaje = new Puntaje("PuntajeMaximo.txt", nomJugador);
+         System.out.println("puntaje en ventana");
+         System.out.println(puntaje.getPuntajeMaximo());
          PuntajeJugador.setText(puntaje.getPuntajeMaximo()+ " ");
     }//GEN-LAST:event_btnJugar1MouseClicked
 
