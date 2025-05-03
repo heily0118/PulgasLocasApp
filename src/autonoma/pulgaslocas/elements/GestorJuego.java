@@ -54,6 +54,12 @@ public class GestorJuego {
             case KeyEvent.VK_S:
                 campo.getGenerador().start();
 
+            break;
+            
+            // " SPACE " - Para activar el misl 
+            case KeyEvent.VK_SPACE:
+                campo.getJugador().LanzarMisil();
+
                 break;
         }
     }

@@ -38,9 +38,10 @@ public class Misil {
      * @param posicionX Posición inicial en X del misil.
      * @param posicionY Posición inicial en Y del misil.
      */
-    public Misil(int posicionX, int posicionY) {
+    public Misil(int posicionX, int posicionY,ArrayList<Pulga> pulgas) {
         this.posicionX = posicionX;
         this.posicionY = posicionY;
+        this.pulgas = pulgas;
     }
 
     /**
