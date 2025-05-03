@@ -177,6 +177,7 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
 
     private void btnReiniciar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReiniciar1MouseClicked
         gestor.reiniciarJuego();
+        PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ " ");
     }//GEN-LAST:event_btnReiniciar1MouseClicked
 
      private void pedirNombreJugador() {
