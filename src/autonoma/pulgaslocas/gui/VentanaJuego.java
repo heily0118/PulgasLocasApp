@@ -1,12 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package autonoma.pulgaslocas.gui;
 
 import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.GraphicContainer;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -18,21 +17,18 @@ import java.awt.event.KeyEvent;
  * @version 1.0.0
  * 
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
-    
-    
-    private GestorJuego gestor;
+public class VentanaJuego extends javax.swing.JDialog implements GraphicContainer {
+  private GestorJuego gestor;
     /**
-     * Creates new form VentanaPrincipal
+     * Creates new form VentanaJuego
      */
-    public VentanaPrincipal(GestorJuego gestor) {
+    public VentanaJuego(java.awt.Frame parent, boolean modal, GestorJuego gestor) {
+        super(parent, modal);
         initComponents();
         this.setSize(900,700);
         this.setLocationRelativeTo(null);
         
         this.gestor = gestor;
-        
-
     }
 
     /**
@@ -44,9 +40,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BtnAbrirjuego = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -58,50 +52,60 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        BtnAbrirjuego.setText("Abrir juego");
-        BtnAbrirjuego.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAbrirjuegoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(259, Short.MAX_VALUE)
-                .addComponent(BtnAbrirjuego)
-                .addGap(51, 51, 51))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(BtnAbrirjuego, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-   
+      if (evt.getKeyCode() == KeyEvent.VK_Q) {
+        System.exit(0);
+    }
+
+        
+        gestor.manejareventoTeclado(evt);
+
+       
+        repaint();
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-    
-    }//GEN-LAST:event_formMouseClicked
+        
+        System.out.println("x" + evt.getX() + "y" + evt.getY());
 
-    private void BtnAbrirjuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAbrirjuegoActionPerformed
-        // Suponiendo que ya tienes un Frame y un GestorJuego creados
-        Frame miFrame = new Frame();
-        VentanaJuego ventana = new VentanaJuego(miFrame, true, gestor );
-        ventana.setVisible(true);
-    }//GEN-LAST:event_BtnAbrirjuegoActionPerformed
+        gestor.manejarClick(evt);
+
+    }//GEN-LAST:event_formMouseClicked
+ @Override
+    public void refresh(Graphics g) {
+     this.repaint();
+    }
+
+    @Override
+    public Rectangle getBoundaries() {
+        return this.getBounds();
+    }
 
  
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); 
+
+        if (gestor != null) {
+            gestor.dibujarElementos(g);
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAbrirjuego;
     // End of variables declaration//GEN-END:variables
 }

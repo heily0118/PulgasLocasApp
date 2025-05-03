@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -5,3 +6,22 @@
         <group/>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/main/PulgasLocas.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Jugador.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Pulga.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Misil.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/gui/VentanaJuego.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/Pistola.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/GestorJuego.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/elements/PulgaMutante.java</file>
+            <file>file:/C:/Users/mateo/Documents/NetBeansProjects/PulgasLocasApp/src/autonoma/pulgaslocas/gui/VentanaPrincipal.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> 904ce8bcee3a77693d3b58a40d56bdb2fe92cb16

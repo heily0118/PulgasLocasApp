@@ -26,6 +26,7 @@ public class PulgasLocas {
       CampoDeBatalla campo = new CampoDeBatalla(900, 700, null);  
 
         
+        
         Puntaje puntaje = new Puntaje("puntajes.txt");
 
        
