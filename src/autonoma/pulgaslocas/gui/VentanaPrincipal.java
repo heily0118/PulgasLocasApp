@@ -34,6 +34,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
          setResizable(false);
         this.setLocationRelativeTo(null);
         this.gestor = gestor;
+        
+          try{ 
+            this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/PulgasLocas/images/JuegoIcono.png")).getImage());
+
+            }catch(NullPointerException e){
+                System.out.println("Imagen no encontrada");
+
+            }
 
        
 

@@ -9,6 +9,7 @@ import autonoma.pulgaslocas.elements.GraphicContainer;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 /**
  * 
@@ -30,6 +31,14 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         this.setLocationRelativeTo(null);
         
         this.gestor = gestor;
+        
+        try{ 
+        this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/PulgasLocas/images/JuegoIcono.png")).getImage());
+        
+        }catch(NullPointerException e){
+            System.out.println("Imagen no encontrada");
+            
+        }
     }
 
     /**
