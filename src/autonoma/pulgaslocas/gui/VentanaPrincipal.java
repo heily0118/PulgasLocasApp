@@ -98,15 +98,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuegoActionPerformed
-        String nombre = JOptionPane.showInputDialog(this, "Ingresa tu nombre:");
-    
-        if (nombre != null && !nombre.trim().isEmpty()) {
-           
-            VentanaInformacionJuego ventana = new VentanaInformacionJuego(this, true, gestor, nombre);
-            ventana.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Debes ingresar un nombre para continuar.");
-        }
+        VentanaInformacionJuego ventana = new VentanaInformacionJuego(this, true, gestor);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnJuegoActionPerformed
 
  

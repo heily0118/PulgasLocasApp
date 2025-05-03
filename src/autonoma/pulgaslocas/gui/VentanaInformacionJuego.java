@@ -9,6 +9,7 @@ import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.Puntaje;
 import java.io.IOException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +19,11 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
     private Puntaje puntaje;
     private GestorJuego gestor;
     private CampoDeBatalla campo;
+     private String nomJugador;
     /**
      * Creates new form VentanaInformacionJuego
      */
-    public VentanaInformacionJuego(VentanaPrincipal aThis, boolean par, GestorJuego gestor, String nombre) {
+    public VentanaInformacionJuego(VentanaPrincipal aThis, boolean par, GestorJuego gestor) {
         initComponents();
 
         this.setSize(900, 900);
@@ -29,7 +31,7 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.gestor = gestor;
         
-        nombreJugador.setText(nombre);
+         pedirNombreJugador();
         
         try{ 
             this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/PulgasLocas/images/JuegoIcono.png")).getImage());
@@ -55,9 +57,8 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         btnJugar1 = new javax.swing.JToggleButton();
         Jugador = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtPuntaje = new javax.swing.JTextArea();
         nombreJugador = new javax.swing.JTextField();
+        PuntajeJugador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,11 +92,9 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Puntaje");
 
-        txtPuntaje.setColumns(20);
-        txtPuntaje.setRows(5);
-        jScrollPane1.setViewportView(txtPuntaje);
-
         nombreJugador.setEditable(false);
+
+        PuntajeJugador.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,22 +111,21 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(nombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(306, 306, 306))))
+                        .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -157,38 +155,48 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJugar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugar1MouseClicked
-        String nombre = nombreJugador.getText().trim();
+            if (nomJugador == null || nomJugador.isEmpty()) {
+             PuntajeJugador.setText("Por favor ingresa un nombre.");
+             return;
+            }
 
-        if (nombre.isEmpty()) {
-            txtPuntaje.setText("Por favor ingresa un nombre.");
-            return;
-        }
+         
+         VentanaJuego ventana = new VentanaJuego(this, true, gestor);
+         ventana.setVisible(true); 
 
-       
-        VentanaJuego ventana = new VentanaJuego(this, true, gestor);
-        ventana.setVisible(true); 
-
-       
-        puntaje = new Puntaje("PuntajeMaximo.txt", nombre);
-
-       
-      txtPuntaje.setText(String.valueOf(puntaje.getPuntajeMaximo()));
+         
+         puntaje = new Puntaje("PuntajeMaximo.txt", nomJugador);
+         PuntajeJugador.setText(puntaje.getPuntajeMaximo()+ " ");
     }//GEN-LAST:event_btnJugar1MouseClicked
 
     private void btnReiniciar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReiniciar1MouseClicked
         gestor.reiniciarJuego();
     }//GEN-LAST:event_btnReiniciar1MouseClicked
 
-    
+     private void pedirNombreJugador() {
+            while (true) {
+            String nombre = JOptionPane.showInputDialog(this, "Ingresa tu nombre:");
+            if (nombre != null && !nombre.trim().isEmpty()) {
+                this.nomJugador = nombre.trim();
+                nombreJugador.setText(nomJugador); 
+                break;
+            } else {
+                JOptionPane.showMessageDialog(this, "Debes ingresar un nombre para continuar.");
+            }
+        }
+    }
+
+    public String getNombreJugador() {
+        return nomJugador;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Jugador;
+    private javax.swing.JTextField PuntajeJugador;
     private javax.swing.JToggleButton btnJugar1;
     private javax.swing.JToggleButton btnReiniciar1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreJugador;
-    private javax.swing.JTextArea txtPuntaje;
     // End of variables declaration//GEN-END:variables
 }
