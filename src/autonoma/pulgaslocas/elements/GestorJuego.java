@@ -23,7 +23,7 @@ public class GestorJuego {
     private Puntaje puntaje;
 
     public GestorJuego(boolean juegoActivo, CampoDeBatalla campo, String archivoPuntajeMaximo, String nombre) {
-        this.juegoActivo = false;
+        this.juegoActivo = juegoActivo;
         this.campo = campo;
         this.puntaje = new Puntaje(archivoPuntajeMaximo, nombre);
     }
@@ -110,7 +110,7 @@ public class GestorJuego {
   
     public void eliminarPulga(Pulga pulga) {
         campo.eliminarPulga(pulga);
-        puntaje.incrementarPuntaje();
+        puntaje.incrementarPuntajeNormal();
         try {
             puntaje.guardarPuntajeMaximo();
         } catch (IOException e) {

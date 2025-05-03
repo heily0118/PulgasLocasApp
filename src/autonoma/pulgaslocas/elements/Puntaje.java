@@ -68,10 +68,16 @@ public class Puntaje {
     /**
      * Incrementa en uno el puntaje actual del jugador.
      */
-    public void incrementarPuntaje() {
-        puntajeActual++;
+    public void incrementarPuntajeNormal() {
+        puntajeActual  += 50;
     }
-
+    
+    /**
+     * Incrementa en uno el puntaje actual del jugador.
+     */
+    public void incrementarPuntajeMultante() {
+        puntajeActual += 100;
+    }
     /**
      * Guarda el puntaje máximo en el archivo si el puntaje actual lo supera.
      * El formato en el archivo es: nombreJugador,puntajeMaximo

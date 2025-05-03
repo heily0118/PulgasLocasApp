@@ -158,13 +158,19 @@ public class Pistola {
                   System.out.println("El mouse esta encima de la pulga");
                   System.out.println("Vida: " + pulga.getVida());
                   
+                  
                   // Convertir la pulga mutante en normal
                   if (pulga instanceof PulgaMutante) {
                     
                     pulgas.remove(i);
                     PulgaNormal nueva = new PulgaNormal(1, true, null, pulga.getX(), pulga.getY(), pulga.getHeight(), pulga.getWidth());
                     pulgas.add(nueva);
+                    gestor.getPuntaje().incrementarPuntajeMultante();
                     }
+                  else{
+                  
+                    gestor.getPuntaje().incrementarPuntajeNormal();
+                  }
 
                   // Si el mouse está encima, se avisa que fue herida
                   pulga.recibirImpacto();
@@ -176,7 +182,9 @@ public class Pistola {
                       System.out.println("Pulga destruida!");
                       pulga.sonidoPulga();
                   }
-
+                  
+                  System.out.println("puntaje");
+                  System.out.println(gestor.getPuntaje().getPuntajeActual());
                   break; // Salir del bucle después de procesar la pulga
               }
           }

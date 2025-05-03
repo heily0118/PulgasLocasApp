@@ -23,20 +23,21 @@ public class PulgasLocas {
        
    
 
-      CampoDeBatalla campo = new CampoDeBatalla(900, 900, null);  
+        CampoDeBatalla campo = new CampoDeBatalla(900, 900, null);  
 
         
         
         Puntaje puntaje = new Puntaje("puntajes.txt", "");
 
+        
+        GestorJuego gestor = new GestorJuego(true, campo, "puntajes.txt", "");
        
-        Jugador jugador = new Jugador(campo,null);
-       
+        Jugador jugador = new Jugador(campo,gestor);
        
         campo.setJugador(jugador);  
 
       
-        GestorJuego gestor = new GestorJuego(true, campo, "puntajes.txt", "");
+        
        
        
         VentanaPrincipal ventana = new VentanaPrincipal(gestor);
