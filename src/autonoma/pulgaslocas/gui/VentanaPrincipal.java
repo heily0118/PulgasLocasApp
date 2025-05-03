@@ -73,7 +73,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnJuegoActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(btnJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, -1, -1));
+        jLayeredPane1.add(btnJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, -1, -1));
 
         Portada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Portada.png"))); // NOI18N
         jLayeredPane1.add(Portada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 900));
