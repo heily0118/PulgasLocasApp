@@ -21,13 +21,15 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
     /**
      * Creates new form VentanaInformacionJuego
      */
-    public VentanaInformacionJuego(VentanaPrincipal aThis, boolean par, GestorJuego gestor) {
+    public VentanaInformacionJuego(VentanaPrincipal aThis, boolean par, GestorJuego gestor, String nombre) {
         initComponents();
 
         this.setSize(900, 900);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.gestor = gestor;
+        
+        nombreJugador.setText(nombre);
         
         try{ 
             this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/PulgasLocas/images/JuegoIcono.png")).getImage());
@@ -49,54 +51,19 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        campoNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         btnReiniciar1 = new javax.swing.JToggleButton();
+        btnJugar1 = new javax.swing.JToggleButton();
+        Jugador = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtPuntaje = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        btnJugar1 = new javax.swing.JToggleButton();
+        nombreJugador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(7, 0, 22));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setForeground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
-
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Información");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel1)
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-
-        campoNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNombreActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 0, 18)); // NOI18N
-        jLabel2.setText("Ingresa tu nombre:");
 
         btnReiniciar1.setBackground(new java.awt.Color(204, 0, 0));
         btnReiniciar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -108,13 +75,6 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             }
         });
 
-        txtPuntaje.setColumns(20);
-        txtPuntaje.setRows(5);
-        jScrollPane1.setViewportView(txtPuntaje);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
-        jLabel3.setText("Puntaje");
-
         btnJugar1.setBackground(new java.awt.Color(0, 153, 51));
         btnJugar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnJugar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,46 +85,61 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
             }
         });
 
+        Jugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Jugador.jpeg"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Puntaje");
+
+        txtPuntaje.setColumns(20);
+        txtPuntaje.setRows(5);
+        jScrollPane1.setViewportView(txtPuntaje);
+
+        nombreJugador.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(btnReiniciar1)
-                        .addGap(191, 191, 191)
-                        .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(433, Short.MAX_VALUE))
+                    .addComponent(btnReiniciar1)
+                    .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addComponent(Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(nombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(306, 306, 306))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(Jugador))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(btnReiniciar1)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnJugar1)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReiniciar1)
-                    .addComponent(btnJugar1))
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addComponent(nombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,26 +156,23 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoNombreActionPerformed
-
     private void btnJugar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugar1MouseClicked
-        String nombre = campoNombre.getText().trim();
+        String nombre = nombreJugador.getText().trim();
+
         if (nombre.isEmpty()) {
             txtPuntaje.setText("Por favor ingresa un nombre.");
             return;
         }
 
-        // Abre el juego
+       
         VentanaJuego ventana = new VentanaJuego(this, true, gestor);
-        ventana.setVisible(true); // Espera a que se cierre
+        ventana.setVisible(true); 
 
-        // Crear una nueva instancia de Puntaje para leer el archivo actualizado
+       
         puntaje = new Puntaje("PuntajeMaximo.txt", nombre);
 
-        // Mostrar el puntaje actualizado
-        txtPuntaje.setText(puntaje.mostrarPuntaje());
+       
+      txtPuntaje.setText(String.valueOf(puntaje.getPuntajeMaximo()));
     }//GEN-LAST:event_btnJugar1MouseClicked
 
     private void btnReiniciar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReiniciar1MouseClicked
@@ -210,15 +182,13 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Jugador;
     private javax.swing.JToggleButton btnJugar1;
     private javax.swing.JToggleButton btnReiniciar1;
-    private javax.swing.JTextField campoNombre;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField nombreJugador;
     private javax.swing.JTextArea txtPuntaje;
     // End of variables declaration//GEN-END:variables
 }
