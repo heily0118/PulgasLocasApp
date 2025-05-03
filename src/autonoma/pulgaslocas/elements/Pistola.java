@@ -4,7 +4,13 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -126,6 +132,8 @@ public class Pistola {
      * @param y Es la coordenada Y donde se realiza el disparo. 
      */
         public void dispararPistola(int x, int y) {
+           
+          sonidoPistola();
           System.out.println("metodo de disparar Pistola");
           
           for (int i = pulgas.size() - 1; i >= 0; i--) { // Iterar de atrás hacia adelante
@@ -163,4 +171,18 @@ public class Pistola {
           }
 }
 
+        
+    //metodo de sonido
+    public void sonidoPistola() {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    getClass().getResource("/autonoma/PulgasLocas/sounds/pistola.mp3"));
+            
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();                                                                                                                                                                                   
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
 }
