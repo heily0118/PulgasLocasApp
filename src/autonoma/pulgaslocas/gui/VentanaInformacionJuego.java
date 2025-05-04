@@ -42,10 +42,10 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         
          pedirNombreJugador();
          
-         //// Archivo de texto
+        
         this.getGestor().getPuntaje().cargarPuntajeMaximo();
-        TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
-        TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo()));
+        nombreJugador.setText(this.nomJugador);
+        PuntajeJugador.setText(String.valueOf(gestor.getPuntaje().getPuntajeActual()));
 
         try{ 
             this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/PulgasLocas/images/JuegoIcono.png")).getImage());
@@ -55,8 +55,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
         }
        
-        TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
-        TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo())); 
+ 
     }
 
     /**
@@ -75,10 +74,6 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         nombreJugador = new javax.swing.JTextField();
         PuntajeJugador = new javax.swing.JTextField();
-        TxtPuntajeMaximo = new javax.swing.JTextField();
-        TilPuntajeMaximo2 = new javax.swing.JLabel();
-        TilPuntajeMaximo1 = new javax.swing.JLabel();
-        TxtNombrePuntajeMaximo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -119,31 +114,6 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         PuntajeJugador.setEditable(false);
         PuntajeJugador.setBackground(new java.awt.Color(255, 255, 255));
 
-        TxtPuntajeMaximo.setEditable(false);
-        TxtPuntajeMaximo.setBackground(new java.awt.Color(255, 255, 255));
-        TxtPuntajeMaximo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtPuntajeMaximoActionPerformed(evt);
-            }
-        });
-
-        TilPuntajeMaximo2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        TilPuntajeMaximo2.setForeground(new java.awt.Color(255, 255, 255));
-        TilPuntajeMaximo2.setText("Maximo");
-
-        TilPuntajeMaximo1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        TilPuntajeMaximo1.setForeground(new java.awt.Color(255, 255, 255));
-        TilPuntajeMaximo1.setText("Puntaje");
-
-        TxtNombrePuntajeMaximo.setEditable(false);
-        TxtNombrePuntajeMaximo.setBackground(new java.awt.Color(255, 255, 255));
-        TxtNombrePuntajeMaximo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        TxtNombrePuntajeMaximo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtNombrePuntajeMaximoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,19 +127,9 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
                 .addComponent(Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(155, 155, 155))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(251, Short.MAX_VALUE)
+                .addContainerGap(453, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(TilPuntajeMaximo1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TxtNombrePuntajeMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(TilPuntajeMaximo2)
-                                .addGap(18, 18, 18)
-                                .addComponent(TxtPuntajeMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(225, 225, 225)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,22 +141,11 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TilPuntajeMaximo1)
-                            .addComponent(TxtNombrePuntajeMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TilPuntajeMaximo2)
-                            .addComponent(TxtPuntajeMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(1, 1, 1)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -208,7 +157,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
                         .addComponent(btnJugar1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -241,12 +190,11 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
          
          
-         System.out.println(gestor.getPuntaje().getPuntajeMaximo());
-         PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ "  P ");
+       
+         PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ "   ");
          
          
-         TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
-        TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo()));
+  
         
     }//GEN-LAST:event_btnJugar1MouseClicked
 
@@ -254,16 +202,6 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         gestor.reiniciarJuego();
         PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ " ");
     }//GEN-LAST:event_btnReiniciar1MouseClicked
-
-    private void TxtPuntajeMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPuntajeMaximoActionPerformed
-        
-        TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
-        TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo()));
-    }//GEN-LAST:event_TxtPuntajeMaximoActionPerformed
-
-    private void TxtNombrePuntajeMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNombrePuntajeMaximoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNombrePuntajeMaximoActionPerformed
 
      private void pedirNombreJugador() {
             while (true) {
@@ -290,10 +228,6 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Jugador;
     private javax.swing.JTextField PuntajeJugador;
-    private javax.swing.JLabel TilPuntajeMaximo1;
-    private javax.swing.JLabel TilPuntajeMaximo2;
-    private javax.swing.JTextField TxtNombrePuntajeMaximo;
-    private javax.swing.JTextField TxtPuntajeMaximo;
     private javax.swing.JToggleButton btnJugar1;
     private javax.swing.JToggleButton btnReiniciar1;
     private javax.swing.JLabel jLabel3;
