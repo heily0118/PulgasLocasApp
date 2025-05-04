@@ -8,6 +8,77 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+=======
+/**
+ *
+ * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
+ * @since 20250501
+ * @see autonoma.pulgaslocas.elements.CampoDeBatalla
+ * @version 1.0.0
+ */
+public class CampoDeBatalla {
+    private int ancho;
+    private int alto;
+    private ArrayList<Pulga> pulgas;
+    private GeneradorPulgas generador;
+    private Jugador jugador;
+
+   
+
+    public CampoDeBatalla(int ancho, int alto, Jugador jugador) {
+        this.ancho = ancho;
+        this.alto = alto;
+        this.pulgas = new ArrayList<>();
+        this.jugador = jugador;
+        this.generador = new GeneradorPulgas(this, 5000, 10000); 
+        
+    }
+
+    // Getters y Setters
+    public int getAncho() {
+        return ancho;
+    }
+
+    public int getAlto() {
+        return alto;
+    }
+
+    public void setAncho(int ancho) {
+        this.ancho = ancho;
+    }
+
+    public void setAlto(int alto) {
+        this.alto = alto;
+    }
+
+    public void setPulgas(ArrayList<Pulga> pulgas) {
+        this.pulgas = pulgas;
+    }
+
+    public void setGenerador(GeneradorPulgas generador) {
+        this.generador = generador;
+    }
+    
+
+    public ArrayList<Pulga> getPulgas() {
+        return pulgas;
+    }
+
+    public GeneradorPulgas getGenerador() {
+        return generador;
+    }
+
+    public Jugador getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+    
+
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be
     /**
      * Representa el campo de batalla donde se desarrolla el juego con las pulgas.
      * 
@@ -202,6 +273,7 @@ import java.util.ArrayList;
             }
         }
 
+<<<<<<< HEAD
         /**
          * Elimina una pulga del campo de batalla.
          * 
@@ -210,6 +282,28 @@ import java.util.ArrayList;
         public void eliminarPulga(Pulga p) {
             pulgas.remove(p);
         }
+=======
+    
+   
+   
+    /**
+     * Método para eliminar una pulga del campo de batalla.
+     */
+    public void eliminarPulga(Pulga p) {
+        synchronized (pulgas) {
+            pulgas.remove(p);
+        }
+    }
+
+    /**
+     * Método para reiniciar el campo de batalla (limpiar todas las pulgas).
+     */
+    public void reiniciarCampo() {
+        pulgas.clear();
+    }
+
+
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be
 
         /**
          * Reinicia el campo eliminando todas las pulgas activas.
@@ -243,3 +337,20 @@ import java.util.ArrayList;
             }
         }
     }
+<<<<<<< HEAD
+=======
+    
+    /**
+     * Método para hacer que las pulgas se reubiquen en cualquier posición.
+     */
+    public void saltarPulgas() {
+        synchronized (pulgas) {
+            for (Pulga pulga : pulgas) {
+                if (pulga.estaViva()) {
+                    pulga.saltar(ancho, alto);
+                }
+            }
+        }
+    }
+}
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be

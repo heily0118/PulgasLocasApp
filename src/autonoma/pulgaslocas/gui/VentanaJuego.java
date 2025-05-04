@@ -14,6 +14,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -122,7 +124,11 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     }
 
         
-        gestor.manejareventoTeclado(evt);
+        try {
+            gestor.manejareventoTeclado(evt);
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
        
         repaint();
@@ -131,7 +137,11 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         
         System.out.println("x" + evt.getX() + "y" + evt.getY());
-        gestor.manejarClick(evt);
+        try {
+            gestor.manejarClick(evt);
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
         repaint();
         
 

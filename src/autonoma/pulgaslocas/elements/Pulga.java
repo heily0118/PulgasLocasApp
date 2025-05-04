@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 
 import java.awt.Graphics;
 import java.io.IOException;
+import java.util.Random;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -81,28 +82,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
      */
     public abstract void mover();
 
-    /**
-     * Método para actualizar el estado de la pulga.
-     * Cambia el color de la pulga si está muerta.
-     */
-    public void actualizarEstado() {
-        if (this.vida <= 0) {
-            this.estaviva = false; 
-        }
-    }
+   
 
     /**
-     * Método para dibujar la pulga en el campo de batalla.
-     * Si la pulga está muerta, se dibuja con un color específico (gris).
-     * 
      * @param g el objeto Graphics utilizado para dibujar la imagen de la pulga
      */
     public void dibujar(Graphics g) {
         if (estaviva) {
             g.drawImage(pulgaImage, x, y, null);  
-        } else {
-            g.setColor(Color.GRAY); 
-            g.fillOval(x, y, width, height);  
         }
     }
 
@@ -115,7 +102,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         return this.estaviva;
     }
     
-    //metodo de sonido
+ 
     public void sonidoPulga() {
         
         
@@ -129,6 +116,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void saltar(int anchoCampo, int altoCampo) {
+        Random random = new Random();
+
+       
+        this.x = random.nextInt(anchoCampo - this.width);
+        this.y = random.nextInt(altoCampo - this.height);
     }
     
 }

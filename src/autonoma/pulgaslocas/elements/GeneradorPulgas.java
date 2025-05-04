@@ -11,6 +11,11 @@ package autonoma.pulgaslocas.elements;
  * a intervalos definidos. El hilo puede ser detenido cuando se desee detener la generación.
  * 
  * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
+<<<<<<< HEAD
+=======
+ * @since 20250501
+ * @see autonoma.pulgaslocas.elements.GeneradorPulgas
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be
  * @version 1.0.0
  * @since 20250501
  * @see autonoma.pulgaslocas.elements.CampoDeBatalla
@@ -52,15 +57,23 @@ public class GeneradorPulgas extends Thread {
     }
 
     /**
+<<<<<<< HEAD
      * Detiene la generación de nuevas pulgas.
+=======
+     * Detiene la generación de pulgas estableciendo la bandera 'activo' en falso.
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be
      */
     public void detenerGeneracion() {
         activo = false;
     }
 
     /**
+<<<<<<< HEAD
      * Ejecuta el hilo que alterna entre generar pulgas normales y mutantes en posiciones aleatorias
      * hasta que se detenga el generador.
+=======
+     * Método principal que se ejecuta cuando el hilo inicia.
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be
      */
     @Override
     public void run() {
@@ -80,19 +93,35 @@ public class GeneradorPulgas extends Thread {
         }
     }
 
+<<<<<<< HEAD
     /**
      * Genera una posición X aleatoria dentro del ancho del campo.
      * 
      * @return Coordenada X válida para una nueva pulga
+=======
+  
+    /**
+     * Genera una posición X aleatoria dentro del ancho del campo.
+     * 
+     * @return Retorna una coordenada X válida dentro del campo.
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be
      */
     private int generarPosicionX() {
         return (int) (Math.random() * campo.getAncho());
     }
 
+<<<<<<< HEAD
     /**
      * Genera una posición Y aleatoria dentro del alto del campo.
      * 
      * @return Coordenada Y válida para una nueva pulga
+=======
+  
+    /**
+     * Genera una posición Y aleatoria dentro del alto del campo.
+     * 
+     * @return Retorna una coordenada Y válida dentro del campo.
+>>>>>>> 0e0e2d7dd6a1bcebf767375bfd5914036c6653be
      */
     private int generarPosicionY() {
         return (int) (Math.random() * campo.getAlto());
