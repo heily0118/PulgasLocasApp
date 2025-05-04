@@ -131,7 +131,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Informacion");
+        jLabel4.setText("Información");
 
         javax.swing.GroupLayout btnInformacionLayout = new javax.swing.GroupLayout(btnInformacion);
         btnInformacion.setLayout(btnInformacionLayout);
@@ -140,19 +140,18 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
             .addGroup(btnInformacionLayout.createSequentialGroup()
                 .addGroup(btnInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(btnInformacionLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2))
-                    .addGroup(btnInformacionLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(btnInformacionLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnInformacionLayout.setVerticalGroup(
             btnInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnInformacionLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel4)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -171,14 +170,13 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnReiniciar1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(50, Short.MAX_VALUE))
+                        .addContainerGap(53, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(31, 31, 31)
                         .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,9 +212,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,8 +264,8 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
             NOTA: Si no agregas pulgas manualmente,
             el sistema lo hará automáticamente:
-            - Cada 5 segundos: una pulga normal.
-            - Cada 10 segundos: una pulga mutante.
+            - Cada 5 segundos: Una pulga normal.
+            - Cada 10 segundos: Una pulga mutante.
             """;
 
         JTextArea textArea = new JTextArea(instrucciones);
