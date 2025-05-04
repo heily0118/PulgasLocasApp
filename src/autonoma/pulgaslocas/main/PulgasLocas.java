@@ -24,7 +24,7 @@ public class PulgasLocas {
    
         ////primero se crea el objeto de sistema de puntos 
         
-        Puntaje puntaje = new Puntaje("PuntajeMaximo.txt", "Teo");
+        Puntaje puntaje = new Puntaje("PuntajeMaximo.txt", "");
         
         /// segundo un campo de battalla
         CampoDeBatalla campo = new CampoDeBatalla(900, 900, null);  

@@ -40,6 +40,11 @@ public class Puntaje {
      */
     private String nombreJugador;
 
+    
+    /**
+     * Nombre del jugador  de Puntaje Maximo.
+     */
+    private String MaximoNombre;
     /**
      * Objeto encargado de leer archivos de texto plano.
      */
@@ -86,6 +91,7 @@ public class Puntaje {
      */
     public void guardarPuntajeMaximo() throws IOException {
         if (puntajeActual > puntajeMaximo) {
+            MaximoNombre = nombreJugador;
             puntajeMaximo = puntajeActual;
             ArrayList<String> datos = new ArrayList<>();
             datos.add(nombreJugador + "," + puntajeMaximo);
@@ -105,7 +111,7 @@ public class Puntaje {
             if (!lineas.isEmpty()) {
                 String[] partes = lineas.get(0).split(",");
                 if (partes.length == 2) {
-                    nombreJugador = partes[0].trim();
+                    MaximoNombre = partes[0].trim();
                     puntajeMaximo = Integer.parseInt(partes[1].trim());
                     System.out.println("puntaje maximo");
                     System.out.println(puntajeMaximo);
@@ -122,7 +128,7 @@ public class Puntaje {
         System.out.println(puntajeMaximo);
         
         System.out.println("duenio");
-        System.out.println(nombreJugador );
+        System.out.println(MaximoNombre );
     }
 
     /**
@@ -165,7 +171,16 @@ public class Puntaje {
     public String getNombreJugador() {
         return nombreJugador;
     }
+    
+    public String getMaximoNombre() {
+        return MaximoNombre;
+    }
 
+    public void setNombreJugador(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
+    }
+    
+    
     
     
 }

@@ -44,7 +44,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
          
          //// Archivo de texto
         this.getGestor().getPuntaje().cargarPuntajeMaximo();
-        TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getNombreJugador());
+        TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
         TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo()));
 
         try{ 
@@ -55,7 +55,8 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
         }
        
-        
+        TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
+        TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo())); 
     }
 
     /**
@@ -226,7 +227,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
     private void btnJugar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJugar1MouseClicked
             if (nomJugador == null || nomJugador.isEmpty()) {
-             PuntajeJugador.setText("Por favor ingresa un nombre.");
+             PuntajeJugador.setText("Por favorm  ingresa un nombre.");
              return;
             }
 
@@ -241,9 +242,11 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
          
          
          System.out.println(gestor.getPuntaje().getPuntajeMaximo());
-         PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ " ");
+         PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ "  P ");
          
-
+         
+         TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
+        TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo()));
         
     }//GEN-LAST:event_btnJugar1MouseClicked
 
@@ -253,7 +256,9 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReiniciar1MouseClicked
 
     private void TxtPuntajeMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPuntajeMaximoActionPerformed
-        // TODO add your handling code here:
+        
+        TxtNombrePuntajeMaximo.setText(this.getGestor().getPuntaje().getMaximoNombre());
+        TxtPuntajeMaximo.setText(String.valueOf( this.getGestor().getPuntaje().getPuntajeMaximo()));
     }//GEN-LAST:event_TxtPuntajeMaximoActionPerformed
 
     private void TxtNombrePuntajeMaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNombrePuntajeMaximoActionPerformed
@@ -266,6 +271,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
             if (nombre != null && !nombre.trim().isEmpty()) {
                 this.nomJugador = nombre.trim();
                 nombreJugador.setText(nomJugador); 
+                gestor.getPuntaje().setNombreJugador(nomJugador);
                 break;
             } else {
                 JOptionPane.showMessageDialog(this, "Debes ingresar un nombre para continuar.");

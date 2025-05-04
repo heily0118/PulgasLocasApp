@@ -41,7 +41,7 @@ public class GestorJuego {
         juegoActivo = false;
     }
 
-    public void manejareventoTeclado(KeyEvent e) {
+    public void manejareventoTeclado(KeyEvent e) throws IOException {
         switch (e.getKeyCode()) {
             // "p" - se crea pulga Normal
             case KeyEvent.VK_P:
@@ -67,10 +67,10 @@ public class GestorJuego {
         }
     }
 
-    public void manejarClick(MouseEvent e) {
+    public void manejarClick(MouseEvent e) throws IOException {
  
         /// se lleva las posiciones del mouse metodo disparar
-        campo.getJugador().disparar(  e.getX(), e.getY());
+        campo.getJugador().disparar(e.getX(), e.getY());
     }
 
     public void actualizarEstado() {
