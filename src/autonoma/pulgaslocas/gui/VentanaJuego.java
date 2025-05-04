@@ -9,6 +9,14 @@ import autonoma.pulgaslocas.elements.GraphicContainer;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,11 +28,14 @@ import javax.swing.ImageIcon;
  */
 public class VentanaJuego extends javax.swing.JDialog implements GraphicContainer {
   private GestorJuego gestor;
+  private Clip clip;
     /**
      * Creates new form VentanaJuego
      */
     public VentanaJuego(java.awt.Frame parent, boolean modal, GestorJuego gestor) {
         super(parent, modal);
+        
+        
         initComponents();
         this.setSize(900,900);
          setResizable(false);
@@ -39,6 +50,16 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
             System.out.println("Imagen no encontrada");
             
         }
+        sonidoBatalla();
+        
+        
+        // Agregar el listener para detener la música cuando se cierre la ventana
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                detenerSonido();
+            }
+        });
     }
 
     /**
@@ -116,7 +137,26 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         }
     }
 
-
+        public void sonidoBatalla() {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    getClass().getResource("/autonoma/PulgasLocas/sounds/Batalla.wav"));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+    
+       public void detenerSonido() {
+        if (clip != null) {
+            clip.stop();
+            clip.close();
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
