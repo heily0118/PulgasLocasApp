@@ -60,6 +60,8 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
                 detenerSonido();
             }
         });
+        
+        
     }
 
     /**
