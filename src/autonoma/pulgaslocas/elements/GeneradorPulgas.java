@@ -8,7 +8,7 @@ package autonoma.pulgaslocas.elements;
  *
  * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
  * @since 20250501
- * @see autonoma.pulgaslocas.elements
+ * @see autonoma.pulgaslocas.elements.GeneradorPulgas
  * @version 1.0.0
  */
 
@@ -27,10 +27,16 @@ public class GeneradorPulgas extends Thread {
         this.activo = true;
     }
 
+    /**
+     * Detiene la generación de pulgas estableciendo la bandera 'activo' en falso.
+     */
     public void detenerGeneracion() {
         activo = false;
     }
 
+    /**
+     * Método principal que se ejecuta cuando el hilo inicia.
+     */
     @Override
     public void run() {
         while (activo) {
@@ -50,11 +56,21 @@ public class GeneradorPulgas extends Thread {
     }
 
   
+    /**
+     * Genera una posición X aleatoria dentro del ancho del campo.
+     * 
+     * @return Retorna una coordenada X válida dentro del campo.
+     */
     private int generarPosicionX() {
         return (int) (Math.random() * campo.getAncho());
     }
 
   
+    /**
+     * Genera una posición Y aleatoria dentro del alto del campo.
+     * 
+     * @return Retorna una coordenada Y válida dentro del campo.
+     */
     private int generarPosicionY() {
         return (int) (Math.random() * campo.getAlto());
     }

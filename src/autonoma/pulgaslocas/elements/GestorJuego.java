@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
  * @since 20250501
- * @see autonoma.pulgaslocas.elements
+ * @see autonoma.pulgaslocas.elements.GestorJuego
  * @version 1.0.0
  */
 public class GestorJuego {
@@ -32,15 +32,28 @@ public class GestorJuego {
 
     // Métodos
 
+    /**
+     * Inicia el juego estableciendo la bandera 'juegoActivo' en verdadero
+     * y comenzando la ejecución del generador de pulgas.
+     */
     public void iniciarJuegos() {
         juegoActivo = true;
         generador.start();
     }
 
+    /**
+     * Termina el juego estableciendo la bandera 'juegoActivo' en falso.
+     */
     public void terminarJuegos() {
         juegoActivo = false;
     }
 
+    /**
+     * Maneja los eventos de teclado para controlar la interacción del usuario con el juego.
+     * 
+     * @param e Es el evento de teclado.
+     * @throws IOException Si ocurre un error al lanzar un misil o guardar puntaje.
+     */
     public void manejareventoTeclado(KeyEvent e) throws IOException {
         switch (e.getKeyCode()) {
             // "p" - se crea pulga Normal
@@ -67,6 +80,12 @@ public class GestorJuego {
         }
     }
 
+    /**
+     * Maneja el evento de clic del mouse, permitiendo que el jugador dispare a la posición clickeada.
+     * 
+     * @param e Es el evento del mouse con las coordenadas del clic.
+     * @throws IOException Si ocurre un error al ejecutar la acción de disparo.
+     */
     public void manejarClick(MouseEvent e) throws IOException {
  
        
@@ -102,6 +121,11 @@ public class GestorJuego {
     }
 
    
+    /**
+     * Agrega una nueva pulga en una posición aleatoria dentro del campo.
+     * 
+     * @param esMutante Indica si la pulga es mutante (true) o normal (false).
+     */
     public void agregarPulga(boolean esMutante) {
         int x = (int)(Math.random() * campo.getAncho());  
         int y = (int)(Math.random() * campo.getAlto());
@@ -109,6 +133,11 @@ public class GestorJuego {
     }
 
   
+    /**
+     * Elimina una pulga del campo, incrementa el puntaje y guarda el puntaje máximo.
+     * 
+     * @param pulga Es la pulga a eliminar.
+     */
     public void eliminarPulga(Pulga pulga) {
         campo.eliminarPulga(pulga);
         puntaje.incrementarPuntajeNormal();
@@ -119,14 +148,28 @@ public class GestorJuego {
         }
     }
 
+    /**
+     * Muestra el puntaje actual del jugador.
+     * 
+     * @return Retorna una cadena que representa el puntaje actual.
+     */
     public String mostrarPuntaje() {
         return puntaje.mostrarPuntaje();
     }
 
+    /**
+     * Reinicia el juego, limpiando el campo y restableciendo el puntaje.
+     */
     public void reiniciarJuego() {
         campo.reiniciarCampo();
         puntaje.reiniciarPuntaje();
     }
+    
+    /**
+     * Dibuja todos los elementos del campo de batalla en la interfaz gráfica.
+      * 
+     * @param g Es un objeto de tipo Graphics para pintar los elementos visuales.
+     */
     public void dibujarElementos(Graphics g){
         campo.dibujar(g);
     }

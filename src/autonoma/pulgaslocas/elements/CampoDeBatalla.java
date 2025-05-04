@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Mateo Quintero <mateo.quinterom@autonoma.edu.co>
  * @since 20250501
- * @see autonoma.pulgaslocas.elements
+ * @see autonoma.pulgaslocas.elements.CampoDeBatalla
  * @version 1.0.0
  */
 public class CampoDeBatalla {
@@ -173,7 +173,10 @@ public class CampoDeBatalla {
         }
     }
     
-   public void saltarPulgas() {
+    /**
+     * Método para hacer que las pulgas se reubiquen en cualquier posición.
+     */
+    public void saltarPulgas() {
         synchronized (pulgas) {
             for (Pulga pulga : pulgas) {
                 if (pulga.estaViva()) {
