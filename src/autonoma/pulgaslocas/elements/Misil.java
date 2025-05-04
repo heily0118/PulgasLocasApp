@@ -145,7 +145,11 @@ public class Misil {
        System.out.println("puntaje");
        System.out.println(gestor.getPuntaje().getPuntajeActual());
    }
-
+   
+   
+    /**
+     * Método para agregar el sonido del Misil.
+     */
     public void sonidoMisil() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
