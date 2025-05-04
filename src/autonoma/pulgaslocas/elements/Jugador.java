@@ -4,6 +4,7 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -47,13 +48,15 @@ public class Jugador {
      * @param x Coordenada X del disparo
      * @param y Coordenada Y del disparo
      */
-    public void disparar(int x, int y) {
+    public void disparar(int x, int y) throws IOException {
         
         //se va pedir un gestor para aumentar el puntaje
         pistola.dispararPistola(x, y,gestor);
+        
+        gestor.getPuntaje().guardarPuntajeMaximo();
     }
 
-    public void LanzarMisil() {
+    public void LanzarMisil() throws IOException {
         
         try{
         misil.lanzarMisil(gestor);
@@ -61,5 +64,6 @@ public class Jugador {
         
             System.out.println(" el indice del array esta fuera de rango");
         }
+        gestor.getPuntaje().guardarPuntajeMaximo();
     }
 }
