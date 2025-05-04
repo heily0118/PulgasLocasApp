@@ -125,5 +125,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         this.x = random.nextInt(anchoCampo - this.width);
         this.y = random.nextInt(altoCampo - this.height);
     }
+
+    void actualizarEstado() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
