@@ -27,7 +27,7 @@ public class GestorJuego {
         this.juegoActivo = juegoActivo;
         this.campo = campo;
         this.puntaje = puntaje;
-        this.generador = new GeneradorPulgas(campo, 5000, 10000);
+        campo.getGenerador().start();
     }
 
     // Métodos
@@ -55,7 +55,7 @@ public class GestorJuego {
 
             // "s" - para poner pulgas salten
             case KeyEvent.VK_S:
-                campo.getGenerador().start();
+                 campo.saltarPulgas(); 
 
             break;
             
@@ -69,13 +69,11 @@ public class GestorJuego {
 
     public void manejarClick(MouseEvent e) throws IOException {
  
-        /// se lleva las posiciones del mouse metodo disparar
+       
         campo.getJugador().disparar(e.getX(), e.getY());
     }
 
-    public void actualizarEstado() {
-        campo.actualizarEstado();
-    }
+
 
    
 

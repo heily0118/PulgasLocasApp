@@ -30,7 +30,7 @@ public class CampoDeBatalla {
         this.pulgas = new ArrayList<>();
         this.jugador = jugador;
         this.generador = new GeneradorPulgas(this, 5000, 10000); 
-        this.generador.start();
+        
     }
 
     // Getters y Setters
@@ -143,7 +143,9 @@ public class CampoDeBatalla {
      * Método para eliminar una pulga del campo de batalla.
      */
     public void eliminarPulga(Pulga p) {
-        pulgas.remove(p);
+        synchronized (pulgas) {
+            pulgas.remove(p);
+        }
     }
 
     /**
@@ -153,14 +155,7 @@ public class CampoDeBatalla {
         pulgas.clear();
     }
 
-    /**
-     * .
-     */
-    public void actualizarEstado() {
-        for (Pulga p : pulgas) {
-            p.actualizarEstado(); 
-        }
-    }
+
 
     /**
      * Método para dibujar todas las pulgas en el campo de batalla.
@@ -174,6 +169,16 @@ public class CampoDeBatalla {
         synchronized (pulgas) {
             for (Pulga p : pulgas) {
                 p.dibujar(g); 
+            }
+        }
+    }
+    
+   public void saltarPulgas() {
+        synchronized (pulgas) {
+            for (Pulga pulga : pulgas) {
+                if (pulga.estaViva()) {
+                    pulga.saltar(ancho, alto);
+                }
             }
         }
     }
