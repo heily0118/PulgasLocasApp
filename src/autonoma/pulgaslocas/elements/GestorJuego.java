@@ -21,17 +21,20 @@ public class GestorJuego {
     private boolean juegoActivo;
     private CampoDeBatalla campo;
     private Puntaje puntaje;
+    private GeneradorPulgas generador;
 
     public GestorJuego(boolean juegoActivo, CampoDeBatalla campo, Puntaje puntaje) {
         this.juegoActivo = juegoActivo;
         this.campo = campo;
         this.puntaje = puntaje;
+        this.generador = new GeneradorPulgas(campo, 5000, 10000);
     }
 
     // Métodos
 
     public void iniciarJuegos() {
         juegoActivo = true;
+        generador.start();
     }
 
     public void terminarJuegos() {

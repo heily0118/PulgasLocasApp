@@ -91,8 +91,10 @@ public class CampoDeBatalla {
 
        
        limiteDeMapa(p);
-        if (!colisionaConOtrasPulgas(p)) {
-            pulgas.add(p);
+        synchronized (pulgas) {
+            if (!colisionaConOtrasPulgas(p)) {
+                pulgas.add(p);
+            }
         }
     }
     
@@ -168,8 +170,11 @@ public class CampoDeBatalla {
         
         g.setColor(new Color(34, 139, 34));  
         g.fillRect(0, 0, ancho, alto); 
-        for (Pulga p : pulgas) {
-            p.dibujar(g); 
+        
+        synchronized (pulgas) {
+            for (Pulga p : pulgas) {
+                p.dibujar(g); 
+            }
         }
     }
 }

@@ -4,6 +4,8 @@
  */
 package autonoma.pulgaslocas.gui;
 
+import autonoma.pulgaslocas.elements.CampoDeBatalla;
+import autonoma.pulgaslocas.elements.GeneradorPulgas;
 import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.GraphicContainer;
 import java.awt.Graphics;
@@ -18,6 +20,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 /**
  * 
@@ -27,8 +30,11 @@ import javax.swing.ImageIcon;
  * 
  */
 public class VentanaJuego extends javax.swing.JDialog implements GraphicContainer {
-  private GestorJuego gestor;
-  private Clip clip;
+    private GestorJuego gestor;
+    private Clip clip;
+    private CampoDeBatalla campoDeBatalla;
+    private GeneradorPulgas generadorPulgas;
+    private final Timer temporizador;
     /**
      * Creates new form VentanaJuego
      */
@@ -50,6 +56,17 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
             System.out.println("Imagen no encontrada");
             
         }
+        
+        campoDeBatalla = new CampoDeBatalla(900, 900, null);
+
+        this.generadorPulgas = new GeneradorPulgas(campoDeBatalla, 5000, 10000);
+        generadorPulgas.start();
+        
+        temporizador = new Timer(100, e -> repaint());  
+        temporizador.start();  
+        
+        setDoubleBuffered(true);
+        
         sonidoBatalla();
         
         
@@ -135,6 +152,10 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         if (gestor != null) {
             gestor.dibujarElementos(g);
         }
+    }
+    
+    private void setDoubleBuffered(boolean b) {
+        
     }
 
         public void sonidoBatalla() {
