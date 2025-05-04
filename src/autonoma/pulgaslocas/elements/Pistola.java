@@ -192,7 +192,9 @@ public class Pistola {
 }
 
         
-    //metodo de sonido
+    /**
+     * Método para agregar el sonido de la pistola.
+     */
     public void sonidoPistola() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(

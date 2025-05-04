@@ -14,7 +14,10 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Maria Paz Puerta
+ * @author Maria Paz Puerta <mariap.puertaa@autonoma.edu.co>
+ * @since 20250501
+ * @see autonoma.pulgaslocas.gui.VentanaInformacionJuego
+ * @version 1.0.0
  */
 public class VentanaInformacionJuego extends javax.swing.JFrame {
     
