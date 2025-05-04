@@ -8,6 +8,7 @@ import autonoma.pulgaslocas.elements.CampoDeBatalla;
 import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.Puntaje;
 import java.io.IOException;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -20,16 +21,19 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
     private GestorJuego gestor;
     private CampoDeBatalla campo;
      private String nomJugador;
+    private Clip clip;
     /**
      * Creates new form VentanaInformacionJuego
      */
-    public VentanaInformacionJuego(VentanaPrincipal aThis, boolean par, GestorJuego gestor) {
+    public VentanaInformacionJuego(VentanaPrincipal aThis, boolean par, GestorJuego gestor, Clip clip ) {
         initComponents();
 
         this.setSize(900, 900);
         setResizable(false);
         this.setLocationRelativeTo(null);
         this.gestor = gestor;
+        
+        this.clip = clip;
         
          pedirNombreJugador();
         
@@ -165,7 +169,11 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
              return;
             }
 
-         
+         if (clip != null) {
+            clip.stop();
+            clip.close();
+        }
+            
          VentanaJuego ventana = new VentanaJuego(this, true, gestor);
          ventana.setVisible(true); 
 
@@ -173,6 +181,9 @@ public class VentanaInformacionJuego extends javax.swing.JFrame {
          
          System.out.println(gestor.getPuntaje().getPuntajeMaximo());
          PuntajeJugador.setText(gestor.getPuntaje().getPuntajeActual()+ " ");
+         
+
+        
     }//GEN-LAST:event_btnJugar1MouseClicked
 
     private void btnReiniciar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReiniciar1MouseClicked

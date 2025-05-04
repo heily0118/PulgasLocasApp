@@ -10,6 +10,14 @@ import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -25,6 +33,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     private GestorJuego gestor;
+    
+    private Clip clip;
     /**
      * Creates new form VentanaPrincipal
      */
@@ -44,6 +54,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             }
 
+       sonidoMenu();
+       
+       
+       // Agregar el listener para detener la música cuando se cierre la ventana
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                detenerSonido();
+            }
+        });
        
 
     }
@@ -96,12 +116,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuegoActionPerformed
-        VentanaInformacionJuego ventana = new VentanaInformacionJuego(this, true, gestor);
+        VentanaInformacionJuego ventana = new VentanaInformacionJuego(this, true, gestor, clip);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnJuegoActionPerformed
 
+    
+    public void sonidoMenu() {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
+                    getClass().getResource("/autonoma/PulgasLocas/sounds/Menu.wav"));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public void detenerSonido() {
+        if (clip != null) {
+            clip.stop();
+            clip.close();
+        }
+    }
+    
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Portada;
