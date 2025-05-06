@@ -73,13 +73,13 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         btnReiniciar1 = new javax.swing.JToggleButton();
         btnJugar1 = new javax.swing.JToggleButton();
         Jugador = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         nombreJugador = new javax.swing.JTextField();
         PuntajeJugador = new javax.swing.JTextField();
         btnInformacion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        TxtPuntajeMaximo = new javax.swing.JLabel();
+        BtnCorona = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,10 +109,6 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
         Jugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Jugador.jpeg"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Puntaje");
-
         nombreJugador.setEditable(false);
         nombreJugador.setBackground(new java.awt.Color(255, 255, 255));
         nombreJugador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -129,6 +125,11 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(7, 0, 22));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Informacion.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,25 +158,27 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jLabel5.setBackground(new java.awt.Color(7, 0, 22));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/crown_king_queen_icon_161518.png"))); // NOI18N
+        TxtPuntajeMaximo.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
+        TxtPuntajeMaximo.setForeground(new java.awt.Color(255, 255, 255));
+        TxtPuntajeMaximo.setText("Puntaje Maximo");
+
+        BtnCorona.setBackground(new java.awt.Color(7, 0, 22));
+        BtnCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Corona.png"))); // NOI18N
+        BtnCorona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnCoronaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReiniciar1))))
+                    .addComponent(btnJugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReiniciar1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -183,32 +186,45 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
                         .addComponent(Jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(56, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(31, 31, 31)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(nombreJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtPuntajeMaximo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(BtnCorona)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(211, 211, 211)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(BtnCorona, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtPuntajeMaximo)))
+                .addGap(258, 258, 258)
                 .addComponent(btnReiniciar1)
                 .addGap(59, 59, 59)
                 .addComponent(btnJugar1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addComponent(PuntajeJugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(Jugador)
                 .addGap(18, 18, 18)
@@ -287,6 +303,39 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, scrollPane, "Controles del Juego", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnInformacionMouseClicked
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void BtnCoronaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCoronaMouseClicked
+        
+        // Obtener el nombre y puntaje máximo
+        String nombreMaximo = this.getGestor().getPuntaje().getMaximoNombre();
+        int puntajeMaximo = this.getGestor().getPuntaje().getPuntajeMaximo();
+
+        // Crear instrucciones con formato
+        String instrucciones = String.format("""
+            --------------------------------------------------------
+                        JUGADOR: %s
+
+                        TIENE PUNTAJE MÁXIMO DE: %d
+            --------------------------------------------------------
+            """, nombreMaximo, puntajeMaximo);
+
+        // Configurar JTextArea
+        JTextArea textArea = new JTextArea(instrucciones);
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+
+        // Configurar JScrollPane
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setPreferredSize(new java.awt.Dimension(240,100 ));
+
+        // Mostrar el mensaje en un JOptionPane
+        JOptionPane.showMessageDialog(this, scrollPane, "Puntaje Máximo", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_BtnCoronaMouseClicked
+
      private void pedirNombreJugador() {
             while (true) {
             String nombre = JOptionPane.showInputDialog(this, "Ingresa tu nombre:");
@@ -310,15 +359,15 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         return gestor;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BtnCorona;
     private javax.swing.JLabel Jugador;
     private javax.swing.JTextField PuntajeJugador;
+    private javax.swing.JLabel TxtPuntajeMaximo;
     private javax.swing.JPanel btnInformacion;
     private javax.swing.JToggleButton btnJugar1;
     private javax.swing.JToggleButton btnReiniciar1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombreJugador;
     // End of variables declaration//GEN-END:variables
