@@ -17,7 +17,8 @@ import java.util.ArrayList;
 public class Jugador {
     private Pistola pistola;
     private Misil misil;
-    private GestorJuego gestor; 
+    private GestorJuego gestor;
+    private String nombre;
 
     /**
      * @param campo Campo de batalla desde donde se obtiene la lista de pulgas.

@@ -127,7 +127,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
 
         
         try {
-            gestor.manejareventoTeclado(evt);
+            gestor.manejarEventoTeclado(evt);
         } catch (IOException ex) {
             Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
         }
