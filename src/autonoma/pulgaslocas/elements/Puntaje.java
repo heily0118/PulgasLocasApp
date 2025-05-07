@@ -107,16 +107,14 @@ public class Puntaje {
      */
     public void cargarPuntajeMaximo() {
         try {
-            System.out.println("ubicacion de archivo txt");
-            System.out.println(archivoPuntajeMaximo);
+         
             ArrayList<String> lineas = lector.leer(archivoPuntajeMaximo);
             if (!lineas.isEmpty()) {
                 String[] partes = lineas.get(0).split(",");
                 if (partes.length == 2) {
                     MaximoNombre = partes[0].trim();
                     puntajeMaximo = Integer.parseInt(partes[1].trim());
-                    System.out.println("puntaje maximo");
-                    System.out.println(puntajeMaximo);
+                   
                 } else {
                     puntajeMaximo = 0;
                 }
@@ -126,11 +124,7 @@ public class Puntaje {
         } catch (Exception e) {
             puntajeMaximo = 0;
         }
-        System.out.println("puntaje maximo");
-        System.out.println(puntajeMaximo);
-        
-        System.out.println("duenio");
-        System.out.println(MaximoNombre );
+       
     }
 
     /**

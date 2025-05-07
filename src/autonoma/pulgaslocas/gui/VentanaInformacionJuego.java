@@ -306,11 +306,11 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
     private void BtnCoronaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCoronaMouseClicked
         
-        // Obtener el nombre y puntaje máximo
+        
         String nombreMaximo = this.getGestor().getPuntaje().getMaximoNombre();
         int puntajeMaximo = this.getGestor().getPuntaje().getPuntajeMaximo();
 
-        // Crear instrucciones con formato
+      
         String instrucciones = String.format("""
             --------------------------------------------------------
                         JUGADOR: %s
@@ -319,17 +319,17 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
             --------------------------------------------------------
             """, nombreMaximo, puntajeMaximo);
 
-        // Configurar JTextArea
+       
         JTextArea textArea = new JTextArea(instrucciones);
         textArea.setEditable(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
 
-        // Configurar JScrollPane
+       
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setPreferredSize(new java.awt.Dimension(240,100 ));
 
-        // Mostrar el mensaje en un JOptionPane
+        
         JOptionPane.showMessageDialog(this, scrollPane, "Puntaje Máximo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_BtnCoronaMouseClicked
 

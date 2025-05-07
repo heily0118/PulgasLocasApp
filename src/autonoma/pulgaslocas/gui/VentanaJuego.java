@@ -23,6 +23,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
@@ -39,6 +40,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     private GeneradorPulgas generadorPulgas;
     private final Timer temporizador;
     private Image buffer;
+
     /**
      * Creates new form VentanaJuego
      */
@@ -50,6 +52,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         this.setSize(900,900);
          setResizable(false);
         this.setLocationRelativeTo(null);
+        
         
         this.gestor = gestor;
         
@@ -69,7 +72,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         temporizador = new Timer(100, e -> repaint());  
         temporizador.start();  
         
-        setDoubleBuffered(true);
+        
         
         sonidoBatalla();
         
@@ -164,9 +167,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         update(g);
     }
     
-    private void setDoubleBuffered(boolean b) {
-        
-    }
+   
 
     @Override
     public void update(Graphics g) {
