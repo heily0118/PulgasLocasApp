@@ -226,6 +226,7 @@ public class CampoDeBatalla {
             p.actualizarEstado(); 
         }
     }
+    
 
     /**
      * Dibuja el fondo del campo de batalla y todas las pulgas sobre él.
@@ -239,6 +240,19 @@ public class CampoDeBatalla {
         synchronized (pulgas) {
             for (Pulga p : pulgas) {
                 p.dibujar(g); 
+            }
+        }
+    }
+    
+    /**
+     * Método para hacer que las pulgas se reubiquen en cualquier posición.
+     */
+    public void saltarPulgas() {
+        synchronized (pulgas) {
+            for (Pulga pulga : pulgas) {
+                if (pulga.estaViva()) {
+                    pulga.saltar(ancho, alto);
+                }
             }
         }
     }

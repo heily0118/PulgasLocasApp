@@ -86,7 +86,7 @@ public class GestorJuego {
                 break;
 
             case KeyEvent.VK_S:
-                campo.getGenerador().start();
+                campo.saltarPulgas(); 
                 break;
 
             case KeyEvent.VK_SPACE:
