@@ -60,12 +60,12 @@ public class Jugador {
 
     public void LanzarMisil() throws IOException {
         
-     try {
-        misil.lanzarMisil(gestor);
-    } catch (IndexOutOfBoundsException e) {
-        JOptionPane.showMessageDialog(null, "El índice del array esta fuera de rango", 
-                                      "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    gestor.getPuntaje().guardarPuntajeMaximo();
+        try {
+           misil.lanzarMisil(gestor);
+       } catch (IndexOutOfBoundsException e) {
+           JOptionPane.showMessageDialog(null, "El indice del array esta fuera de rango", 
+                                         "Error", JOptionPane.ERROR_MESSAGE);
+       }
+       gestor.getPuntaje().guardarPuntajeMaximo();
     }
 }
