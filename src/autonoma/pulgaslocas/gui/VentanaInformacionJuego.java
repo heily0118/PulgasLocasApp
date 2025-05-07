@@ -25,7 +25,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
     
     private GestorJuego gestor;
     private CampoDeBatalla campo;
-     private String nomJugador;
+    private String nomJugador;
     private Clip clip;
 
     
@@ -160,7 +160,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
         TxtPuntajeMaximo.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
         TxtPuntajeMaximo.setForeground(new java.awt.Color(255, 255, 255));
-        TxtPuntajeMaximo.setText("Puntaje Maximo");
+        TxtPuntajeMaximo.setText("Puntaje Máximo");
 
         BtnCorona.setBackground(new java.awt.Color(7, 0, 22));
         BtnCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/Corona.png"))); // NOI18N
@@ -198,25 +198,22 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
                 .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(TxtPuntajeMaximo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(BtnCorona)))
-                .addContainerGap())
+                        .addGap(46, 46, 46)
+                        .addComponent(BtnCorona))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(BtnCorona, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtPuntajeMaximo)))
+                        .addComponent(TxtPuntajeMaximo))
+                    .addComponent(btnInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(258, 258, 258)
                 .addComponent(btnReiniciar1)
                 .addGap(59, 59, 59)
