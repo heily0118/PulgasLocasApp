@@ -110,10 +110,20 @@ public class Pistola {
         this.y = y;
     }
 
+    /**
+     * Obtiene la lista de pulgas.
+     * 
+     * @return Retorna la lista de pulgas.
+     */
     public ArrayList<Pulga> getPulgas() {
         return pulgas;
     }
 
+    /**
+     * Establece la lista de pulgas.
+     * 
+     * @param pulgas Es la lista de pulgas.
+     */
     public void setPulgas(ArrayList<Pulga> pulgas) {
         this.pulgas = pulgas;
     }
@@ -131,65 +141,65 @@ public class Pistola {
      * @param x Es la coordenada X donde se realiza el disparo.
      * @param y Es la coordenada Y donde se realiza el disparo. 
      */
-        public void dispararPistola(int x, int y, GestorJuego gestor) {
+    public void dispararPistola(int x, int y, GestorJuego gestor) {
            
-          sonidoPistola();
-          System.out.println("metodo de disparar Pistola");
+        sonidoPistola();
+        System.out.println("metodo de disparar Pistola");
           
-          for (int i = pulgas.size() - 1; i >= 0; i--) { // Iterar de atrás hacia adelante
+        for (int i = pulgas.size() - 1; i >= 0; i--) { // Iterar de atrás hacia adelante
               
-              System.out.println("---------------------------------------------------");
-              System.out.println("Mouse ");
-              System.out.println("x" + x + "y" +  y);
+            System.out.println("---------------------------------------------------");
+            System.out.println("Mouse ");
+            System.out.println("x" + x + "y" +  y);
 
               
-              Pulga pulga = pulgas.get(i);
+            Pulga pulga = pulgas.get(i);
              
               
-              System.out.println("posiciones de la pulga # "+ i);
-              System.out.println("inicio x " + pulga.getX() + "  inicio y  " + pulga.getY());
+            System.out.println("posiciones de la pulga # "+ i);
+            System.out.println("inicio x " + pulga.getX() + "  inicio y  " + pulga.getY());
               
-              System.out.println("Ancho  " + (pulga.getX() + pulga.getWidth()) + " Alto  " + (pulga.getY() + pulga.getHeight()));
+            System.out.println("Ancho  " + (pulga.getX() + pulga.getWidth()) + " Alto  " + (pulga.getY() + pulga.getHeight()));
               
-              // Comprobación de si el mouse está encima de la pulga
-              if (x < pulga.getX() + pulga.getWidth() && x > pulga.getX() &&
-                  y < pulga.getY() + pulga.getHeight() && y > pulga.getY()) {
+            // Comprobación de si el mouse está encima de la pulga
+            if (x < pulga.getX() + pulga.getWidth() && x > pulga.getX() &&
+                y < pulga.getY() + pulga.getHeight() && y > pulga.getY()) {
 
-                  System.out.println("El mouse esta encima de la pulga");
-                  System.out.println("Vida: " + pulga.getVida());
+                System.out.println("El mouse esta encima de la pulga");
+                System.out.println("Vida: " + pulga.getVida());
                   
                   
-                  // Convertir la pulga mutante en normal
-                  if (pulga instanceof PulgaMutante) {
+                // Convertir la pulga mutante en normal
+                if (pulga instanceof PulgaMutante) {
                     
                     pulgas.remove(i);
                     PulgaNormal nueva = new PulgaNormal(1, true, null, pulga.getX(), pulga.getY(), pulga.getHeight(), pulga.getWidth());
                     pulgas.add(nueva);
                     /// se aumenta 100
                     gestor.getPuntaje().incrementarPuntajeMultante();
-                    }
-                  else{
-                      /// se aumenta 50
+                }
+                else{
+                    /// se aumenta 50
                     gestor.getPuntaje().incrementarPuntajeNormal();
-                  }
+                }
 
-                  // Si el mouse está encima, se avisa que fue herida
-                  pulga.recibirImpacto();
-                  System.out.println("Vida despues del impacto: " + pulga.getVida());
+                // Si el mouse está encima, se avisa que fue herida
+                pulga.recibirImpacto();
+                System.out.println("Vida despues del impacto: " + pulga.getVida());
 
-                  if (!pulga.estaViva()) {
+                if (!pulga.estaViva()) {
                       
-                      pulgas.remove(i); // Eliminar la pulga
-                      System.out.println("Pulga destruida!");
-                      pulga.sonidoPulga();
-                  }
+                    pulgas.remove(i); // Eliminar la pulga
+                    System.out.println("Pulga destruida!");
+                    pulga.sonidoPulga();
+                }
                   
-                  System.out.println("puntaje actual");
-                  System.out.println(gestor.getPuntaje().getPuntajeActual());
-                  break; // Salir del bucle después de procesar la pulga
-              }
-          }
-}
+                System.out.println("puntaje actual");
+                System.out.println(gestor.getPuntaje().getPuntajeActual());
+                break; // Salir del bucle después de procesar la pulga
+            }
+        }
+    }
 
         
     /**

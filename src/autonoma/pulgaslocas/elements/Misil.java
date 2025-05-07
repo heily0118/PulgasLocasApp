@@ -101,50 +101,50 @@ public class Misil {
     * Lanza el misil Pulgosón.
     * Destruye el 50% de las pulgas aleatoriamente seleccionadas.
     */
-   public void lanzarMisil(GestorJuego gestor) {
+    public void lanzarMisil(GestorJuego gestor) {
        
        
-       // Verificar si hay pulgas en el campo de batalla
-       if (pulgas == null || pulgas.isEmpty()) {
+        // Verificar si hay pulgas en el campo de batalla
+        if (pulgas == null || pulgas.isEmpty()) {
            System.out.println("No hay pulgas para destruir.");
            return;
-       }
+        }
        
-       sonidoMisil();
-       // Mezclar aleatoriamente la lista de pulgas
-       Collections.shuffle(pulgas);
+        sonidoMisil();
+        // Mezclar aleatoriamente la lista de pulgas
+        Collections.shuffle(pulgas);
 
-       // Calcular la cantidad de pulgas a eliminar
-       int cantidadAEliminar = pulgas.size() / 2;
+        // Calcular la cantidad de pulgas a eliminar
+        int cantidadAEliminar = pulgas.size() / 2;
 
-       // Iterar sobre la lista de pulgas y eliminar/convertir
-       for (int i = 0; i < cantidadAEliminar; i++) {
-           Pulga p = pulgas.get(i);
+        // Iterar sobre la lista de pulgas y eliminar/convertir
+        for (int i = 0; i < cantidadAEliminar; i++) {
+            Pulga p = pulgas.get(i);
 
-           if (p instanceof PulgaMutante) {
+            if (p instanceof PulgaMutante) {
                // Convertir la pulga mutante en normal
                /// se aumenta 100
-               gestor.getPuntaje().incrementarPuntajeMultante();
-               PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
-               pulgas.add(nueva);
-               pulgas.remove(i);
-               System.out.println("Pulga mutante convertida en normal en (" + p.getX() + ", " + p.getY() + ")");
-           } else if (p instanceof PulgaNormal) {
-               // Eliminar la pulga normal
-               System.out.println("Pulga normal destruida en (" + p.getX() + ", " + p.getY() + ")");
+                gestor.getPuntaje().incrementarPuntajeMultante();
+                PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
+                pulgas.add(nueva);
+                pulgas.remove(i);
+                System.out.println("Pulga mutante convertida en normal en (" + p.getX() + ", " + p.getY() + ")");
+            } else if (p instanceof PulgaNormal) {
+                // Eliminar la pulga normal
+                System.out.println("Pulga normal destruida en (" + p.getX() + ", " + p.getY() + ")");
                
                
-               /// se aumenta 50
-               gestor.getPuntaje().incrementarPuntajeNormal();
+                /// se aumenta 50
+                gestor.getPuntaje().incrementarPuntajeNormal();
                
-               pulgas.remove(i);
-               i--; // Decrementar el índice para compensar la eliminación
-           }
-       }
+                pulgas.remove(i);
+                i--; // Decrementar el índice para compensar la eliminación
+            }
+        }
        
-       System.out.println("puntaje");
-       System.out.println(gestor.getPuntaje().getPuntajeActual());
-   }
+        System.out.println("puntaje");
+        System.out.println(gestor.getPuntaje().getPuntajeActual());
+    }
    
    
     /**
@@ -162,6 +162,4 @@ public class Misil {
             e.printStackTrace();
         }
     }
-    
-    
 }
