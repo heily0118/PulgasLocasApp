@@ -25,12 +25,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @since 20250430
  * @version 1.0.0
  */
-   public abstract class Pulga extends SpriteMobile {
+   public abstract class Pulga extends SpriteMobile implements Runnable {
 
-  
+    protected long delay;
     protected int vida;            
     protected boolean estaviva;    
-    protected Image pulgaImage;   
+    protected Image pulgaImage;  
+    private boolean running;
+    private boolean paused;
 
   
     public Pulga(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {
@@ -38,6 +40,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         this.vida = vida;
         this.estaviva = estaviva;
         this.pulgaImage = pulgaImage;
+        
+        setStep(10);
+        setDelay(100);
+        
+        running = false;
+        paused = false;
     }
 
     
@@ -130,4 +138,43 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    @Override
+    public void run() {
+        running = true;
+        
+        while(isRunning())
+        {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException ex) {}
+            
+            if(isPaused())
+                continue;
+            
+            move();
+        }
+    }
+    
+    public boolean isRunning() {
+        return running;
+    }
+    
+    
+    public long getDelay() {
+        return delay;
+    }
+
+    public void setDelay(long delay) {
+        this.delay = delay;
+    }
+    
+    public boolean isPaused() {
+       return paused;
+    }
+    
+    
+    public void pause() {
+        this.paused = true;
+    
+       }
 }
