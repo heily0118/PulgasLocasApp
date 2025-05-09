@@ -6,6 +6,7 @@ package autonoma.pulgaslocas.elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
@@ -17,7 +18,8 @@ import java.util.ArrayList;
 public class Jugador {
     private Pistola pistola;
     private Misil misil;
-    private GestorJuego gestor; 
+    private GestorJuego gestor;
+    private String nombre;
 
     /**
      * @param campo Campo de batalla desde donde se obtiene la lista de pulgas.
@@ -50,7 +52,7 @@ public class Jugador {
      */
     public void disparar(int x, int y) throws IOException {
         
-        //se va pedir un gestor para aumentar el puntaje
+    
         pistola.dispararPistola(x, y,gestor);
         
         gestor.getPuntaje().guardarPuntajeMaximo();
@@ -58,12 +60,12 @@ public class Jugador {
 
     public void LanzarMisil() throws IOException {
         
-        try{
-        misil.lanzarMisil(gestor);
-        }catch(IndexOutOfBoundsException e){
-        
-            System.out.println(" el indice del array esta fuera de rango");
-        }
-        gestor.getPuntaje().guardarPuntajeMaximo();
+        try {
+           misil.lanzarMisil(gestor);
+       } catch (IndexOutOfBoundsException e) {
+           JOptionPane.showMessageDialog(null, "El indice del array esta fuera de rango", 
+                                         "Error", JOptionPane.ERROR_MESSAGE);
+       }
+       gestor.getPuntaje().guardarPuntajeMaximo();
     }
 }

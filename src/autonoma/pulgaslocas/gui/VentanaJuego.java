@@ -9,6 +9,7 @@ import autonoma.pulgaslocas.elements.GeneradorPulgas;
 import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.GraphicContainer;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -22,6 +23,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
@@ -37,6 +39,8 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     private CampoDeBatalla campoDeBatalla;
     private GeneradorPulgas generadorPulgas;
     private final Timer temporizador;
+    private Image buffer;
+
     /**
      * Creates new form VentanaJuego
      */
@@ -48,6 +52,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         this.setSize(900,900);
          setResizable(false);
         this.setLocationRelativeTo(null);
+        
         
         this.gestor = gestor;
         
@@ -67,7 +72,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         temporizador = new Timer(100, e -> repaint());  
         temporizador.start();  
         
-        setDoubleBuffered(true);
+        
         
         sonidoBatalla();
         
@@ -125,7 +130,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
 
         
         try {
-            gestor.manejareventoTeclado(evt);
+            gestor.manejarEventoTeclado(evt);
         } catch (IOException ex) {
             Logger.getLogger(VentanaJuego.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -159,18 +164,31 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
  
     @Override
     public void paint(Graphics g) {
-        super.paint(g); 
-
-        if (gestor != null) {
-            gestor.dibujarElementos(g);
-        }
+        update(g);
     }
     
-    private void setDoubleBuffered(boolean b) {
-        
-    }
+   
 
-        public void sonidoBatalla() {
+    @Override
+    public void update(Graphics g) {
+        if (buffer == null || buffer.getWidth(null) != getWidth() || buffer.getHeight(null) != getHeight()) {
+        buffer = createImage(getWidth(), getHeight());
+        }
+
+        Graphics gBuffer = buffer.getGraphics();
+
+        dibujarEscenario(gBuffer);
+
+        g.drawImage(buffer, 0, 0, this);
+        gBuffer.dispose();
+    }
+    
+    private void dibujarEscenario(Graphics g) {
+        gestor.dibujarElementos(g);
+    }
+    
+    
+    public void sonidoBatalla() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
                     getClass().getResource("/autonoma/PulgasLocas/sounds/Batalla.wav"));

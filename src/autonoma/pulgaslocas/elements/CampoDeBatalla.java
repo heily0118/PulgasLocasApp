@@ -4,6 +4,7 @@
  */
 package autonoma.pulgaslocas.elements;
 
+import autonoma.pulgaslocas.exceptions.PosicionFueraDeLimitesException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -147,6 +148,10 @@ public class CampoDeBatalla {
      * @param y         Posición Y inicial
      */
     public void agregarPulga(boolean esMutante, int x, int y) {
+        if (x < 0 || x >= ancho || y < 0 || y >= alto) {
+            throw new PosicionFueraDeLimitesException(); 
+        }
+
         Pulga p;
         if (esMutante) {
             p = new PulgaMutante(2, true, null, x, y, 80, 80); 
@@ -154,11 +159,12 @@ public class CampoDeBatalla {
             p = new PulgaNormal(1, true, null, x, y, 80, 80); 
         }
 
-        limiteDeMapa(p);
+        limiteDeMapa(p); 
         synchronized (pulgas) {
             if (!colisionaConOtrasPulgas(p)) {
                 pulgas.add(p);
             }
+
         }
     }
 
@@ -226,6 +232,7 @@ public class CampoDeBatalla {
             p.actualizarEstado(); 
         }
     }
+    
 
     /**
      * Dibuja el fondo del campo de batalla y todas las pulgas sobre él.
@@ -239,6 +246,19 @@ public class CampoDeBatalla {
         synchronized (pulgas) {
             for (Pulga p : pulgas) {
                 p.dibujar(g); 
+            }
+        }
+    }
+    
+    /**
+     * Método para hacer que las pulgas se reubiquen en cualquier posición.
+     */
+    public void saltarPulgas() {
+        synchronized (pulgas) {
+            for (Pulga pulga : pulgas) {
+                if (pulga.estaViva()) {
+                    pulga.saltar(ancho, alto);
+                }
             }
         }
     }

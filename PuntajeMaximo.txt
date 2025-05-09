@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 kamii,2300
+=======
+Maria,2300
+>>>>>>> eb8e44042ed4e5e10c4fd284302b4a3fdd85b5bd

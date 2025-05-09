@@ -75,7 +75,7 @@ public class GestorJuego {
      * @param e Evento de teclado
      * @throws IOException Si ocurre un error al lanzar el misil
      */
-    public void manejareventoTeclado(KeyEvent e) throws IOException {
+    public void manejarEventoTeclado(KeyEvent e) throws IOException {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_P:
                 agregarPulga(false);
@@ -86,7 +86,7 @@ public class GestorJuego {
                 break;
 
             case KeyEvent.VK_S:
-                campo.getGenerador().start();
+                campo.saltarPulgas(); 
                 break;
 
             case KeyEvent.VK_SPACE:

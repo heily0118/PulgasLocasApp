@@ -54,7 +54,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             }
 
-       sonidoMenu();
+       reproducirSonido();
        
        
        // Agregar el listener para detener la música cuando se cierre la ventana
@@ -123,7 +123,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnJuegoActionPerformed
 
     
-    public void sonidoMenu() {
+    public void reproducirSonido() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
                     getClass().getResource("/autonoma/PulgasLocas/sounds/Menu.wav"));
