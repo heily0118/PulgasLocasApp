@@ -8,6 +8,8 @@ import autonoma.pulgaslocas.elements.CampoDeBatalla;
 import autonoma.pulgaslocas.elements.GeneradorPulgas;
 import autonoma.pulgaslocas.elements.GestorJuego;
 import autonoma.pulgaslocas.elements.GraphicContainer;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -166,6 +168,13 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     @Override
     public void paint(Graphics g) {
         update(g);
+        
+        
+        // Dibuja el logo/texto en la parte superior
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString("PUNTAJE",25, 80);
+        g.drawString(String.valueOf(gestor.getPuntaje().getPuntajeActual()), 150, 80);
     }
     
    
