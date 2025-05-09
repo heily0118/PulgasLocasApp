@@ -77,6 +77,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         sonidoBatalla();
         
         
+       
         // Agregar el listener para detener la música cuando se cierre la ventana
         this.addWindowListener(new WindowAdapter() {
             @Override

@@ -138,7 +138,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    @Override
+   @Override
     public void run() {
         running = true;
         
@@ -154,7 +154,51 @@ import javax.sound.sampled.UnsupportedAudioFileException;
             move();
         }
     }
+    private boolean move()
+    {
+    int direction = (int)(Math.random() * 4);
+        
+        int nx = x;
+        int ny = y;
+        
+        switch(direction)
+        {
+            case 0:     // UP
+                ny -= step;
+            break;
+
+            case 1:     // DOWN
+                ny += step;
+            break;
+
+            case 2:     // LEFT
+                nx -= step;
+            break;
+
+            case 3:     // RIGHT
+                nx += step;
+            break;
+            
+            default:
+                System.err.println("ERROR: Troll.move  Unknown direction.");
+            break;
+        }
+        
+        if(!isOutOfGraphicContainer(nx, ny, width, height))
+        {
+            x = nx;
+            y = ny;
+
+            if(gameContainer != null)
+
+            
+            return true;
+        }
+        
+        return false; 
     
+    }
+   
     public boolean isRunning() {
         return running;
     }

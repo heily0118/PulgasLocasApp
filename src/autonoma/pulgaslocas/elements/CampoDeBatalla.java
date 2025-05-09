@@ -243,9 +243,12 @@ public class CampoDeBatalla {
         g.setColor(new Color(34, 139, 34));  
         g.fillRect(0, 0, ancho, alto); 
         
+        ///cuando se dibuje las pulgas ellas se comienan a vomer
         synchronized (pulgas) {
             for (Pulga p : pulgas) {
-                p.dibujar(g); 
+                p.dibujar(g);
+                
+//              p.run();
             }
         }
     }
