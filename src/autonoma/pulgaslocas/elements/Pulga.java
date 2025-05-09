@@ -129,9 +129,11 @@ import javax.sound.sampled.UnsupportedAudioFileException;
     public void saltar(int anchoCampo, int altoCampo) {
         Random random = new Random();
 
-       
-        this.x = random.nextInt(anchoCampo - this.width);
-        this.y = random.nextInt(altoCampo - this.height);
+        int maxX = Math.max(1, anchoCampo - this.width);
+        int maxY = Math.max(1, altoCampo - this.height);
+
+       this.x = random.nextInt(maxX);
+       this.y = random.nextInt(maxY);
     }
 
     void actualizarEstado() {
@@ -221,4 +223,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         this.paused = true;
     
        }
+    
+    
 }

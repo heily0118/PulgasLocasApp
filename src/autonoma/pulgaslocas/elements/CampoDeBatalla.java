@@ -176,11 +176,14 @@ public class CampoDeBatalla {
      */
     private boolean colisionaConOtrasPulgas(Pulga nuevaPulga) {
         for (Pulga pulga : pulgas) {
-            if (nuevaPulga.getX() < pulga.getX() + pulga.getWidth() &&
-                nuevaPulga.getX() + 80 > pulga.getX() &&
+            // Evita comparar la pulga consigo misma
+            if (pulga != nuevaPulga) {
+                if (nuevaPulga.getX() < pulga.getX() + pulga.getWidth() &&
+                nuevaPulga.getX() + nuevaPulga.getWidth() > pulga.getX() &&
                 nuevaPulga.getY() < pulga.getY() + pulga.getHeight() &&
-                nuevaPulga.getY() + 80 > pulga.getY()) {
-                return true;
+                nuevaPulga.getY() + nuevaPulga.getHeight() > pulga.getY()) {
+                    return true;
+                }
             }
         }
         return false;
@@ -254,15 +257,35 @@ public class CampoDeBatalla {
     }
     
     /**
-     * Método para hacer que las pulgas se reubiquen en cualquier posición.
+     * Método para hacer que las pulgas se reubiquen en cualquier posición, sin colisionarse unas pulgas con otras.
      */
     public void saltarPulgas() {
         synchronized (pulgas) {
             for (Pulga pulga : pulgas) {
                 if (pulga.estaViva()) {
-                    pulga.saltar(ancho, alto);
+                    int intentos = 0;
+                    final int MAX_INTENTOS = 10;
+                    boolean saltoExitoso = false;
+
+                    int posXOriginal = pulga.getX();
+                    int posYOriginal = pulga.getY();
+
+                    while (intentos < MAX_INTENTOS && !saltoExitoso) {
+                        pulga.saltar(ancho, alto);
+
+                        if (!colisionaConOtrasPulgas(pulga)) {
+                            saltoExitoso = true;
+                        } else {
+                            intentos++;
+                        }
+                    }
+                    
+                    if (!saltoExitoso) {
+                        pulga.setX(posXOriginal);
+                        pulga.setY(posYOriginal);
+                    }
                 }
             }
         }
-    }
+    }  
 }
