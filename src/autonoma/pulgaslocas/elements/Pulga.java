@@ -138,5 +138,43 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    @Override
+    public void run() {
+        running = true;
+        
+        while(isRunning())
+        {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException ex) {}
+            
+            if(isPaused())
+                continue;
+            
+            move();
+        }
+    }
+    
+    public boolean isRunning() {
+        return running;
+    }
+    
+    
+    public long getDelay() {
+        return delay;
+    }
 
+    public void setDelay(long delay) {
+        this.delay = delay;
+    }
+    
+    public boolean isPaused() {
+       return paused;
+    }
+    
+    
+    public void pause() {
+        this.paused = true;
+    
+       }
 }
