@@ -128,7 +128,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
       if (evt.getKeyCode() == KeyEvent.VK_Q) {
-        System.exit(0);
+        this.dispose(); // Cierra solo la ventana actual
     }
 
         
