@@ -105,12 +105,7 @@ public class GestorJuego {
         campo.getJugador().disparar(e.getX(), e.getY());
     }
 
-    /**
-     * Actualiza el estado de todos los elementos del campo.
-     */
-    public void actualizarEstado() {
-        campo.actualizarEstado();
-    }
+ 
 
     /**
      * Verifica si el juego está activo.

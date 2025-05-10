@@ -1,6 +1,5 @@
 package autonoma.pulgaslocas.elements;
 
-import autonoma.pulgaslocas.elements.Pulga;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -63,23 +62,37 @@ public class PulgaNormal extends Pulga {
 
     @Override
     public void mover() {
-       if (estaviva) {
-        
-            double direction = Math.random();  
+        if (estaviva) {
 
-            if (direction < 0.5) {
+            // Movimiento en el eje X
+            double directionX = Math.random();  
+            if (directionX < 0.5) {
                 x += 5;  
             } else {
                 x -= 5;  
             }
 
-            
+            // Movimiento en el eje Y
+            double directionY = Math.random();  
+            if (directionY < 0.5) {
+                y += 5;  
+            } else {
+                y -= 5;  
+            }
+
+            // Limitar la posición X
             if (x < 0) {
                 x = 0;  
             } else if (x > 600) {  
                 x = 600;  
             }
+
+            // Limitar la posición Y
+            if (y < 0) {
+                y = 0;  
+            } else if (y > 400) {  
+                y = 400;  
+            }
         }
-    
     }
 }

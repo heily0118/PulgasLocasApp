@@ -101,7 +101,7 @@ public class Misil {
     * Destruye el 50% de las pulgas aleatoriamente seleccionadas.
     */
     public void lanzarMisil(GestorJuego gestor) {
-        if (pulgas == null || pulgas.isEmpty()) {
+         if (pulgas == null || pulgas.isEmpty()) {
             System.out.println("No hay pulgas para destruir.");
             return;
         }
@@ -111,9 +111,8 @@ public class Misil {
 
         int cantidadAEliminar = pulgas.size() / 2; 
 
-        // Lista temporal para almacenar las pulgas a eliminar
         ArrayList<Pulga> pulgasAEliminar = new ArrayList<>();
-        
+
         for (int i = 0; i < cantidadAEliminar; i++) {
             if (i >= pulgas.size()) {
                 break;
@@ -122,20 +121,28 @@ public class Misil {
             Pulga p = pulgas.get(i);
 
             if (p instanceof PulgaMutante) {
+                
                 PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
-                pulgasAEliminar.add(p);
-                pulgas.add(nueva);
-                System.out.println("Pulga mutante convertida en normal en (" + p.getX() + ", " + p.getY() + ")");
-                gestor.getPuntaje().incrementarPuntajeMultante();
+                pulgasAEliminar.add(p); 
+                pulgas.add(nueva); 
+
+             
+                gestor.getPuntaje().incrementarPuntajeMutante();
+
+               
+                Thread hilo = new Thread(nueva);
+                hilo.start();
             } else if (p instanceof PulgaNormal) {
                 pulgasAEliminar.add(p);
-                System.out.println("Pulga normal destruida en (" + p.getX() + ", " + p.getY() + ")");
+
+               
                 gestor.getPuntaje().incrementarPuntajeNormal();
             }
         }
+
+       
         pulgas.removeAll(pulgasAEliminar);
-        System.out.println("puntaje");
-        System.out.println(gestor.getPuntaje().getPuntajeActual());
+      
     }
    
    

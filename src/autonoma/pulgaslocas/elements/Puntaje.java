@@ -81,7 +81,7 @@ public class Puntaje {
     /**
      * Incrementa en uno el puntaje actual del jugador.
      */
-    public void incrementarPuntajeMultante() {
+    public void incrementarPuntajeMutante() {
         puntajeActual += 100;
     }
     

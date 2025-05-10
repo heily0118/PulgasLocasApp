@@ -143,8 +143,7 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     }//GEN-LAST:event_formKeyPressed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        
-        System.out.println("x" + evt.getX() + "y" + evt.getY());
+      
         try {
             gestor.manejarClick(evt);
         } catch (IOException ex) {
@@ -170,7 +169,6 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         update(g);
         
         
-        // Dibuja el logo/texto en la parte superior
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 24));
         g.drawString("PUNTAJE",25, 80);

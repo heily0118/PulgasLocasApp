@@ -33,9 +33,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
     protected Image pulgaImage;  
     private boolean running;
     private boolean paused;
+    private  int velocidad;
 
   
-    public Pulga(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {
+    public Pulga( int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {
         super(x, y, height, width);
         this.vida = vida;
         this.estaviva = estaviva;
@@ -48,16 +49,25 @@ import javax.sound.sampled.UnsupportedAudioFileException;
         paused = false;
     }
 
-    
+    public void setDelay(long delay) {
+        this.delay = delay;
+    }
     public int getVida() {
         return vida;
+    }
+    
+    public boolean isRunning() {
+        return running;
     }
 
     public void setVida(int vida) {
         this.vida = vida;
     }
 
-    public boolean isEstaviva() {
+    public boolean isPaused() {
+        return paused;
+    }
+        public boolean isEstaviva() {
         return estaviva;
     }
 
@@ -136,9 +146,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
        this.y = random.nextInt(maxY);
     }
 
-    void actualizarEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
     
    @Override
     public void run() {
@@ -153,76 +161,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
             if(isPaused())
                 continue;
             
-            move();
+            mover();
         }
     }
-    private boolean move()
-    {
-    int direction = (int)(Math.random() * 4);
-        
-        int nx = x;
-        int ny = y;
-        
-        switch(direction)
-        {
-            case 0:     // UP
-                ny -= step;
-            break;
 
-            case 1:     // DOWN
-                ny += step;
-            break;
-
-            case 2:     // LEFT
-                nx -= step;
-            break;
-
-            case 3:     // RIGHT
-                nx += step;
-            break;
-            
-            default:
-                System.err.println("ERROR: Troll.move  Unknown direction.");
-            break;
-        }
-        
-        if(!isOutOfGraphicContainer(nx, ny, width, height))
-        {
-            x = nx;
-            y = ny;
-
-            if(gameContainer != null)
-
-            
-            return true;
-        }
-        
-        return false; 
-    
-    }
-   
-    public boolean isRunning() {
-        return running;
-    }
-    
-    
-    public long getDelay() {
-        return delay;
-    }
-
-    public void setDelay(long delay) {
-        this.delay = delay;
-    }
-    
-    public boolean isPaused() {
-       return paused;
-    }
-    
-    
-    public void pause() {
-        this.paused = true;
-    
-       }
-    
-    
 }

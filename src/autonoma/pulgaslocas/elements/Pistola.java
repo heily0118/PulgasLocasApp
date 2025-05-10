@@ -11,6 +11,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -142,61 +143,57 @@ public class Pistola {
      * @param y Es la coordenada Y donde se realiza el disparo. 
      */
     public void dispararPistola(int x, int y, GestorJuego gestor) {
-           
-        sonidoPistola();
-        System.out.println("metodo de disparar Pistola");
-          
-        for (int i = pulgas.size() - 1; i >= 0; i--) { // Iterar de atrás hacia adelante
-              
-            System.out.println("---------------------------------------------------");
-            System.out.println("Mouse ");
-            System.out.println("x" + x + "y" +  y);
+      sonidoPistola();
 
-              
+        for (int i = pulgas.size() - 1; i >= 0; i--) {
             Pulga pulga = pulgas.get(i);
-             
-              
-            System.out.println("posiciones de la pulga # "+ i);
-            System.out.println("inicio x " + pulga.getX() + "  inicio y  " + pulga.getY());
-              
-            System.out.println("Ancho  " + (pulga.getX() + pulga.getWidth()) + " Alto  " + (pulga.getY() + pulga.getHeight()));
-              
-            // Comprobación de si el mouse está encima de la pulga
+
             if (x < pulga.getX() + pulga.getWidth() && x > pulga.getX() &&
                 y < pulga.getY() + pulga.getHeight() && y > pulga.getY()) {
 
-                System.out.println("El mouse esta encima de la pulga");
-                System.out.println("Vida: " + pulga.getVida());
-                  
-                  
-                // Convertir la pulga mutante en normal
                 if (pulga instanceof PulgaMutante) {
-                    
-                    pulgas.remove(i);
-                    PulgaNormal nueva = new PulgaNormal(1, true, null, pulga.getX(), pulga.getY(), pulga.getHeight(), pulga.getWidth());
-                    pulgas.add(nueva);
-                    /// se aumenta 100
-                    gestor.getPuntaje().incrementarPuntajeMultante();
-                }
-                else{
-                    /// se aumenta 50
+                
+                    PulgaNormal pulgaNormal = new PulgaNormal(
+                        1,  
+                        true,  
+                        new ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/pulgaNormal.png")).getImage(),
+                        pulga.getX(),
+                        pulga.getY(),
+                        pulga.getHeight(),
+                        pulga.getWidth()
+                    );
+
+
+                    pulgas.set(i, pulgaNormal);
+
+
+                    if (!pulgaNormal.isRunning()) {
+                        Thread hilo = new Thread(pulgaNormal);
+                        hilo.start();
+                    }
+
+                    gestor.getPuntaje().incrementarPuntajeMutante();
+                    pulgaNormal.sonidoPulga(); 
+                } else {
                     gestor.getPuntaje().incrementarPuntajeNormal();
-                }
-
-                // Si el mouse está encima, se avisa que fue herida
-                pulga.recibirImpacto();
-                System.out.println("Vida despues del impacto: " + pulga.getVida());
-
-                if (!pulga.estaViva()) {
-                      
-                    pulgas.remove(i); // Eliminar la pulga
-                    System.out.println("Pulga destruida!");
                     pulga.sonidoPulga();
                 }
-                  
-                System.out.println("puntaje actual");
-                System.out.println(gestor.getPuntaje().getPuntajeActual());
-                break; // Salir del bucle después de procesar la pulga
+
+
+                pulga.recibirImpacto();
+
+               
+                if (pulga.estaViva() && !pulga.isRunning()) {
+                    Thread hilo = new Thread(pulga);
+                    hilo.start();
+                }
+
+                if (!pulga.estaViva()) {
+
+                    pulgas.remove(i);
+                }
+
+                break; 
             }
         }
     }
