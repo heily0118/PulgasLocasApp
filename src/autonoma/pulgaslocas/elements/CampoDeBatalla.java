@@ -154,9 +154,9 @@ public class CampoDeBatalla {
 
             Pulga p;
             if (esMutante) {
-                p = new PulgaMutante(2, true, null, x, y, 80, 80); 
+                p = new PulgaMutante(2, true, null, x, y, 80, 80, this); 
             } else {
-                p = new PulgaNormal(1, true, null, x, y, 80, 80); 
+                p = new PulgaNormal(1, true, null, x, y, 80, 80, this); 
             }
 
             limiteDeMapa(p); 
@@ -176,7 +176,7 @@ public class CampoDeBatalla {
      * @param nuevaPulga Pulga a verificar
      * @return true si hay colisión, false si no
      */
-    private boolean colisionaConOtrasPulgas(Pulga nuevaPulga) {
+    public boolean colisionaConOtrasPulgas(Pulga nuevaPulga) {
         for (Pulga pulga : pulgas) {
             // Evita comparar la pulga consigo misma
             if (pulga != nuevaPulga) {
@@ -199,17 +199,17 @@ public class CampoDeBatalla {
     public void limiteDeMapa(Sprite pulga) {
         int posicionX = pulga.getX();
         int posicionY = pulga.getY();
-
+        
         if (posicionX < 0) {
             pulga.setX(0);
-        } else if (posicionX > 800 - pulga.getWidth()) {
-            pulga.setX(800 - pulga.getWidth());
+        } else if (posicionX > ancho - pulga.getWidth()) {  
+            pulga.setX(ancho - pulga.getWidth());
         }
 
         if (posicionY < 0) {
             pulga.setY(0);
-        } else if (posicionY > 800 - pulga.getHeight()) {
-            pulga.setY(800 - pulga.getHeight());
+        } else if (posicionY > alto - pulga.getHeight()) { 
+            pulga.setY(alto - pulga.getHeight());
         }
     }
 
@@ -279,6 +279,8 @@ public class CampoDeBatalla {
                         pulga.setX(posXOriginal);
                         pulga.setY(posYOriginal);
                     }
+                    
+                    limiteDeMapa(pulga);
                 }
             }
         }

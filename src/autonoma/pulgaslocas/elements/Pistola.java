@@ -160,7 +160,8 @@ public class Pistola {
                         pulga.getX(),
                         pulga.getY(),
                         pulga.getHeight(),
-                        pulga.getWidth()
+                        pulga.getWidth(),
+                        pulga.getCampo()
                     );
 
 

@@ -34,13 +34,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
     private boolean running;
     private boolean paused;
     private  int velocidad;
+    protected CampoDeBatalla campo;
 
   
-    public Pulga( int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {
+    public Pulga( int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width, CampoDeBatalla campo) {
         super(x, y, height, width);
         this.vida = vida;
         this.estaviva = estaviva;
         this.pulgaImage = pulgaImage;
+        this.campo = campo; 
         
         setStep(10);
         setDelay(100);
@@ -150,19 +152,35 @@ import javax.sound.sampled.UnsupportedAudioFileException;
     
    @Override
     public void run() {
-        running = true;
-        
-        while(isRunning())
-        {
+        while (estaviva) {
             try {
-                Thread.sleep(delay);
-            } catch (InterruptedException ex) {}
-            
-            if(isPaused())
-                continue;
-            
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            int originalX = this.x;
+            int originalY = this.y;
+
             mover();
+
+            if (campo.colisionaConOtrasPulgas(this)) {
+                this.x = originalX;
+                this.y = originalY;
+            }
+            
+            campo.limiteDeMapa(this);
         }
     }
+
+    public CampoDeBatalla getCampo() {
+        return campo;
+    }
+
+    public void setCampo(CampoDeBatalla campo) {
+        this.campo = campo;
+    }
+    
+    
 
 }

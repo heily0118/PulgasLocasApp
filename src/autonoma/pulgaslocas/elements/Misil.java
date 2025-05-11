@@ -122,7 +122,7 @@ public class Misil {
 
             if (p instanceof PulgaMutante) {
                 
-                PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth());
+                PulgaNormal nueva = new PulgaNormal(1, true, null, p.getX(), p.getY(), p.getHeight(), p.getWidth(), p.getCampo());
                 pulgasAEliminar.add(p); 
                 pulgas.add(nueva); 
 

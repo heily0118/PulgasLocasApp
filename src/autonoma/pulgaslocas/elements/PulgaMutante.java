@@ -11,8 +11,7 @@ import javax.swing.ImageIcon;
  * @version 1.0.0
  */
 public class PulgaMutante extends Pulga {
-    
-
+    protected CampoDeBatalla campo;
     /**
      * 
      * 
@@ -24,9 +23,10 @@ public class PulgaMutante extends Pulga {
      * @param height alto del sprite
      * @param width ancho del sprite
      */
-    public PulgaMutante(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width) {  
-        super( vida, estaviva, pulgaImage, x, y, height, width);
+    public PulgaMutante(int vida, boolean estaviva, Image pulgaImage, int x, int y, int height, int width, CampoDeBatalla campo) {  
+        super( vida, estaviva, pulgaImage, x, y, height, width, campo);
         this.vida = 2;
+        this.campo = campo;
         this.pulgaImage = new ImageIcon(getClass().getResource("/autonoma/pulgaslocas/images/pulgaMutante.png")).getImage();
     }
     
@@ -62,43 +62,35 @@ public class PulgaMutante extends Pulga {
 
     @Override
     public void mover() {
-
         if (estaviva) {
-             
-               double directionX = Math.random();
-               double directionY = Math.random();
+            double directionX = Math.random();
+            double directionY = Math.random();
 
-             
-               int velocidad = 5 + (int)(Math.random() * 10); 
+            int velocidad = 5 + (int)(Math.random() * 10);
 
-               // Mover en el eje X
-               if (directionX < 0.5) {
-                   x += velocidad;  
-               } else {
-                   x -= velocidad;  
-               }
+            
+            if (directionX < 0.5) {
+                x += velocidad;
+            } else {
+                x -= velocidad;
+            }
 
-               // Mover en el eje Y
-               if (directionY < 0.5) {
-                   y += velocidad;
-               } else {
-                   y -= velocidad; 
-               }
+            if (directionY < 0.5) {
+                y += velocidad;
+            } else {
+                y -= velocidad;
+            }
 
-               // Limitar la posición X
-               if (x < 0) {
-                   x = 0;
-               } else if (x > 600) {
-                   x = 600;
-               }
+            int limiteX = campo.getAncho() - width;
+            int limiteY = campo.getAlto() - height;
 
-               // Limitar la posición Y
-               if (y < 0) {
-                   y = 0;
-               } else if (y > 400) {  
-                   y = 400;
-               }
+            if (x < 0) x = 0;
+            else if (x > limiteX) x = limiteX;
+
+            if (y < 0) y = 0;
+            else if (y > limiteY) y = limiteY;
+            
+            campo.limiteDeMapa(this);
         }
-    }
-    
+    }   
 }
