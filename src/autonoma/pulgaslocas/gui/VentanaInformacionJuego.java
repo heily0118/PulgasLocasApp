@@ -312,11 +312,11 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
 
       
         String instrucciones = String.format("""
-            --------------------------------------------------------
+            -----------------------------------------------------------
                         JUGADOR: %s
 
                         TIENE PUNTAJE MÁXIMO DE: %d
-            --------------------------------------------------------
+            -----------------------------------------------------------
             """, nombreMaximo, puntajeMaximo);
 
        

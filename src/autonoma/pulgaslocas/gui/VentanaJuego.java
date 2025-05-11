@@ -88,7 +88,6 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
             }
         });
         
-        
     }
 
     /**
@@ -167,12 +166,6 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
     @Override
     public void paint(Graphics g) {
         update(g);
-        
-        
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString("PUNTAJE",25, 80);
-        g.drawString(String.valueOf(gestor.getPuntaje().getPuntajeActual()), 150, 80);
     }
     
    
@@ -186,6 +179,11 @@ public class VentanaJuego extends javax.swing.JDialog implements GraphicContaine
         Graphics gBuffer = buffer.getGraphics();
 
         dibujarEscenario(gBuffer);
+        
+        gBuffer.setColor(Color.BLACK);
+        gBuffer.setFont(new Font("Arial", Font.BOLD, 24));
+        gBuffer.drawString("PUNTAJE", 25, 80);
+        gBuffer.drawString(String.valueOf(gestor.getPuntaje().getPuntajeActual()), 150, 80);
 
         g.drawImage(buffer, 0, 0, this);
         gBuffer.dispose();
