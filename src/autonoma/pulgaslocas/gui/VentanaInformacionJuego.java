@@ -28,11 +28,13 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
     private String nomJugador;
     private Clip clip;
 
+
+
     
     /**
      * Creates new form VentanaInformacionJuego
      */
-    public VentanaInformacionJuego( GestorJuego gestor, Clip clip ) {
+    public VentanaInformacionJuego( GestorJuego gestor) {
         initComponents();
 
         this.setSize(900, 900);
@@ -40,7 +42,6 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.gestor = gestor;
         
-        this.clip = clip;
         
          pedirNombreJugador();
          
@@ -355,6 +356,17 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
     public GestorJuego getGestor() {
         return gestor;
     }
+    
+    public Clip getClip() {
+        return clip;
+    }
+
+    public void setClip(Clip clip) {
+        this.clip = clip;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BtnCorona;
     private javax.swing.JLabel Jugador;
