@@ -66,7 +66,7 @@ public class PulgaMutante extends Pulga {
             double directionX = Math.random();
             double directionY = Math.random();
 
-            int velocidad = 5 + (int)(Math.random() * 10);
+            int velocidad = 10 + (int)(Math.random() * 10);
 
             
             if (directionX < 0.5) {
