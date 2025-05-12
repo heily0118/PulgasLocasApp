@@ -118,7 +118,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuegoActionPerformed
-        VentanaInformacionJuego ventana = new VentanaInformacionJuego(this, true, gestor, clip);
+        VentanaInformacionJuego ventana = new VentanaInformacionJuego(gestor, clip);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnJuegoActionPerformed
 

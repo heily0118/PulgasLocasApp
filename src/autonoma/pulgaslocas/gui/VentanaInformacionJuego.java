@@ -32,7 +32,7 @@ public final class VentanaInformacionJuego extends javax.swing.JFrame {
     /**
      * Creates new form VentanaInformacionJuego
      */
-    public VentanaInformacionJuego(VentanaPrincipal aThis, boolean par, GestorJuego gestor, Clip clip ) {
+    public VentanaInformacionJuego( GestorJuego gestor, Clip clip ) {
         initComponents();
 
         this.setSize(900, 900);
